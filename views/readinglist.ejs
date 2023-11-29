@@ -123,7 +123,10 @@
         </div>
     </div>
 
-    <div id="readingList"></div>
+    <div class="row mx-auto pt-3">
+        <div id="readingList"></div>
+    </div>
+
 
     <script>
         // Retrieve the reading list from localStorage
@@ -136,7 +139,7 @@
 
         readingList.forEach(function (imageUrl) {
             // Check if the image has already been displayed
-        
+
             if (!displayedImages.includes(imageUrl)) {
                 // Create the image element
                 var imageElement = document.createElement("img");
@@ -145,8 +148,8 @@
                 imageElement.src = imageUrl;
 
                 //กำหนดขนาดภาพ
-                imageElement.style.maxWidth = "200px"; 
-                imageElement.style.height = "auto"; 
+                imageElement.style.maxWidth = "200px";
+                imageElement.style.height = "auto";
 
                 // Add a bottom margin to separate the images
                 imageElement.style.marginBottom = "20px"; // Adjust the margin as needed
@@ -156,7 +159,7 @@
 
                 // Add the image to the displayedImages array
                 displayedImages.push(imageUrl);
-                
+
             }
         });
         // Function to clear the reading list
