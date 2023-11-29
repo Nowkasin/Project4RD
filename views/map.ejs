@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>แผนที่</title>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+  <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZwhLNcwIwxV6ifzxtVmiEZgikZXH_moA&callback=initialize&v=weekly"
+    defer></script>
+  <link rel="icon" href="#" type="image/x-icon">
+  <script src="/js/map.js"></script>
+
+</head>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+  integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+<link rel="stylesheet" href="/css/style.css" />
+
+<button class="scroll-to-top" onclick="scrollToTop()">↑</button>
+
+<script>
+  //Func สำหรับกดแล้วไปบนสุด
+  function scrollToTop() {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }
+</script>
+
+<body>
+
+  <div class="container-justify-content-end">
+    <nav class="navbar navbar-expand-lg navbar-light" id="sticky-navbar" style="background:#8DC0EB">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#"></a>
+        <a href="/"><img src="Image/YarkArnLogo.png" style="left: 10000px" width="100px" height="auto" /></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarDropdownMenuLink"
+          aria-controls="navbarDropdownMenuLink" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarDropdownMenuLink">
+          <ul class="navbar-nav custom-small-text">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="/">หน้าหลัก</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="/map">แผนที่</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="/find">ค้นหา</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="/list">สิ่งที่อยากอ่าน</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                Me (ชื่อ)
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <li>
+                  <% if (loggedIn) { %>
+                    <a class="dropdown-item" href="/profile">โปรไฟล์</a>
+                    <% } %>
+
+                </li>
+                <li>
+                  <% if (!loggedIn) { %>
+                    <a class="dropdown-item " href="/login">เข้าสู่ระบบ</a>
+                    <% } %>
+                </li>
+                <li>
+                  <% if (!loggedIn) { %>
+                    <a class="dropdown-item " href="/register">สมัครสมาชิก</a>
+                    <% } %>
+                </li>
+                <li>
+                  <% if (loggedIn) { %>
+                    <a class="dropdown-item" href="/contact">ข้อเสนอแนะ</a>
+                    <% } %>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <div class="row justify-content-center custom-padding-1 pb-5">
+    <div class="col-md-8">
+      <div class="text-center">
+        <h1>ร้านหนังสือใกล้ฉัน</h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="container custom-padding-bot">
+    <div class="row">
+      <div class="col-md-12">
+        
+
+        <!-- Nav tabs -->
+        <ul class="nav nav-pills justify-content-center text-center" id="locationButtons" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link custom-nav-link" data-location-id="image1">Animate Bankok</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link custom-nav-link" data-location-id="image2">ร้านการ์ตูน KAPA</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link custom-nav-link" data-location-id="image3">Kinokuniya Paragon</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link custom-nav-link" data-location-id="image4">Kinokuniya Emquartier</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link custom-nav-link" data-location-id="image5">Kinokuniya Central World</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link custom-nav-link" data-location-id="image6">Phoenix Next</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link custom-nav-link" data-location-id="image7">Yaakz Shop</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link custom-nav-link" data-location-id="image8">ModelxCartoon</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link custom-nav-link" data-location-id="image9">Animate Bangkok (Future Park Rangsit)</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link custom-nav-link" data-location-id="image10">นายอินทร์ (Naiin)</button>
+            
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link custom-nav-link" data-location-id="image11">B2S</button>
+            
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link custom-nav-link" data-location-id="image12">SE-ED</button>
+          </li>
+        </ul>
+
+        <div id="map-container">
+          <div id="map"></div>
+        
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p>&copy; YarkArn</p>
+    <p>
+      <a href="/">หน้าหลัก</a> |
+      <a href="/map">แผนที่</a> |
+      <a href="/find">ค้นหา</a> |
+      <a href="/list">สิ่งที่อยากอ่าน</a> |
+      <a href="/contact">ติดต่อเรา</a> |
+      <a href="/login">เข้าสู่ระบบ</a> |
+      <a href ="/register">สมัครสมาชิก</a>
+    </p>
+  </footer>
+
+
+</body>
+
+</html>

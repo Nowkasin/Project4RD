@@ -1,0 +1,411 @@
+
+@import url("https://fonts.googleapis.com/css2?family=Gabarito&family=Kanit:wght@300&family=Mooli&family=Noto+Sans+Thai:wght@300&family=Sarabun&family=Zilla+Slab:wght@500&display=swap");
+
+* {
+  font-family: "Kanit", sans-serif;
+  font-weight: 500;
+}
+
+body {
+  background-color: #c9d2ff;
+}
+
+
+/* .custom-short-search {
+    width: 250px;
+  } */
+
+.custom-small-text {
+  font-size: 18px;
+  letter-spacing: 0px;
+  word-spacing: 2px;
+}
+
+/* .navbar .nav-item.dropdown:hover .dropdown-menu {
+  display: block;
+} */
+
+.navbar .nav-item.dropdown .dropdown-menu {
+  border: none;
+  box-shadow: none;
+}
+
+.navbar .nav-item.dropdown .dropdown-menu::before {
+  content: none;
+}
+
+/* ให้ Navbar ไม่ต้องกดแล้วเปิดได้ + เปิดไปทางซ้าย */
+.navbar .nav-item.dropdown:hover .dropdown-menu {
+  display: block;
+  /* transform: translateX(calc(50% - 100%)); */
+}
+
+/* ให้ Navbar ตามจอไปด้วย */
+#sticky-navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000; /* ปรับแกน Z ให้ขึ้นไปบนสุดแน่ๆ */
+}
+
+.navbar .nav-link {
+  color: rgb(255, 255, 255) !important;
+}
+
+.custom-nav-link {
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, border-color 0.7s ease,
+    color 2s ease; /* Trasition แบบลื่นๆ */
+  border: 2px solid transparent;
+  color: #ffffff;
+  font-weight: bolder;
+  width: auto;
+  letter-spacing: 3px;
+  height: 50px;
+  text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+  
+}
+
+.nav-link.active {
+  background-color: #5b7deb !important;
+  color: white !important;
+}
+
+.custom-nav-link:hover {
+  background-color: #7ebdf8 !important;
+  /* color: #333 !important; */
+  /* border-color: black !important; */
+}
+
+.custom-nav-link.active {
+  background-color: #208ff8 !important;
+  color: #ffffff !important;
+  /* border: solid; */
+  /* border-color: #208ff8 !important; */
+}
+
+.scroll-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #685beb;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  text-align: center;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 1000; /* แกน Z เอาชัวร์ว่าจะไปบนสุด */
+}
+
+/* สำหรับ bookdetail.html */
+.custom-padding {
+  padding-top: 150px;
+}
+
+/* สำหรับ readinglist.html */
+.custom-padding-1 {
+  padding-top: 120px;
+}
+
+.custom-padding-2 {
+  padding-top: 200px;
+}
+
+.custom-padding-3 {
+  padding-top: 100px;
+}
+
+.custom-padding-bot {
+  padding-bottom: 200px;
+}
+
+.custom-padding-bot-1 {
+  padding-bottom: 50px;
+}
+
+.card {
+  color: white;
+  /* cursor: pointer; */
+  background: radial-gradient(circle at 10% 20%, #8dc0eb 0%, #5b7deb 90%);
+  transition: box-shadow 0.3s ease-in-out;
+  border: 0px;
+}
+
+.card:hover {
+  box-shadow: 0 0 30px 1px rgba(48, 160, 252, 0.9);
+}
+
+.btn {
+  background-color: #685beb;
+  border: 0px;
+}
+
+.btn:hover {
+  background-color: #2e01f7e4;
+}
+
+/* .hoverable-image {
+  transition: transform 0.5s ease;
+}
+
+.hoverable-image:hover {
+  transform: scale(1.1);
+}
+*/
+
+.hoverable-image-1 {
+  transition: transform 0.5s ease;
+}
+
+.hoverable-image-1:hover {
+  transform: scale(1.3);
+}
+
+.scrolling-carousel-container {
+  overflow: hidden;
+}
+
+.scrolling-carousel {
+  display: flex; /* ให้รูป Align แนว Horizontal ได้แบบต่อกัน */
+  animation: scroll 150s linear infinite; /* เวลาต่อ 1 ลูป */
+  height: 200px;
+}
+
+.scrolling-carousel img {
+  max-width: 100%;
+  height: auto;
+  margin-right: 20px; /* ระยะห่างระหว่างรูป */
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/* Accordion */
+* {
+  box-sizing: border-box;
+}
+
+h1 {
+  text-align: center;
+  color: #ffffff;
+  background: radial-gradient(circle at 10% 20%, #5b7deb 0%, #8dc0eb 90%);
+  /* border: solid 5px white; */
+  margin: 40px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.4);
+}
+
+.accordion {
+  margin-bottom: 10px;
+
+  .accordion-btn {
+    position: relative;
+    color: white;
+    /* background: radial-gradient(circle at 10% 20%,#5b7deb 0%, #8dc0eb 90%); */
+    background: linear-gradient(to bottom right, #5b7deb 0%, #8dc0eb 100%);
+    border: none;
+    padding: 15px 20px;
+    text-align: left;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.25);
+    list-style-image: none;
+
+    &::-webkit-details-marker {
+      background: none;
+      color: transparent;
+    }
+
+    &::after {
+      content: "›";
+      position: absolute;
+      top: 50%;
+      right: 10px;
+      font-size: 35px;
+      font-family: monospace;
+      width: 35px;
+      height: 35px;
+      text-align: center;
+      border-radius: 50%;
+      color: #ffffff;
+      border: 4px solid #ffffff;
+      transform: translate(0%, -50%) rotate(0deg);
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+      padding-bottom: 4px;
+      padding-left: 2px;
+      justify-content: center;
+      font-weight: normal;
+      transition: all 0.3s ease;
+    }
+  }
+
+  .accordion-content {
+    background-color: #ffffff;
+    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.25);
+
+    > * {
+      padding: 10px 20px;
+    }
+  }
+
+  &[open] {
+    .accordion-btn::after {
+      transform: translate(0%, -50%) rotate(90deg);
+    }
+
+    summary ~ * {
+      overflow: hidden;
+      animation: heightUp 1s ease-in-out;
+    }
+  }
+}
+
+@keyframes heightUp {
+  0% {
+    max-height: 0;
+  }
+  100% {
+    max-height: 2000px;
+  }
+}
+
+/* Image Gallery YarkArn Recommended*/
+.gallery-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin: 20px;
+}
+
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+}
+
+.gallery-item:hover {
+  transform: scale(1.05);
+}
+
+.gallery-item img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.image-details {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.gallery-item:hover .image-details {
+  opacity: 1;
+}
+
+/* YarkArn Category */
+.category-item {
+  border-radius: 20px;
+  overflow: hidden;
+  text-decoration: none;
+  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.4);
+  /* background: radial-gradient(circle at 10% 20%, #5b7deb 0%, #8dc0eb 90%); */
+  color: white;
+  cursor: pointer;
+  /* background: radial-gradient(circle at 10% 20%, #7fbef2 0%, #4770f8 90%); */
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.category-item:hover {
+  box-shadow: 0 0 25px 1px #2c8bd8
+}
+
+/* สีของ Featured */
+.badge-featured {
+  background-color: rgb(255, 255, 255);
+  color: #333;
+}
+
+/* Map tab */
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+  border: 0;
+}
+
+.tab-content {
+  margin-top: 20px;
+}
+
+/* .tab-pane-1 {
+  background-color: #f8f9fa;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+} */
+
+/* Form */
+.contact-form input::placeholder {
+  color: rgb(71, 71, 71);
+  font-weight: bold;
+}
+
+.contact-form textarea::placeholder {
+  color: rgb(60, 60, 60);
+  font-weight: bold;
+}
+
+
+.footer {
+  /* สี BG Footer */
+  background: #8dc0eb;
+  color: white;
+   /* Padding Top กับ Bottom */
+  padding: 20px 0;
+  text-align: center;
+  /* text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); */
+  font-weight: bold;
+}
+
+.footer a {
+  color: #ffffff !important; /* สี Link ใน Footer */
+  text-decoration: none !important;
+  margin: 0 10px; /* ระยะห่างต่อ Link */
+  transition: color 0.5s ease-in-out, text-decoration 0.5s ease-in-out;
+  /* text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); */
+  font-weight: bold;
+}
+
+.footer a:hover {
+  color: #197cda !important;
+  text-decoration: underline;
+  /* text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); */
+  font-weight: bold;
+}
+
+

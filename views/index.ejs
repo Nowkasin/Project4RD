@@ -1,0 +1,1870 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home</title>
+
+  <link rel="icon" href="#" type="image/x-icon">
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+
+</head>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+  integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+<link rel="stylesheet" href="/css/style.css" />
+
+
+<!-- Alert -->
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<button class="scroll-to-top" onclick="scrollToTop()">↑</button>
+
+<script>
+  //Func สำหรับกดแล้วไปบนสุด
+  function scrollToTop() {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }
+</script>
+
+<body>
+  <div class="container-justify-content-end">
+    <nav class="navbar navbar-expand-lg navbar-light" id="sticky-navbar" style="background:#8DC0EB">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#"></a>
+        <a href="/"><img src="/Image/YarkArnLogo.png" style="left: 10000px" width="100px" height="auto" /></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarDropdownMenuLink"
+          aria-controls="navbarDropdownMenuLink" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarDropdownMenuLink">
+          <ul class="navbar-nav custom-small-text">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="/">หน้าหลัก</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="/map">แผนที่</a>
+          </li>
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="/find">ค้นหา</a>
+            </li>
+            <li class="nav-item">
+              <!-- ดัก user เมื่อ user ยังไม่ได้ login เข้าสู่ระบบ เพื่อป้องกันไม่ให้ user เข้าถึงเนื้อหาเมื่อยังไม่ได้ login-->
+              <% if (!loggedIn) { %>
+                <a class="nav-link" aria-current="page"
+                  onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')"
+                  href="#">สิ่งที่อยากอ่าน</a>
+                <% } %>
+                  <!-- ถ้า user login เข้าสู่ระบบ user จะสามารถเข้าสู่เนื้อหาได้เมื่อทำการ login แล้ว-->
+                  <% if (loggedIn) { %>
+                    <a class="nav-link" aria-current="page" href="/list">สิ่งที่อยากอ่าน</a>
+                    <% } %>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                Me (ชื่อ)
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <li>
+                  <!-- ถ้า user login เข้าสู่ระบบ user จะเห็นปุ่ม My Profile ขึ้นมา -->
+                  <% if (loggedIn) { %>
+                    <a class="dropdown-item" href="/profile">โปรไฟล์</a>
+                    <% } %>
+                </li>
+                <li>
+                  <!-- ถ้า user ยังไม่ login เข้าสู่ระบบ จะขึ้นปุ่มนี้ขึ้นมา -->
+                  <% if (!loggedIn) { %>
+                    <a class="dropdown-item " href="/login">เข้าสู่ระบบ</a>
+                    <% } %>
+                </li>
+                <li>
+                  <!-- ถ้า user ยังไม่ login เข้าสู่ระบบ จะขึ้นปุ่มนี้ขึ้นมา -->
+                  <% if (!loggedIn) { %>
+                    <a class="dropdown-item " href="/register">สมัครสมาชิก</a>
+                    <% } %>
+                </li>
+                <li>
+                  <% if (loggedIn) { %>
+                    <a class="dropdown-item" href="/contact">ข้อเสนอแนะ</a>
+                    <% } %>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12 bg-transparent">
+      <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+        <ol class="carousel-indicators">
+          <li data-bs-target="#carouselExampleInterval" data-bs-slide-to="0" class="active"></li>
+          <li data-bs-target="#carouselExampleInterval" data-bs-slide-to="1"></li>
+          <li data-bs-target="#carouselExampleInterval" data-bs-slide-to="2"></li>
+          <li data-bs-target="#carouselExampleInterval" data-bs-slide-to="3"></li>
+          <li data-bs-target="#carouselExampleInterval" data-bs-slide-to="4"></li>
+
+        </ol>
+        <div class="carousel-inner">
+          <div class="carousel-item active" data-bs-interval="5000">
+            <!-- 5 sec -->
+            <img src="https://via.placeholder.com/800x300" class="d-block w-100" alt="BN1" />
+          </div>
+          <div class="carousel-item" data-bs-interval="5000">
+            <img src="https://via.placeholder.com/800x300" class="d-block w-100" alt="BN2" />
+          </div>
+          <div class="carousel-item" data-bs-interval="5000">
+            <img src="https://via.placeholder.com/800x300" class="d-block w-100" alt="BN2" />
+          </div>
+          <div class="carousel-item" data-bs-interval="5000">
+            <img src="https://via.placeholder.com/800x300" class="d-block w-100" alt="BN2" />
+          </div>
+          <div class="carousel-item" data-bs-interval="5000">
+            <img src="https://via.placeholder.com/800x300" class="d-block w-100" alt="BN2" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row justify-content-center pt-5">
+    <div class="col-md-8">
+      <h1>Home</h1>
+    </div>
+  </div>
+
+  <!-- Book -->
+  <div class="container-fluid mx-auto" style="max-width: 1300px;">
+
+    <!-- Nav Tab -->
+    <ul class="nav nav-pills mb-3 py-5" id="pills-tab" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="pills-rec-tab" data-bs-toggle="pill" data-bs-target="#pills-rec"
+          type="button" role="tab" aria-controls="pills-rec" aria-selected="true"
+          style="font-weight: bolder; font-size: 1.3rem;">หนังสือแนะนำ</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="pills-best-tab" data-bs-toggle="pill" data-bs-target="#pills-best" type="button"
+          role="tab" aria-controls="pills-best" aria-selected="false"
+          style="font-weight: bolder; font-size: 1.3rem;">หนังสือขายดี</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="pills-new-tab" data-bs-toggle="pill" data-bs-target="#pills-new" type="button"
+          role="tab" aria-controls="pills-new" aria-selected="false"
+          style="font-weight: bolder; font-size: 1.3rem;">หนังสือมาใหม่</button>
+      </li>
+    </ul>
+
+    <!-- Book Tab -->
+    <div class="tab-content pb-5" id="pills-tabContent">
+
+      <!-- Book Recommended -->
+      <div class="tab-pane fade show active" id="pills-rec" role="tabpanel" aria-labelledby="pills-rec-tab"
+        tabindex="0">
+        <div class="row">
+
+          <!-- #1 Book -->
+          <div class="col-md-4">
+            <div class="card mb-3 card1" style="max-width: 540px;">
+              <div class="row g-0">
+                <div class="col-md-5 px-2 py-2 text-center">
+
+                  <!-- #1 Book Button -->
+                  <button type="button" class="btn px-0 py-0" data-bs-toggle="modal" data-bs-target="#book1-1">
+                    <img src="/Image/Oshi/Oshi 1.png" class="img-fluid rounded" alt="">
+                  </button>
+
+                </div>
+                <div class="col-md-7">
+                  <div class="card-body">
+                    <h5 class="card-title">เกิดใหม่เป็นลูกโอชิ 1</h5>
+                    <p class="card-text">โดย : AKA AKASAKA<br>สำนักพิมพ์ : Luckpim <br> หมวดหมู่ : การ์ตูนทั่วไป</p>
+                    <hr>
+                    <% if (!loggedIn) { %>
+                      <input type="button" class="btn btn-primary" value="เพิ่มเติม"
+                        onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
+                      <% } %>
+                        <% if (loggedIn) { %>
+                          <a href="/detail" class="btn btn-primary">เพิ่มเติม</a>
+                          <% } %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- #1 Book Modal -->
+          <div class="modal fade" id="book1-1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header bg-body-secondary">
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                  <img src="/Image/Oshi/Oshi 1.png" class="img-fluid" alt="">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- #2 Book -->
+          <div class="col-md-4">
+            <div class="card mb-3 card7" style="max-width: 540px;">
+              <div class="row g-0">
+                <div class="col-md-5 px-2 py-2 text-center">
+
+                  <!-- #2 Book Button -->
+                  <button type="button" class="btn px-0 py-0" data-bs-toggle="modal" data-bs-target="#book1-2">
+                    <img src="/Image/Oshi/Oshi 2.png" class="img-fluid rounded" alt="">
+                  </button>
+
+                </div>
+                <div class="col-md-7">
+                  <div class="card-body">
+                    <h5 class="card-title">เกิดใหม่เป็นลูกโอชิ 2</h5>
+                    <p class="card-text">โดย : AKA AKASAKA<br>สำนักพิมพ์ : Luckpim <br> หมวดหมู่ : การ์ตูนทั่วไป</p>
+                    <hr>
+                    <% if (!loggedIn) { %>
+                      <input type="button" class="btn btn-primary" value="เพิ่มเติม"
+                        onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
+                      <% } %>
+                        <% if (loggedIn) { %>
+                          <a href="/detail2" class="btn btn-primary">เพิ่มเติม</a>
+                          <% } %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- #2 Book Modal -->
+          <div class="modal fade" id="book1-2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header bg-body-secondary">
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                  <img src="/Image/Oshi/Oshi 2.png" class="img-fluid" alt="">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- #3 Book -->
+          <div class="col-md-4">
+            <div class="card mb-3 card2" style="max-width: 540px;">
+              <div class="row g-0">
+                <div class="col-md-5 px-2 py-2 text-center">
+
+                  <!-- #3 Book Button  -->
+                  <button type="button" class="btn px-0 py-0" data-bs-toggle="modal" data-bs-target="#book1-3">
+                    <img src="/Image/Oshi/Oshi 3.png" class=img-fluid rounded" alt="">
+                  </button>
+
+                </div>
+                <div class="col-md-7">
+                  <div class="card-body">
+                    <h5 class="card-title">เกิดใหม่เป็นลูกโอชิ 3</h5>
+                    <p class="card-text">โดย : AKA AKASAKA<br>สำนักพิมพ์ : Luckpim <br> หมวดหมู่ : การ์ตูนทั่วไป</p>
+                    <hr>
+                    <% if (!loggedIn) { %>
+                      <input type="button" class="btn btn-primary" value="เพิ่มเติม"
+                        onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
+                      <% } %>
+                        <% if (loggedIn) { %>
+                          <a href="/detail3" class="btn btn-primary">เพิ่มเติม</a>
+                          <% } %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- #3 Book Modal -->
+          <div class="modal fade" id="book1-3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header bg-body-secondary">
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                  <img src="/Image/Oshi/Oshi 3.png" class="img-fluid" alt="">
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div> <!-- Book Row 1 -->
+
+        <div class="row">
+
+          <!-- #4 Book -->
+          <div class="col-md-4">
+            <div class="card mb-3 card4" style="max-width: 540px;">
+              <div class="row g-0">
+                <div class="col-md-5 px-2 py-2 text-center">
+
+                  <!-- #4 Book Button -->
+                  <button type="button" class="btn px-0 py-0" data-bs-toggle="modal" data-bs-target="#book1-4">
+                    <img src="/Image/Oshi/Oshi 4.png" class="img-fluid rounded" alt="">
+                  </button>
+
+                </div>
+                <div class="col-md-7">
+                  <div class="card-body">
+                    <h5 class="card-title">เกิดใหม่เป็นลูกโอชิ 4</h5>
+                    <p class="card-text">โดย : AKA AKASAKA<br>สำนักพิมพ์ : Luckpim <br> หมวดหมู่ : การ์ตูนทั่วไป</p>
+                    <hr>
+                    <% if (!loggedIn) { %>
+                      <input type="button" class="btn btn-primary" value="เพิ่มเติม"
+                        onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
+                      <% } %>
+                        <% if (loggedIn) { %>
+                          <a href="/detail4" class="btn btn-primary">เพิ่มเติม</a>
+                          <% } %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- #4 Book Modal -->
+          <div class="modal fade" id="book1-4" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header bg-body-secondary">
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                  <img src="/Image/Oshi/Oshi 4.png" class="img-fluid" alt="">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- #5 Book -->
+          <div class="col-md-4">
+            <div class="card mb-3 card3" style="max-width: 540px;">
+              <div class="row g-0">
+                <div class="col-md-5 px-2 py-2 text-center">
+
+                  <!-- #5 Book Button -->
+                  <button type="button" class="btn px-0 py-0" data-bs-toggle="modal" data-bs-target="#book1-5">
+                    <img src="/Image/Oshi/Oshi 5.png" class="img-fluid rounded" alt="">
+                  </button>
+
+                </div>
+                <div class="col-md-7">
+                  <div class="card-body">
+                    <h5 class="card-title">เกิดใหม่เป็นลูกโอชิ 5</h5>
+                    <p class="card-text">โดย : AKA AKASAKA<br>สำนักพิมพ์ : Luckpim <br> หมวดหมู่ : การ์ตูนทั่วไป</p>
+                    <hr>
+                    <% if (!loggedIn) { %>
+                      <input type="button" class="btn btn-primary" value="เพิ่มเติม"
+                        onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
+                      <% } %>
+                        <% if (loggedIn) { %>
+                          <a href="/detail5" class="btn btn-primary">เพิ่มเติม</a>
+                          <% } %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- #5 Book Modal -->
+          <div class="modal fade" id="book1-5" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header bg-body-secondary">
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                  <img src="/Image/Oshi/Oshi 5.png" class="img-fluid" alt="">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- #6 Book -->
+          <div class="col-md-4">
+            <div class="card mb-3 card1" style="max-width: 540px;">
+              <div class="row g-0">
+                <div class="col-md-5 px-2 py-2 text-center">
+
+                  <!-- #6 Book Button -->
+                  <button type="button" class="btn px-0 py-0" data-bs-toggle="modal" data-bs-target="#book1-6">
+                    <img src="/Image/Oshi/Oshi 6.png" class="img-fluid rounded" alt="">
+                  </button>
+
+                </div>
+                <div class="col-md-7">
+                  <div class="card-body">
+                    <h5 class="card-title">เกิดใหม่เป็นลูกโอชิ 6</h5>
+                    <p class="card-text">โดย : AKA AKASAKA<br>สำนักพิมพ์ : Luckpim <br> หมวดหมู่ : การ์ตูนทั่วไป</p>
+                    <hr>
+                    <% if (!loggedIn) { %>
+                      <input type="button" class="btn btn-primary" value="เพิ่มเติม"
+                        onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
+                      <% } %>
+                        <% if (loggedIn) { %>
+                          <a href="/detail6" class="btn btn-primary">เพิ่มเติม</a>
+                          <% } %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- #6 Book Modal -->
+          <div class="modal fade" id="book1-6" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header bg-body-secondary">
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                  <img src="/Image/Oshi/Oshi 6.png" class="img-fluid" alt="">
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div> <!-- Book Row2 -->
+
+        <div class="row">
+
+          <!-- #7 Book -->
+          <div class="col-md-4">
+            <div class="card mb-3 card6" style="max-width: 540px;">
+              <div class="row g-0">
+                <div class="col-md-5 px-2 py-2 text-center">
+
+                  <!-- #7 Book Button -->
+                  <button type="button" class="btn px-0 py-0" data-bs-toggle="modal" data-bs-target="#book1-7">
+                    <img src="/Image/Oshi/Oshi 7.png" class="img-fluid rounded" alt="">
+                  </button>
+
+                </div>
+                <div class="col-md-7">
+                  <div class="card-body">
+                    <h5 class="card-title">เกิดใหม่เป็นลูกโอชิ 7</h5>
+                    <p class="card-text">โดย : AKA AKASAKA<br>สำนักพิมพ์ : Luckpim <br> หมวดหมู่ : การ์ตูนทั่วไป</p>
+                    <hr>
+                    <% if (!loggedIn) { %>
+                      <input type="button" class="btn btn-primary" value="เพิ่มเติม"
+                        onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
+                      <% } %>
+                        <% if (loggedIn) { %>
+                          <a href="/detail7" class="btn btn-primary">เพิ่มเติม</a>
+                          <% } %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- #7 Book Modal -->
+          <div class="modal fade" id="book1-7" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header bg-body-secondary">
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                  <img src="/Image/Oshi/Oshi 7.png" class="img-fluid" alt="">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- #8 Book -->
+          <div class="col-md-4">
+            <div class="card mb-3 card5" style="max-width: 540px;">
+              <div class="row g-0">
+                <div class="col-md-5 px-2 py-2 text-center">
+
+                  <!-- #8 Book Button -->
+                  <button type="button" class="btn px-0 py-0" data-bs-toggle="modal" data-bs-target="#book1-8">
+                    <img src="/Image/Oshi/Oshi 8.png" class="img-fluid rounded" alt="">
+                  </button>
+
+                </div>
+                <div class="col-md-7">
+                  <div class="card-body">
+                    <h5 class="card-title">เกิดใหม่เป็นลูกโอชิ 8</h5>
+                    <p class="card-text">โดย : AKA AKASAKA<br>สำนักพิมพ์ : Luckpim <br> หมวดหมู่ : การ์ตูนทั่วไป</p>
+                    <hr>
+                    <% if (!loggedIn) { %>
+                      <input type="button" class="btn btn-primary" value="เพิ่มเติม"
+                        onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
+                      <% } %>
+                        <% if (loggedIn) { %>
+                          <a href="/detail8" class="btn btn-primary">เพิ่มเติม</a>
+                          <% } %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- #8 Book Modal -->
+          <div class="modal fade" id="book1-8" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header bg-body-secondary">
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                  <img src="/Image/Oshi/Oshi 8.png" class="img-fluid" alt="">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- #9 Book -->
+          <div class="col-md-4">
+            <div class="card mb-3 card5" style="max-width: 540px;">
+              <div class="row g-0">
+                <div class="col-md-5 px-2 py-2 text-center">
+
+                  <!-- #9 Book Button -->
+                  <button type="button" class="btn px-0 py-0" data-bs-toggle="modal" data-bs-target="#book1-9">
+                    <img src="/Image/Oshi/Oshi 9.png" class="img-fluid rounded" alt="">
+                  </button>
+
+                </div>
+                <div class="col-md-7">
+                  <div class="card-body">
+                    <h5 class="card-title">เกิดใหม่เป็นลูกโอชิ 9</h5>
+                    <p class="card-text">โดย : AKA AKASAKA<br>สำนักพิมพ์ : Luckpim <br> หมวดหมู่ : การ์ตูนทั่วไป</p>
+                    <hr>
+                    <% if (!loggedIn) { %>
+                      <input type="button" class="btn btn-primary" value="เพิ่มเติม"
+                        onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
+                      <% } %>
+                        <% if (loggedIn) { %>
+                          <a href="/detail9" class="btn btn-primary">เพิ่มเติม</a>
+                          <% } %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- #9 Book Modal -->
+          <div class="modal fade" id="book1-9" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header bg-body-secondary">
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                  <img src="/Image/Oshi/Oshi 9.png" class="img-fluid" alt="">
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div> <!-- Book Row3 -->
+
+      </div> <!-- Book Recommended -->
+
+      <!-- Book Best Seller -->
+      <div class="tab-pane fade" id="pills-best" role="tabpanel" aria-labelledby="pills-best-tab" tabindex="0">
+        <div class="row">
+
+          <!-- #1 Book -->
+          <div class="col-md-4">
+            <div class="card mb-3 card1" style="max-width: 540px;">
+              <div class="row g-0">
+                <div class="col-md-5 px-2 py-2 text-center">
+
+                  <!-- #1 Book Button -->
+                  <button type="button" class="btn px-0 py-0" data-bs-toggle="modal" data-bs-target="#book2-1">
+                    <img src="/Image/Oshi/Oshi 10.png" class="img-fluid rounded" alt="">
+                  </button>
+
+                </div>
+                <div class="col-md-7">
+                  <div class="card-body">
+                    <h5 class="card-title">เกิดใหม่เป็นลูกโอชิ 10</h5>
+                    <p class="card-text">โดย : AKA AKASAKA<br>สำนักพิมพ์ : Luckpim <br> หมวดหมู่ : การ์ตูนทั่วไป</p>
+                    <hr>
+                    <% if (!loggedIn) { %>
+                      <input type="button" class="btn btn-primary" value="เพิ่มเติม"
+                        onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
+                      <% } %>
+                        <% if (loggedIn) { %>
+                          <a href="/detail10" class="btn btn-primary">เพิ่มเติม</a>
+                          <% } %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- #1 Book Modal -->
+          <div class="modal fade" id="book2-1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header bg-body-secondary">
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                  <img src="/Image/Oshi/Oshi 10.png" class="img-fluid" alt="">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- #2 Book -->
+          <div class="col-md-4">
+            <div class="card mb-3 card7" style="max-width: 540px;">
+              <div class="row g-0">
+                <div class="col-md-5 px-2 py-2 text-center">
+
+                  <!-- #2 Book Button -->
+                  <button type="button" class="btn px-0 py-0" data-bs-toggle="modal" data-bs-target="#book2-2">
+                    <img src="/Image/Oshi/Oshi 11.png" class="img-fluid rounded" alt="">
+                  </button>
+
+                </div>
+                <div class="col-md-7">
+                  <div class="card-body">
+                    <h5 class="card-title">เกิดใหม่เป็นลูกโอชิ 11</h5>
+                    <p class="card-text">โดย : AKA AKASAKA<br>สำนักพิมพ์ : Luckpim <br> หมวดหมู่ : การ์ตูนทั่วไป</p>
+                    <hr>
+                    <% if (!loggedIn) { %>
+                      <input type="button" class="btn btn-primary" value="เพิ่มเติม"
+                        onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
+                      <% } %>
+                        <% if (loggedIn) { %>
+                          <a href="/detail11" class="btn btn-primary">เพิ่มเติม</a>
+                          <% } %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- #2 Book Modal -->
+          <div class="modal fade" id="book2-2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header bg-body-secondary">
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                  <img src="/Image/Oshi/Oshi 11.png" class="img-fluid" alt="">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- #3 Book -->
+          <div class="col-md-4">
+            <div class="card mb-3 card2" style="max-width: 540px;">
+              <div class="row g-0">
+                <div class="col-md-5 px-2 py-2 text-center">
+
+                  <!-- #3 Book Button  -->
+                  <button type="button" class="btn px-0 py-0" data-bs-toggle="modal" data-bs-target="#book2-3">
+                    <img src="/Image/Kusuriya/Kusuriya 1.png" class="img-fluid rounded" alt="">
+                  </button>
+
+                </div>
+                <div class="col-md-7">
+                  <div class="card-body">
+                    <h5 class="card-title">ตำรับปริศนา หมอยาแห่งวังหลัง 1</h5>
+                    <p class="card-text">โดย : นัตซึ ฮิวงะ<br>สำนักพิมพ์ : ANIMAG  <br> หมวดหมู่ : การ์ตูนทั่วไป</p>
+                    <hr>
+                    <% if (!loggedIn) { %>
+                      <input type="button" class="btn btn-primary" value="เพิ่มเติม"
+                        onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
+                      <% } %>
+                        <% if (loggedIn) { %>
+                          <a href="/detail12" class="btn btn-primary">เพิ่มเติม</a>
+                          <% } %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- #3 Book Modal -->
+          <div class="modal fade" id="book2-3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header bg-body-secondary">
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                  <img src="/Image/Kusuriya/Kusuriya 1.png" class="img-fluid" alt="">
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div> <!-- Book Row 1 -->
+
+        <div class="row">
+
+          <!-- #4 Book -->
+          <div class="col-md-4">
+            <div class="card mb-3 card4" style="max-width: 540px;">
+              <div class="row g-0">
+                <div class="col-md-5 px-2 py-2 text-center">
+
+                  <!-- #4 Book Button -->
+                  <button type="button" class="btn px-0 py-0" data-bs-toggle="modal" data-bs-target="#book2-4">
+                    <img src="/Image/Kusuriya/Kusuriya 2.png" class="img-fluid rounded" alt="">
+                  </button>
+
+                </div>
+                <div class="col-md-7">
+                  <div class="card-body">
+                    <h5 class="card-title">ตำรับปริศนา หมอยาแห่งวังหลัง 2</h5>
+                    <p class="card-text">โดย : นัตซึ ฮิวงะ<br>สำนักพิมพ์ : ANIMAG  <br> หมวดหมู่ : การ์ตูนทั่วไป</p>
+                    <hr>
+                    <% if (!loggedIn) { %>
+                      <input type="button" class="btn btn-primary" value="เพิ่มเติม"
+                        onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
+                      <% } %>
+                        <% if (loggedIn) { %>
+                          <a href="/detail13" class="btn btn-primary">เพิ่มเติม</a>
+                          <% } %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- #4 Book Modal -->
+          <div class="modal fade" id="book2-4" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header bg-body-secondary">
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                  <img src="/Image/Kusuriya/Kusuriya 2.png" class="img-fluid" alt="">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- #5 Book -->
+          <div class="col-md-4">
+            <div class="card mb-3 card3" style="max-width: 540px;">
+              <div class="row g-0">
+                <div class="col-md-5 px-2 py-2 text-center">
+
+                  <!-- #5 Book Button -->
+                  <button type="button" class="btn px-0 py-0" data-bs-toggle="modal" data-bs-target="#book2-5">
+                    <img src="/Image/Kusuriya/Kusuriya 3.png"class="img-fluid rounded" alt="">
+                  </button>
+
+                </div>
+                <div class="col-md-7">
+                  <div class="card-body">
+                    <h5 class="card-title">ตำรับปริศนา หมอยาแห่งวังหลัง 3</h5>
+                    <p class="card-text">โดย : นัตซึ ฮิวงะ<br>สำนักพิมพ์ : ANIMAG  <br> หมวดหมู่ : การ์ตูนทั่วไป</p>
+                    <hr>
+                    <% if (!loggedIn) { %>
+                      <input type="button" class="btn btn-primary" value="เพิ่มเติม"
+                        onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
+                      <% } %>
+                        <% if (loggedIn) { %>
+                          <a href="/detail14" class="btn btn-primary">เพิ่มเติม</a>
+                          <% } %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- #5 Book Modal -->
+          <div class="modal fade" id="book2-5" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header bg-body-secondary">
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                  <img src="/Image/Kusuriya/Kusuriya 3.png" class="img-fluid" alt="">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- #6 Book -->
+          <div class="col-md-4">
+            <div class="card mb-3 card1" style="max-width: 540px;">
+              <div class="row g-0">
+                <div class="col-md-5 px-2 py-2 text-center">
+
+                  <!-- #6 Book Button -->
+                  <button type="button" class="btn px-0 py-0" data-bs-toggle="modal" data-bs-target="#book2-6">
+                    <img src="/Image/Kusuriya/Kusuriya 4.png" class="img-fluid rounded" alt="">
+                  </button>
+
+                </div>
+                <div class="col-md-7">
+                  <div class="card-body">
+                    <h5 class="card-title">ตำรับปริศนา หมอยาแห่งวังหลัง 4</h5>
+                    <p class="card-text">โดย : นัตซึ ฮิวงะ<br>สำนักพิมพ์ : ANIMAG  <br> หมวดหมู่ : การ์ตูนทั่วไป</p>
+                    <hr>
+                    <% if (!loggedIn) { %>
+                      <input type="button" class="btn btn-primary" value="เพิ่มเติม"
+                        onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
+                      <% } %>
+                        <% if (loggedIn) { %>
+                          <a href="/detail15" class="btn btn-primary">เพิ่มเติม</a>
+                          <% } %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- #6 Book Modal -->
+          <div class="modal fade" id="book2-6" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header bg-body-secondary">
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                  <img src="/Image/Kusuriya/Kusuriya 4.png" class="img-fluid" alt="">
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div> <!-- Book Row2 -->
+
+        <div class="row">
+
+          <!-- #7 Book -->
+          <div class="col-md-4">
+            <div class="card mb-3 card6" style="max-width: 540px;">
+              <div class="row g-0">
+                <div class="col-md-5 px-2 py-2 text-center">
+
+                  <!-- #7 Book Button -->
+                  <button type="button" class="btn px-0 py-0" data-bs-toggle="modal" data-bs-target="#book2-7">
+                    <img src="/Image/Kusuriya/Kusuriya 5.png" class="img-fluid rounded" alt="">
+                  </button>
+
+                </div>
+                <div class="col-md-7">
+                  <div class="card-body">
+                    <h5 class="card-title">ตำรับปริศนา หมอยาแห่งวังหลัง 5</h5>
+                    <p class="card-text">โดย : นัตซึ ฮิวงะ<br>สำนักพิมพ์ : ANIMAG  <br> หมวดหมู่ : การ์ตูนทั่วไป</p>
+                    <hr>
+                    <% if (!loggedIn) { %>
+                      <input type="button" class="btn btn-primary" value="เพิ่มเติม"
+                        onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
+                      <% } %>
+                        <% if (loggedIn) { %>
+                          <a href="/detail16" class="btn btn-primary">เพิ่มเติม</a>
+                          <% } %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- #7 Book Modal -->
+          <div class="modal fade" id="book2-7" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header bg-body-secondary">
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                  <img src="/Image/Kusuriya/Kusuriya 5.png" class="img-fluid" alt="">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- #8 Book -->
+          <div class="col-md-4">
+            <div class="card mb-3 card5" style="max-width: 540px;">
+              <div class="row g-0">
+                <div class="col-md-5 px-2 py-2 text-center">
+
+                  <!-- #8 Book Button -->
+                  <button type="button" class="btn px-0 py-0" data-bs-toggle="modal" data-bs-target="#book2-8">
+                    <img src="/Image/Kusuriya/Kusuriya 6.png" class="img-fluid rounded" alt="">
+                  </button>
+
+                </div>
+                <div class="col-md-7">
+                  <div class="card-body">
+                    <h5 class="card-title">ตำรับปริศนา หมอยาแห่งวังหลัง 6</h5>
+                    <p class="card-text">โดย : นัตซึ ฮิวงะ<br>สำนักพิมพ์ : ANIMAG  <br> หมวดหมู่ : การ์ตูนทั่วไป</p>
+                    <hr>
+                    <% if (!loggedIn) { %>
+                      <input type="button" class="btn btn-primary" value="เพิ่มเติม"
+                        onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
+                      <% } %>
+                        <% if (loggedIn) { %>
+                          <a href="/detail17" class="btn btn-primary">เพิ่มเติม</a>
+                          <% } %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- #8 Book Modal -->
+          <div class="modal fade" id="book2-8" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header bg-body-secondary">
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                  <img src="/Image/Kusuriya/Kusuriya 6.png" class="img-fluid" alt="">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- #9 Book -->
+          <div class="col-md-4">
+            <div class="card mb-3 card5" style="max-width: 540px;">
+              <div class="row g-0">
+                <div class="col-md-5 px-2 py-2 text-center">
+
+                  <!-- #9 Book Button -->
+                  <button type="button" class="btn px-0 py-0" data-bs-toggle="modal" data-bs-target="#book2-9">
+                    <img src="/Image/Kusuriya/Kusuriya 7.png" class="img-fluid rounded" alt="">
+                  </button>
+
+                </div>
+                <div class="col-md-7">
+                  <div class="card-body">
+                    <h5 class="card-title">ตำรับปริศนา หมอยาแห่งวังหลัง 7</h5>
+                    <p class="card-text">โดย : นัตซึ ฮิวงะ<br>สำนักพิมพ์ : ANIMAG  <br> หมวดหมู่ : การ์ตูนทั่วไป</p>
+                    <hr>
+                    <% if (!loggedIn) { %>
+                      <input type="button" class="btn btn-primary" value="เพิ่มเติม"
+                        onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
+                      <% } %>
+                        <% if (loggedIn) { %>
+                          <a href="/detail18" class="btn btn-primary">เพิ่มเติม</a>
+                          <% } %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- #9 Book Modal -->
+          <div class="modal fade" id="book2-9" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header bg-body-secondary">
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                  <img src="/Image/Kusuriya/Kusuriya 7.png" class="img-fluid" alt="">
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div> <!-- Book Row3 -->
+
+      </div> <!-- Book Best Seller -->
+
+      <!-- Book New -->
+      <div class="tab-pane fade" id="pills-new" role="tabpanel" aria-labelledby="pills-new-tab" tabindex="0">
+        <div class="row">
+
+          <!-- #1 Book -->
+          <div class="col-md-4">
+            <div class="card mb-3 card1" style="max-width: 540px;">
+              <div class="row g-0">
+                <div class="col-md-5 px-2 py-2 text-center">
+
+                  <!-- #1 Book Button -->
+                  <button type="button" class="btn px-0 py-0" data-bs-toggle="modal" data-bs-target="#book3-1">
+                    <img src="/Image/Kusuriya/Kusuriya 8.png"class="img-fluid rounded" alt="">
+                  </button>
+
+                </div>
+                <div class="col-md-7">
+                  <div class="card-body">
+                    <h5 class="card-title">ตำรับปริศนา หมอยาแห่งวังหลัง 8</h5>
+                    <p class="card-text">โดย : นัตซึ ฮิวงะ<br>สำนักพิมพ์ : ANIMAG  <br> หมวดหมู่ : การ์ตูนทั่วไป</p>
+                    <hr>
+                    <% if (!loggedIn) { %>
+                      <input type="button" class="btn btn-primary" value="เพิ่มเติม"
+                        onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
+                      <% } %>
+                        <% if (loggedIn) { %>
+                          <a href="/detail19" class="btn btn-primary">เพิ่มเติม</a>
+                          <% } %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- #1 Book Modal -->
+          <div class="modal fade" id="book3-1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header bg-body-secondary">
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                  <img src="/Image/Kusuriya/Kusuriya 8.png" class="img-fluid" alt="">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- #2 Book -->
+          <div class="col-md-4">
+            <div class="card mb-3 card7" style="max-width: 540px;">
+              <div class="row g-0">
+                <div class="col-md-5 px-2 py-2 text-center">
+
+                  <!-- #2 Book Button -->
+                  <button type="button" class="btn px-0 py-0" data-bs-toggle="modal" data-bs-target="#book3-2">
+                    <img src="Image/Shangri-la/Shangri 1.png" class="img-fluid rounded" alt="">
+                  </button>
+
+                </div>
+                <div class="col-md-7">
+                  <div class="card-body">
+                    <h5 class="card-title">SHANGRI-LA FRONTIER เล่ม 1</h5>
+                    <p class="card-text">โดย : Katarina / Ryousuke Fuji<br>สำนักพิมพ์ : Luckpim <br> หมวดหมู่ : การ์ตูนทั่วไป</p>
+                    <hr>
+                    <% if (!loggedIn) { %>
+                      <input type="button" class="btn btn-primary" value="เพิ่มเติม"
+                        onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
+                      <% } %>
+                        <% if (loggedIn) { %>
+                          <a href="/detail20" class="btn btn-primary">เพิ่มเติม</a>
+                          <% } %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- #2 Book Modal -->
+          <div class="modal fade" id="book3-2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header bg-body-secondary">
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                  <img src="Image/Shangri-la/Shangri 1.png" class="img-fluid" alt="">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- #3 Book -->
+          <div class="col-md-4">
+            <div class="card mb-3 card2" style="max-width: 540px;">
+              <div class="row g-0">
+                <div class="col-md-5 px-2 py-2 text-center">
+
+                  <!-- #3 Book Button  -->
+                  <button type="button" class="btn px-0 py-0" data-bs-toggle="modal" data-bs-target="#book3-3">
+                    <img src="Image/Shangri-la/Shangri 2.png" class="img-fluid rounded" alt="">
+                  </button>
+
+                </div>
+                <div class="col-md-7">
+                  <div class="card-body">
+                    <h5 class="card-title">SHANGRI-LA FRONTIER เล่ม 2</h5>
+                    <p class="card-text">โดย : Katarina / Ryousuke Fuji<br>สำนักพิมพ์ : Luckpim <br> หมวดหมู่ : การ์ตูนทั่วไป</p>
+                    <hr>
+                    <% if (!loggedIn) { %>
+                      <input type="button" class="btn btn-primary" value="เพิ่มเติม"
+                        onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
+                      <% } %>
+                        <% if (loggedIn) { %>
+                          <a href="/detail21" class="btn btn-primary">เพิ่มเติม</a>
+                          <% } %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- #3 Book Modal -->
+          <div class="modal fade" id="book3-3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header bg-body-secondary">
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                  <img src="Image/Shangri-la/Shangri 2.png" class="img-fluid" alt="">
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div> <!-- Book Row 1 -->
+
+        <div class="row">
+
+          <!-- #4 Book -->
+          <div class="col-md-4">
+            <div class="card mb-3 card4" style="max-width: 540px;">
+              <div class="row g-0">
+                <div class="col-md-5 px-2 py-2 text-center">
+
+                  <!-- #4 Book Button -->
+                  <button type="button" class="btn px-0 py-0" data-bs-toggle="modal" data-bs-target="#book3-4">
+                    <img src="Image/Shangri-la/Shangri 3.png" class="img-fluid rounded" alt="">
+                  </button>
+
+                </div>
+                <div class="col-md-7">
+                  <div class="card-body">
+                    <h5 class="card-title">SHANGRI-LA FRONTIER เล่ม 3</h5>
+                    <p class="card-text">โดย : Katarina / Ryousuke Fuji<br>สำนักพิมพ์ : Luckpim <br> หมวดหมู่ : การ์ตูนทั่วไป</p>
+                    <hr>
+                    <% if (!loggedIn) { %>
+                      <input type="button" class="btn btn-primary" value="เพิ่มเติม"
+                        onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
+                      <% } %>
+                        <% if (loggedIn) { %>
+                          <a href="/detail22" class="btn btn-primary">เพิ่มเติม</a>
+                          <% } %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- #4 Book Modal -->
+          <div class="modal fade" id="book3-4" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header bg-body-secondary">
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                  <img src="Image/Shangri-la/Shangri 3.png" class="img-fluid" alt="">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- #5 Book -->
+          <div class="col-md-4">
+            <div class="card mb-3 card3" style="max-width: 540px;">
+              <div class="row g-0">
+                <div class="col-md-5 px-2 py-2 text-center">
+
+                  <!-- #5 Book Button -->
+                  <button type="button" class="btn px-0 py-0" data-bs-toggle="modal" data-bs-target="#book3-5">
+                    <img src="Image/Shangri-la/Shangri 4.png" class="img-fluid rounded" alt="">
+                  </button>
+
+                </div>
+                <div class="col-md-7">
+                  <div class="card-body">
+                    <h5 class="card-title">SHANGRI-LA FRONTIER เล่ม 4</h5>
+                    <p class="card-text">โดย : Katarina / Ryousuke Fuji<br>สำนักพิมพ์ : Luckpim <br> หมวดหมู่ : การ์ตูนทั่วไป</p>
+                    <hr>
+                    <% if (!loggedIn) { %>
+                      <input type="button" class="btn btn-primary" value="เพิ่มเติม"
+                        onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
+                      <% } %>
+                        <% if (loggedIn) { %>
+                          <a href="/detail23" class="btn btn-primary">เพิ่มเติม</a>
+                          <% } %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- #5 Book Modal -->
+          <div class="modal fade" id="book3-5" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header bg-body-secondary">
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                  <img src="Image/Shangri-la/Shangri 4.png" class="img-fluid" alt="">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- #6 Book -->
+          <div class="col-md-4">
+            <div class="card mb-3 card1" style="max-width: 540px;">
+              <div class="row g-0">
+                <div class="col-md-5 px-2 py-2 text-center">
+
+                  <!-- #6 Book Button -->
+                  <button type="button" class="btn px-0 py-0" data-bs-toggle="modal" data-bs-target="#book3-6">
+                    <img src="Image/Shangri-la/Shangri 5.png" class="img-fluid rounded" alt="">
+                  </button>
+
+                </div>
+                <div class="col-md-7">
+                  <div class="card-body">
+                    <h5 class="card-title">SHANGRI-LA FRONTIER เล่ม 5</h5>
+                    <p class="card-text">โดย : Katarina / Ryousuke Fuji<br>สำนักพิมพ์ : Luckpim <br> หมวดหมู่ : การ์ตูนทั่วไป</p>
+                    <hr>
+                    <% if (!loggedIn) { %>
+                      <input type="button" class="btn btn-primary" value="เพิ่มเติม"
+                        onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
+                      <% } %>
+                        <% if (loggedIn) { %>
+                          <a href="/detail24" class="btn btn-primary">เพิ่มเติม</a>
+                          <% } %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- #6 Book Modal -->
+          <div class="modal fade" id="book3-6" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header bg-body-secondary">
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                  <img src="Image/Shangri-la/Shangri 5.png" class="img-fluid" alt="">
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div> <!-- Book Row2 -->
+
+        <div class="row">
+
+          <!-- #7 Book -->
+          <div class="col-md-4">
+            <div class="card mb-3 card6" style="max-width: 540px;">
+              <div class="row g-0">
+                <div class="col-md-5 px-2 py-2 text-center">
+
+                  <!-- #7 Book Button -->
+                  <button type="button" class="btn px-0 py-0" data-bs-toggle="modal" data-bs-target="#book3-7">
+                    <img src="Image/Shangri-la/Shangri 6.png" class="img-fluid rounded" alt="">
+                  </button>
+
+                </div>
+                <div class="col-md-7">
+                  <div class="card-body">
+                    <h5 class="card-title">SHANGRI-LA FRONTIER เล่ม 6</h5>
+                    <p class="card-text">โดย : Katarina / Ryousuke Fuji<br>สำนักพิมพ์ : Luckpim <br> หมวดหมู่ : การ์ตูนทั่วไป</p>
+                    <hr>
+                    <% if (!loggedIn) { %>
+                      <input type="button" class="btn btn-primary" value="เพิ่มเติม"
+                        onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
+                      <% } %>
+                        <% if (loggedIn) { %>
+                          <a href="/detail25" class="btn btn-primary">เพิ่มเติม</a>
+                          <% } %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- #7 Book Modal -->
+          <div class="modal fade" id="book3-7" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header bg-body-secondary">
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                  <img src="Image/Shangri-la/Shangri 6.png" class="img-fluid" alt="">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- #8 Book -->
+          <div class="col-md-4">
+            <div class="card mb-3 card5" style="max-width: 540px;">
+              <div class="row g-0">
+                <div class="col-md-5 px-2 py-2 text-center">
+
+                  <!-- #8 Book Button -->
+                  <button type="button" class="btn px-0 py-0" data-bs-toggle="modal" data-bs-target="#book3-8">
+                    <img src="Image/Shangri-la/Shangri 7.png" class="img-fluid rounded" alt="">
+                  </button>
+
+                </div>
+                <div class="col-md-7">
+                  <div class="card-body">
+                    <h5 class="card-title">SHANGRI-LA FRONTIER เล่ม 7</h5>
+                    <p class="card-text">โดย : Katarina / Ryousuke Fuji<br>สำนักพิมพ์ : Luckpim <br> หมวดหมู่ : การ์ตูนทั่วไป</p>
+                    <hr>
+                    <% if (!loggedIn) { %>
+                      <input type="button" class="btn btn-primary" value="เพิ่มเติม"
+                        onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
+                      <% } %>
+                        <% if (loggedIn) { %>
+                          <a href="/detail26" class="btn btn-primary">เพิ่มเติม</a>
+                          <% } %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- #8 Book Modal -->
+          <div class="modal fade" id="book3-8" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header bg-body-secondary">
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                  <img src="Image/Shangri-la/Shangri 7.png" class="img-fluid" alt="">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- #9 Book -->
+          <div class="col-md-4">
+            <div class="card mb-3 card5" style="max-width: 540px;">
+              <div class="row g-0">
+                <div class="col-md-5 px-2 py-2 text-center">
+
+                  <!-- #9 Book Button -->
+                  <button type="button" class="btn px-0 py-0" data-bs-toggle="modal" data-bs-target="#book3-9">
+                    <img src="Image/Shangri-la/Shangri 8.png" class="img-fluid rounded" alt="">
+                  </button>
+
+                </div>
+                <div class="col-md-7">
+                  <div class="card-body">
+                    <h5 class="card-title">SHANGRI-LA FRONTIER เล่ม 8</h5>
+                    <p class="card-text">โดย : Katarina / Ryousuke Fuji<br>สำนักพิมพ์ : Luckpim <br> หมวดหมู่ : การ์ตูนทั่วไป</p>
+                    <hr>
+                    <% if (!loggedIn) { %>
+                      <input type="button" class="btn btn-primary" value="เพิ่มเติม"
+                        onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
+                      <% } %>
+                        <% if (loggedIn) { %>
+                          <a href="/detail27" class="btn btn-primary">เพิ่มเติม</a>
+                          <% } %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- #9 Book Modal -->
+          <div class="modal fade" id="book3-9" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header bg-body-secondary">
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                  <img src="Image/Shangri-la/Shangri 8.png" class="img-fluid" alt="">
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div> <!-- Book Row3 -->
+
+      </div> <!-- Book New -->
+
+    </div> <!-- Book Tab -->
+
+  </div> <!-- Book -->
+
+
+<!-- Image Slider -->
+  <div class="container-fluid pb-5">
+    <div class="scrolling-carousel-container">
+      <div class="scrolling-carousel">
+        <!-- First set of images -->
+        <img src="Image/KanaTest.png" alt="Image 1" />
+        <img src="Image/MaoTest.png" alt="Image 2" />
+        <img src="Image/MahirunTest.png" alt="Image 3" />
+        <img src="Image/FrierenTest.png" alt="Image 4" />
+        <img src="Image/MahirunMGTest.png" alt="Image 5" />
+        <img src="Image/99Test.png" alt="Image 6" />
+  
+        <!-- Second set of images -->
+        <img src="Image/MegamiTest.png" alt="Image 1" />
+        <img src="Image/StarvingTest.png" alt="Image 2" />
+        <img src="Image/DaiTest.png" alt="Image 3" />
+        <img src="Image/MaoTest.png" alt="Image 4" />
+        <img src="Image/MahirunTest.png" alt="Image 5" />
+        <img src="Image/FrierenTest.png" alt="Image 6" />
+      </div>
+    </div>
+  </div>
+  
+<!-- YarkArn Recommended Books -->
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <h1>YarkArn Recommended Books</h1>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="gallery-container">
+  
+      <div class="row justify-content-center">
+  
+        <!-- Image 1 -->
+        <div class="col-md-3">
+          <div class="gallery-item">
+            <img src="Image/FrierenTest.png" alt="">
+            <div class="image-details text-center">
+              <h4>คำอธิษฐานในวันที่จากลา FRIEREN 1</h4>
+              โดย : Kanehito YAMADA, Tsukasa Abe<br>สำนักพิมพ์ : Siam Inter Comics<br> หมวดหมู่ : การ์ตูนทั่วไป
+              <br>ราคา : 76.50 บาท
+              <div style="padding-top: 10px;"></div>
+              <% if (!loggedIn) { %>
+                  <input type="button" class="btn btn-primary" value="เพิ่มเติม"
+                    onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
+              <% } %>
+              <% if (loggedIn) { %>
+                <div class="mb-3">
+                  <a href="/" class="btn btn-primary">เพิ่มเติม</a>
+                </div>
+              <% } %>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Image 2 -->
+        <div class="col-md-3">
+          <div class="gallery-item">
+            <img src="Image/DaiTest.png" alt="">
+            <div class="image-details text-center">
+              <h4>รักรักรักรักรักเธอหมดหัวใจจากแฟนสาว 100 คน 10</h4>
+              โดย : Yukiko Nozawa, Rikito Nakamura<br>สำนักพิมพ์ : LUCKPIM Publishing<br> หมวดหมู่ : การ์ตูนทั่วไป
+              <br>ราคา : 118 บาท
+              <div style="padding-top: 10px;"></div>
+              <% if (!loggedIn) { %>
+                  <input type="button" class="btn btn-primary" value="เพิ่มเติม"
+                    onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
+              <% } %>
+              <% if (loggedIn) { %>
+                <div class="mb-3">
+                  <a href="/" class="btn btn-primary">เพิ่มเติม</a>
+                </div>
+              <% } %>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Image 3 -->
+        <div class="col-md-3">
+          <div class="gallery-item">
+            <img src="Image/MaoTest.png" alt="">
+            <div class="image-details text-center mx-auto">
+              <h4>ตำรับปริศนา หมอยาแห่งวังหลัง 8 (ฉบับการ์ตูน)</h4>
+              โดย : นัตซึ ฮิวงะ, เนโกะคุราเงะ, อิตซึกิ นานาโอะ<br>สำนักพิมพ์ : ANIMAG<br> หมวดหมู่ : การ์ตูนทั่วไป
+              <br>ราคา : 110 บาท
+              <div style="padding-top: 10px;"></div>
+              <% if (!loggedIn) { %>
+                  <input type="button" class="btn btn-primary" value="เพิ่มเติม"
+                    onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
+              <% } %>
+              <% if (loggedIn) { %>
+                <div class="mb-3">
+                  <a href="/" class="btn btn-primary">เพิ่มเติม</a>
+                </div>
+              <% } %>
+            </div>
+          </div>
+        </div>
+        
+  
+        <!-- Image 4 -->
+        <div class="col-md-3">
+          <div class="gallery-item">
+            <img src="Image/MahirunTest.png" alt="">
+            <div class="image-details text-center">
+              <h4>ขาดคุณนางฟ้าข้างห้องไป ผมคงมีชีวิตต่อไปไม่ได้อีกแล้ว 6</h4>
+              โดย : ซาเอกิซัง<br>สำนักพิมพ์ : ANIMAG<br> หมวดหมู่ : ไลท์โนเวล
+              <br>ราคา : 280 บาท
+              <div style="padding-top: 10px;"></div>
+              <% if (!loggedIn) { %>
+                  <input type="button" class="btn btn-primary" value="เพิ่มเติม"
+                    onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
+              <% } %>
+              <% if (loggedIn) { %>
+                <div class="mb-3">
+                  <a href="/" class="btn btn-primary">เพิ่มเติม</a>
+                </div>
+              <% } %>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+<!-- New in การ์ตูนทั่วไป -->
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <h1>New in การ์ตูนทั่วไป</h1>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="gallery-container">
+  
+      <div class="row justify-content-center">
+  
+        <!-- Image 1 -->
+        <div class="col-md-3">
+          <div class="gallery-item">
+            <img src="Image/StarvingTest.png" alt="">
+            <div class="image-details text-center">
+              <h4>ฟาร์มขุนฅน Re: Starving Re: velation 6</h4>
+              โดย : YUU KURAISHI<br>สำนักพิมพ์ : Vibulkij Publishing<br> หมวดหมู่ : การ์ตูนทั่วไป
+              <br>ราคา : 120 บาท
+              <div style="padding-top: 10px;"></div>
+              <% if (!loggedIn) { %>
+                  <input type="button" class="btn btn-primary" value="เพิ่มเติม"
+                    onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
+              <% } %>
+              <% if (loggedIn) { %>
+                <div class="mb-3">
+                  <a href="/" class="btn btn-primary">เพิ่มเติม</a>
+                </div>
+              <% } %>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Image 2 -->
+        <div class="col-md-3">
+          <div class="gallery-item">
+            <img src="Image/MegamiTest.png" alt="">
+            <div class="image-details text-center">
+              <h4>คาเฟ่นี้มีนางฟ้ามาเสิร์ฟ 9</h4>
+              โดย : เซโอะ โคจิ<br>สำนักพิมพ์ : PHOENIX<br> หมวดหมู่ : การ์ตูนทั่วไป
+              <br>ราคา : 165 บาท
+              <div style="padding-top: 10px;"></div>
+              <% if (!loggedIn) { %>
+                  <input type="button" class="btn btn-primary" value="เพิ่มเติม"
+                    onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
+              <% } %>
+              <% if (loggedIn) { %>
+                <div class="mb-3">
+                  <a href="/" class="btn btn-primary">เพิ่มเติม</a>
+                </div>
+              <% } %>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Image 3 -->
+        <div class="col-md-3">
+          <div class="gallery-item">
+            <img src="Image/MahirunMGTest.png" alt="">
+            <div class="image-details text-center mx-auto">
+              <h4>ขาดคุณนางฟ้าข้างห้องไป ผมคงมีชีวิตต่อไปไม่ได้อีกแล้ว 2 (ฉบับการ์ตูน)</h4>
+              โดย : ซาเอกิซัง, สึซึ ยูกิ<br>สำนักพิมพ์ : ANIMAG<br> หมวดหมู่ : การ์ตูนทั่วไป
+              <br>ราคา : 130 บาท
+              <div style="padding-top: 10px;"></div>
+              <% if (!loggedIn) { %>
+                  <input type="button" class="btn btn-primary" value="เพิ่มเติม"
+                    onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
+              <% } %>
+              <% if (loggedIn) { %>
+                <div class="mb-3">
+                  <a href="/" class="btn btn-primary">เพิ่มเติม</a>
+                </div>
+              <% } %>
+            </div>
+          </div>
+        </div>
+        
+  
+        <!-- Image 4 -->
+        <div class="col-md-3">
+          <div class="gallery-item">
+            <img src="Image/99Test.png" alt="">
+            <div class="image-details text-center">
+              <h4>ชีวิตไม่ง่ายของนางร้าย LV99 เล่ม 3 (ฉบับการ์ตูน)</h4>
+              โดย : ซาโตริ ทานาบาตะ<br>สำนักพิมพ์ : PHOENIX<br> หมวดหมู่ : การ์ตูนทั่วไป
+              <br>ราคา : 165 บาท
+              <div style="padding-top: 10px;"></div>
+              <% if (!loggedIn) { %>
+                  <input type="button" class="btn btn-primary" value="เพิ่มเติม"
+                    onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
+              <% } %>
+              <% if (loggedIn) { %>
+                <div class="mb-3">
+                  <a href="/" class="btn btn-primary">เพิ่มเติม</a>
+                </div>
+              <% } %>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- New in ไลท์โนเวล -->
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <h1>New in ไลท์โนเวล</h1>
+    </div>
+  </div>
+  
+  <div class="container">
+    <div class="gallery-container">
+  
+      <div class="row justify-content-center">
+  
+        <!-- Image 1 -->
+        <div class="col-md-3">
+          <div class="gallery-item">
+            <img src="Image/StarvingTest.png" alt="">
+            <div class="image-details text-center">
+              <h4>ฟาร์มขุนฅน Re: Starving Re: velation 6</h4>
+              โดย : YUU KURAISHI<br>สำนักพิมพ์ : Vibulkij Publishing<br> หมวดหมู่ : การ์ตูนทั่วไป
+              <br>ราคา : 120 บาท
+              <div style="padding-top: 10px;"></div>
+              <% if (!loggedIn) { %>
+                  <input type="button" class="btn btn-primary" value="เพิ่มเติม"
+                    onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
+              <% } %>
+              <% if (loggedIn) { %>
+                <div class="mb-3">
+                  <a href="/" class="btn btn-primary">เพิ่มเติม</a>
+                </div>
+              <% } %>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Image 2 -->
+        <div class="col-md-3">
+          <div class="gallery-item">
+            <img src="Image/MegamiTest.png" alt="">
+            <div class="image-details text-center">
+              <h4>คาเฟ่นี้มีนางฟ้ามาเสิร์ฟ 9</h4>
+              โดย : เซโอะ โคจิ<br>สำนักพิมพ์ : PHOENIX<br> หมวดหมู่ : การ์ตูนทั่วไป
+              <br>ราคา : 165 บาท
+              <div style="padding-top: 10px;"></div>
+              <% if (!loggedIn) { %>
+                  <input type="button" class="btn btn-primary" value="เพิ่มเติม"
+                    onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
+              <% } %>
+              <% if (loggedIn) { %>
+                <div class="mb-3">
+                  <a href="/" class="btn btn-primary">เพิ่มเติม</a>
+                </div>
+              <% } %>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Image 3 -->
+        <div class="col-md-3">
+          <div class="gallery-item">
+            <img src="Image/MahirunMGTest.png" alt="">
+            <div class="image-details text-center mx-auto">
+              <h4>ขาดคุณนางฟ้าข้างห้องไป ผมคงมีชีวิตต่อไปไม่ได้อีกแล้ว 2 (ฉบับการ์ตูน)</h4>
+              โดย : ซาเอกิซัง, สึซึ ยูกิ<br>สำนักพิมพ์ : ANIMAG<br> หมวดหมู่ : การ์ตูนทั่วไป
+              <br>ราคา : 130 บาท
+              <div style="padding-top: 10px;"></div>
+              <% if (!loggedIn) { %>
+                  <input type="button" class="btn btn-primary" value="เพิ่มเติม"
+                    onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
+              <% } %>
+              <% if (loggedIn) { %>
+                <div class="mb-3">
+                  <a href="/" class="btn btn-primary">เพิ่มเติม</a>
+                </div>
+              <% } %>
+            </div>
+          </div>
+        </div>
+        
+  
+        <!-- Image 4 -->
+        <div class="col-md-3">
+          <div class="gallery-item">
+            <img src="Image/99Test.png" alt="">
+            <div class="image-details text-center">
+              <h4>ชีวิตไม่ง่ายของนางร้าย LV99 เล่ม 3 (ฉบับการ์ตูน)</h4>
+              โดย : ซาโตริ ทานาบาตะ<br>สำนักพิมพ์ : PHOENIX<br> หมวดหมู่ : การ์ตูนทั่วไป
+              <br>ราคา : 165 บาท
+              <div style="padding-top: 10px;"></div>
+              <% if (!loggedIn) { %>
+                  <input type="button" class="btn btn-primary" value="เพิ่มเติม"
+                    onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
+              <% } %>
+              <% if (loggedIn) { %>
+                <div class="mb-3">
+                  <a href="/" class="btn btn-primary">เพิ่มเติม</a>
+                </div>
+              <% } %>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+    <!-- Hit Menu -->
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <h1>Hit Menu</h1>
+      </div>
+    </div>
+  
+    <div class="container mt-4 justify-content-center">
+      <div class="row">
+        <div class="col-md-4 mb-3">
+          <a href="#" class="category-item text-white p-3 d-block" style="background: radial-gradient(circle at 10% 20%, #6FE8D1 0%, #35c4ef 90%);">
+            <h4 class="fw-bold">หนังสือแนะนำ</h4>
+            <span class="badge rounded-pill badge-featured">Featured</span>
+          </a>
+        </div>
+        <div class="col-md-4 mb-3">
+          <a href="#" class="category-item text-white p-3 d-block" style="background: radial-gradient(circle at 10% 20%, #6FB2E8 0%, #3e8ef7 90%);">
+            <h4 class="fw-bold">หนังสือขายดี</h4>
+            <span class="badge rounded-pill badge-featured">Featured</span>
+          </a>
+        </div>
+        <div class="col-md-4 mb-3">
+          <a href="#" class="category-item text-white p-3 d-block" style="background: radial-gradient(circle at 10% 20%, #97eefb 0%, #3ba2f6 90%);">
+            <h4 class="fw-bold">หนังสือมาใหม่</h4>
+            <span class="badge rounded-pill badge-featured">Featured</span>
+          </a>
+        </div>
+      </div>
+    
+      <div class="row">
+        <div class="col-md-4 mb-3">
+          <a href="#" class="category-item text-white p-3 d-block" style="background: radial-gradient(circle at 10% 20%, #6FE8A8 0%, #41ef6a 90%);">
+            <h4 class="fw-bold">การ์ตูนทั่วไป</h4>
+            <span class="badge rounded-pill badge-featured">Featured</span>
+          </a>
+        </div>
+        <div class="col-md-4 mb-3">
+          <a href="#" class="category-item text-white p-3 d-block" style="background: radial-gradient(circle at 10% 20%, #6488fc 0%, rgb(67, 41, 237) 90%);">
+            <h4 class="fw-bold">ไลท์โนเวล</h4>
+            <span class="badge rounded-pill badge-featured">Featured</span>
+          </a>
+        </div>
+        <div class="col-md-4 mb-3">
+          <a href="#" class="category-item text-white p-3 d-block" style="background: radial-gradient(circle at 10% 20%, #6FBDE8 0%, #128df9 90%);">
+            <h4 class="fw-bold">แนะนำโดยเว็บไซต์</h4>
+            <span class="badge rounded-pill badge-featured">Featured</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  
+  <div class="row justify-content-center pb-5">
+    <div class="col-md-8">
+      <h1>Frequently Asked Questions</h1>
+
+      <details class="accordion">
+        <summary class="accordion-btn">1.ทำไมฉันไม่สามารถกดปุ่มเพื่อดูข้อมูลเพิ่มเติมของหนังสือได้?</summary>
+        <div class="accordion-content">
+          <p>
+            คุณจำเป็นจะต้องล็อกอินทุกครั้งก่อน คุณจึงจะสามารถใช้บริการและดูข้อมูลของหนังสือได้
+          </p>
+        </div>
+      </details>
+
+      <details class="accordion">
+        <summary class="accordion-btn">2.ทำไมฉันไม่สามารถเปิดอ่านหนังสือในเว็บไซต์ YarkArn ได้?</summary>
+        <div class="accordion-content">
+          <p>
+            YarkArn ไม่ใช่เว็บไซต์สำหรับการอ่าน E-Book เป็น YarkArn เป็นเว็บไซต์สำหรับการดูข้อมูลประเภทของหนังสือ ราคา เนื้อเรื่องย่อ ร้านหนังสือที่สามารถหาซื้อได้ เป็นต้น
+          </p>
+        </div>
+      </details>
+
+      <details class="accordion">
+        <summary class="accordion-btn">3.ฉันจะสามารถสมัครเข้าใช้บริการเว็บไซต์ YarnArn ได้อย่างไร?</summary>
+        <div class="accordion-content">
+          <p>
+            คุณสามารถสมัครเข้าใช้บริการและเป็นสมาชิกกับ YarkArn ได้ที่มุมบนขวามือที่แถบเมนูทางด้านขวาสุด เอาเมาส์ไปวางจากนั้นเลือก "สมัครสมาชิก" ทำการกรอกข้อมูลให้เรียบร้อย จากนั้นจึงสามารถเข้าใช้บริการได้ด้วยการเลือก "เข้าสู่ระบบ"
+          </p>
+        </div>
+      </details>
+
+      <details class="accordion">
+        <summary class="accordion-btn">4.ฉันสามารถให้คำแนะนำเกี่ยวกับการบริการ หรือ แจ้งปัญหาการใช้งาน หรือติดต่อเรื่องอื่นๆ ได้อย่างไร?</summary>
+        <div class="accordion-content">
+          <p>
+            คุณสามารถให้คำแนะนำเกี่ยวกับการบริการ หรือ แจ้งปัญหาการใช้งาน และติดต่อเรื่องอื่นๆ กับเราได้โดยตรงผ่านช่องทาง "ข้อเสนอแนะ" ที่จะอยู่บนแถบเมนูด้านขวาสุด
+          </p>
+        </div>
+      </details>
+
+      <details class="accordion">
+        <summary class="accordion-btn">5.ฉันจำ Username หรือ Password ไม่ได้ ฉันสามารถทำอย่างไรได้บ้าง?</summary>
+        <div class="accordion-content">
+          <p>
+            ในปัจจุบันตัวของเว็บไซต์ YarkArn ยังไม่มีระบบที่ให้คุณกู้ Username และ Password ได้ด้วยตนเอง แต่คุณสามารถแจ้งการขอกู้คืน Username และ Password กับเราได้ทาง "ข้อเสนอแนะ"
+          </p>
+        </div>
+      </details>
+
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p>&copy; YarkArn</p>
+    <p>
+      <a href="/">หน้าหลัก</a> |
+      <a href="/map">แผนที่</a> |
+      <a href="/find">ค้นหา</a> |
+      <a href="/list">สิ่งที่อยากอ่าน</a> |
+      <a href="/contact">ติดต่อเรา</a> |
+      <a href="/login">เข้าสู่ระบบ</a> |
+      <a href ="/register">สมัครสมาชิก</a>
+    </p>
+  </footer>
+
+</body>
+
+</html>

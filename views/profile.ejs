@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile</title>
+</head>
+
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+
+<link rel="stylesheet" href="/css/style.css" />
+<link href="/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+
+<button class="scroll-to-top" onclick="scrollToTop()">↑</button>
+
+<script>
+    //Func สำหรับกดแล้วไปบนสุด
+    function scrollToTop() {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+        });
+    }
+</script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+<style>
+    body {
+        background-image: url('Image/LoginBG.png');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+
+    .container {
+        width: 400px;
+        margin: 120px auto 120px;
+        background-color: #fff;
+        padding: 0 20px 20px;
+        border-radius: 6px;
+        border: #b5deff 10px solid;
+        -webkit-border-radius: 6px;
+        -moz-border-radius: 6px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.075);
+        -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.075);
+        -moz-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.075);
+        text-align: center;
+    }
+
+    .container:hover .avatar-flip {
+        transform: rotateY(180deg);
+        -webkit-transform: rotateY(180deg);
+    }
+
+    .container:hover .avatar-flip img:first-child {
+        opacity: 0;
+    }
+
+    .container:hover .avatar-flip img:last-child {
+        opacity: 1;
+    }
+
+    .avatar-flip {
+        border-radius: 100px;
+        overflow: hidden;
+        height: 150px;
+        width: 150px;
+        position: relative;
+        margin: auto;
+        top: -60px;
+        transition: all 0.3s ease-in-out;
+        -webkit-transition: all 0.3s ease-in-out;
+        -moz-transition: all 0.3s ease-in-out;
+        box-shadow: 0 0 0 13px #b5deff;
+        -webkit-box-shadow: 0 0 0 13px #b5deff;
+        -moz-box-shadow: 0 0 0 13px #b5deff;
+    }
+
+    .avatar-flip img {
+        position: absolute;
+        left: 0;
+        top: 0;
+        border-radius: 100px;
+        transition: all 0.3s ease-in-out;
+        -webkit-transition: all 0.3s ease-in-out;
+        -moz-transition: all 0.3s ease-in-out;
+    }
+
+    .avatar-flip img:first-child {
+        z-index: 1;
+    }
+
+    .avatar-flip img:last-child {
+        z-index: 0;
+        transform: rotateY(180deg);
+        -webkit-transform: rotateY(180deg);
+        opacity: 0;
+    }
+
+    h2 {
+        font-size: 32px;
+        font-weight: 600;
+        margin-bottom: 15px;
+        color: #333;
+    }
+
+    h4 {
+        font-size: 13px;
+        color: #00baff;
+        letter-spacing: 1px;
+    }
+</style>
+
+<body>
+
+    <div class="container-justify-content-end">
+        <nav class="navbar navbar-expand-lg navbar-light" id="sticky-navbar" style="background: #8dc0eb">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#"></a>
+                <a href="/"><img src="Image/YarkArnLogo.png" style="left: 10000px" width="100px" height="auto" /></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarDropdownMenuLink" aria-controls="navbarDropdownMenuLink"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarDropdownMenuLink">
+                    <ul class="navbar-nav custom-small-text">
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="/">หน้าหลัก</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="/map">แผนที่</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="/find">ค้นหา</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="/list">สิ่งที่อยากอ่าน</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Me (ชื่อ)
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <li>
+                                    <% if (loggedIn) { %>
+                                        <a class="dropdown-item" href="/profile">โปรไฟล์</a>
+                                        <% } %>
+                                </li>
+                                <li>
+                                    <% if (!loggedIn) { %>
+                                        <a class="dropdown-item" href="/login">เข้าสู่ระบบ</a>
+                                        <% } %>
+                                </li>
+                                <li>
+                                    <% if (!loggedIn) { %>
+                                        <a class="dropdown-item" href="/register">สมัครสมาชิก</a>
+                                        <% } %>
+                                </li>
+                                <li>
+                                    <% if (loggedIn) { %>
+                                      <a class="dropdown-item" href="/contact">ข้อเสนอแนะ</a>
+                                      <% } %>
+                                  </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <div class="custom-padding-3"></div>
+    <!--     
+    <main class="container">
+        <div class="row text-center justify-content-center">
+            <div class="col-md-8 px-0 custom-padding-3 custom-padding-bot-1" style="background-color: rgba(255, 255, 255, 0.9); border-radius: 30px; border: rgba(141, 192, 235, 0.7) solid 10px; max-width: 70%;">
+                <h2 class="display-3 fw-bolder">My Profile</h2>
+                <img src="Image/Profile.png" class="pb-4" alt="Profile">
+                <h3 class="mb-3">Username : <%= UserData.nameuser %></h3>
+                <h3 class="mb-3">User ID : <%= UserData._id %></h3>
+                <h3 class="mb-3">Phone : <%= UserData.tel %></h3>
+                <h3 class="mb-3">
+                    Birthday : <%= UserData.day %> <%= UserData.month %> <%= UserData.year %>
+                </h3>
+                <p class="lead mb-4">
+                    <a href="#" class="text-black fw-bold">Welcome, <%= UserData.email %></a>
+                </p>
+                <div class="pt-1 custom-padding-bot-1">
+                    <% if (loggedIn) { %>
+                        <a class="btn btn-lg btn-danger" href="/logout">Logout</a>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </main> -->
+
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+            <div class="container" style="width: 700px; height: auto;">
+                <div class="avatar-flip">
+                    <img src="https://media.discordapp.net/attachments/870641609665032233/1175049650626121768/AvatarFlip1.png?ex=6569d144&is=65575c44&hm=8854c8a118cc0fe890f6448a774faa79ab5c527130efca154a2486c90a642327&=&width=1024&height=1024" height="150" width="150">
+                    <img src="https://media.discordapp.net/attachments/870641609665032233/1175050671104466954/AvatarFlip2.png?ex=6569d237&is=65575d37&hm=7a858defee99364e7e1290b5d10a8cbe80526639be5c88933238fc8d16f4031c&=&width=1024&height=1024" height="150" width="150">
+                </div>
+                <h2>
+                    <%= UserData.nameuser %>
+                </h2>
+                <h4 id="userId">ID - <%= UserData._id %>
+                </h4>
+                <h5>Email - <%= UserData.email %>
+                </h5>
+                <h5>Tel - <%= UserData.tel %>
+                </h5>
+                <h5>DOB - <%= UserData.day %>
+                        <%= UserData.month %>
+                            <%= UserData.year %>
+                </h5>
+                <div class="pt-1 custom-padding-bot-1 pt-3">
+                    <% if (loggedIn) { %>
+                        <a class="btn btn-md btn-danger" href="/logout">Logout</a>
+                        <% } %>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Get the <h4> element by its id
+        var userIdElement = document.getElementById('userId');
+
+        // Add a click event listener
+        userIdElement.addEventListener('click', function() {
+            // Create a temporary input element
+            var tempInput = document.createElement('input');
+
+            // Set the value of the input to the text content of the <h4> element
+            tempInput.value = userIdElement.textContent;
+
+            // Append the input element to the body
+            document.body.appendChild(tempInput);
+
+            // Select the text in the input element
+            tempInput.select();
+
+            // Copy the selected text to the clipboard
+            document.execCommand('copy');
+
+            // Remove the temporary input element
+            document.body.removeChild(tempInput);
+
+            Swal.fire({
+                title: 'คัดลอก!',
+                text: 'คัดลอก ID ไปยังคลิปบอร์ด',
+                icon: 'success',
+                timer: 2000, // ปิดเองใน 2 วิ 1:1000
+                timerProgressBar: true,
+            });
+        });
+    </script>
+
+
+    <div class="custom-padding-bot-1"></div>
+
+    <footer class="footer">
+        <p>&copy; YarkArn</p>
+        <p>
+          <a href="/">หน้าหลัก</a> |
+          <a href="/map">แผนที่</a> |
+          <a href="/find">ค้นหา</a> |
+          <a href="/list">สิ่งที่อยากอ่าน</a> |
+          <a href="/contact">ติดต่อเรา</a> |
+          <a href="/login">เข้าสู่ระบบ</a> |
+          <a href ="/register">สมัครสมาชิก</a>
+        </p>
+      </footer>
+</body>
+
+</html>

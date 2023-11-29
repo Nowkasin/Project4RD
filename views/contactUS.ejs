@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ข้อเสนอแนะ</title>
+    <link rel="stylesheet" href="/css/contact.css" />
+
+    <link rel="stylesheet" href="/css/style.css" />
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+
+
+</head>
+
+<style>
+    body {
+        background-color: rgb(230, 234, 255);
+    }
+</style>
+
+<body>
+
+    <div class="container-justify-content-end">
+        <nav class="navbar navbar-expand-lg navbar-light" id="sticky-navbar" style="background: #8dc0eb">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#"></a>
+                <a href="/"><img src="Image/YarkArnLogo.png" style="left: 10000px" width="100px" height="auto" /></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarDropdownMenuLink" aria-controls="navbarDropdownMenuLink"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarDropdownMenuLink">
+                    <ul class="navbar-nav custom-small-text">
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="/">หน้าหลัก</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="/map">แผนที่</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="/find">ค้นหา</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="/list">สิ่งที่อยากอ่าน</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Me (ชื่อ)
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <li>
+                                    <% if (loggedIn) { %>
+                                        <a class="dropdown-item" href="/profile">โปรไฟล์</a>
+                                        <% } %>
+                                </li>
+                                <li>
+                                    <% if (!loggedIn) { %>
+                                        <a class="dropdown-item" href="/login">เข้าสู่ระบบ</a>
+                                        <% } %>
+                                </li>
+                                <li>
+                                    <% if (!loggedIn) { %>
+                                        <a class="dropdown-item" href="/register">สมัครสมาชิก</a>
+                                        <% } %>
+                                </li>
+                                <li>
+                                    <% if (loggedIn) { %>
+                                      <a class="dropdown-item" href="/contact">ข้อเสนอแนะ</a>
+                                      <% } %>
+                                  </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <div class="row justify-content-center custom-padding-1">
+        <div class="col-md-8">
+            <h1>Contact us</h1>
+        </div>
+    </div>
+
+    <!-- <div class="row justify-content-center">
+        <div class="col-md-9">
+
+            <div class="form-container">
+                <form class="contact-form">
+                    <input type="text" id="name" placeholder="Full name"><br>
+                    <input type="email" id="email" placeholder="Email"><br>
+                    <input type="text" id="subject" placeholder="Subject"><br>
+                    <textarea id="message" placeholder="message" cols="30" rows="8"></textarea>
+                    <div class="pb-2"></div>
+                    <button type="button" class="btn btn-primary" onclick="Send()">Submit</button>
+                </form>
+            </div>
+
+        </div>
+    </div> -->
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-9">
+                <div class="form-container">
+                    <form class="contact-form">
+                        <!-- <input type="text" class="fw-bold" id="name" placeholder="Full name"><br>
+                        <input type="email" class="fw-bold" id="email" placeholder="Email"><br>
+                        <input type="text" class="fw-bold" id="subject" placeholder="Subject"><br>
+                        <textarea id="message" class="fw-bold" placeholder="Message" cols="30" rows="8"></textarea> -->
+                        <input type="text" id="name" placeholder="Full name" class="form-input" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);">
+                        <input type="email" id="email" placeholder="Email" class="form-input" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);">
+                        <input type="text" id="subject" placeholder="Subject" class="form-input" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);">
+                        <textarea id="message" placeholder="Message" class="form-input" cols="30" rows="8" style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);"></textarea>
+
+                        <div class="pb-2"></div>
+                        <button type="button" class="btn btn-primary" onclick="Send()">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+
+
+    <script>
+        function Send() {
+            //รับค่ามาจาก form โดนนำ id ของแต่ละ form มากำหนดค่า 
+            const Name = document.getElementById("name").value;
+            const EMAIL = document.getElementById("email").value;
+            const Subject = document.getElementById("subject").value;
+            const Message = document.getElementById("message").value;
+
+            // ดัก email โดยใช่ function isValidEmail มาตรวจสอบตัวแปร EMAIL ที่รับค่ามาจาก form
+            if (!isValidEmail(EMAIL)) {
+                swal("มีข้อผิดพลาดบางอย่าง", "กรอกอีเมลไม่ถูกต้อง", "error");//แสดงข้อความ error โดยใช้ animation
+                // ดัก email หาก user ใช้ Hotmail และ Outlook
+                if (isHO(EMAIL)) {
+                    swal("มีข้อผิดพลาดบางอย่าง", "ไม่สามารถใช้ Hotmail และ Outlook ได้", "error");//แสดงข้อความ error โดยใช้ animation
+                }
+
+                return; // Return ข้อความ error
+            }
+
+
+            //กำหนดเงื่อนไขถ้าหากตัวแปร Name,EMAIL,Subject,Message วาง(แสดงว่าไม่มีการกรอกข้อมูลลง form) ให้แสดง error ออกมา
+            if (Name === '' || EMAIL === '' || Subject === '' || Message === '') {
+                swal("มีข้อผิดพลาดบางอย่าง", "โปรดกรอกข้อมูลให้ครบ", "error");
+                return;
+            }
+            //กำหนดข้อความที่จะแสดงใน e-mail (ที่จะส่งไปยังอีเมล)
+            const body = "Name: " + Name + "<br/> Email: " + EMAIL + "<br/> Subject: " + Subject + "<br/> Message: " + Message;
+            //เป็นการแสดงข้อความ(จะแสดงอยู่ใน chrome)โดยดึงข้อมูลใน body ออกมา
+            console.log(body);
+            //สิ่งที่จะถูกส่งไปยัง e-mail
+            Email.send({
+                //SecureToken เป็น token ที่ได้มาจาก การนำ username แลพ password ของ e-mailที่ได้สร้างไว้ไปใส่ในเว็บ smtpjs เป็น token ที่อนุญาติให้เข้าถึง e-mail
+                SecureToken: 'e1556a26-634f-4608-bd2e-42fa9be38577',
+                To: "Yarkarnbook@gmail.com", //กำหนด user name ของ e-mail ที่จะส่ง
+                From: "Yarkarnbook@gmail.com",//กำหนด user name ของ e-mail ว่าส่งมาจากใคร การทำแบนี้เหมือนกับว่าส่งอีเมล์หาตัวเอง
+                Subject: Subject,//ดึงข้อมูลจากแปร Subject ที่เก็บข้อมูลจาก form มาใช้
+                Body: body//ดึงข้อมูลจาก body มาใช้
+            }).then(
+                message => {
+                    if (message == 'OK') {
+                        swal("ส่งสำเร็จ", "ส่งข้อความสำเร็จ", "success");//หลังจากกด Submit แล้วถ้าหากสถานะขึ้น OK ให้ส่ง alert ไปให้ user เพื่อให้ user เพื่อให้ user รู้ว่าส่งข้อความสำเร็จ
+                    }
+                    else {
+                        swal("มีข้อผิดพลาด", "มีข้อผิดพลาดบางอย่าง", "error");//หลังจากกด Submit แล้วถ้าหากสถานะขึ้น error ให้ส่ง alert ไปให้ user เพื่อให้ user เพื่อให้ user รู้ว่าส่งข้อความไม่สำเร็จ
+                    }
+                }
+            );
+        }
+
+        //function ในการดัก e-mail
+        function isValidEmail(email) {
+            // Use a regular expression to check if the email is in a valid format
+            const emailRegex = (/@gmail\.com$/);
+            return emailRegex.test(email);
+        }
+
+        function isHO(email) {
+            const isHotmailOrOutlook = (/@(hotmail\.com|outlook\.com)$/);
+            return isHotmailOrOutlook.test(email);
+        }
+    </script>
+
+<footer class="footer">
+    <p>&copy; YarkArn</p>
+    <p>
+      <a href="/">หน้าหลัก</a> |
+      <a href="/map">แผนที่</a> |
+      <a href="/find">ค้นหา</a> |
+      <a href="/list">สิ่งที่อยากอ่าน</a> |
+      <a href="/contact">ติดต่อเรา</a> |
+      <a href="/login">เข้าสู่ระบบ</a> |
+      <a href ="/register">สมัครสมาชิก</a>
+    </p>
+  </footer>
+
+</body>
+
+</html>
