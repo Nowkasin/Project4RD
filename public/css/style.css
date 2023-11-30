@@ -358,6 +358,11 @@ h1 {
   border: 0;
 }
 
+#map {
+  height: 400px; 
+  width: 100%;   
+}
+
 .tab-content {
   margin-top: 20px;
 }
