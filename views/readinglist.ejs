@@ -123,13 +123,19 @@
         </div>
     </div>
 
-    <div class="row mx-auto pt-3">
+    <div class="row justify-content-center mx-auto pb-2">
+        <div class="col-md-12">
+            <hr class="my-4" style="border-top: 4px solid rgb(255, 255, 255); opacity: 1;">
+        </div>
+    </div>
+
+    <div class="row mx-auto">
         <div id="readingList"></div>
     </div>
 
 
     <script>
-        // Retrieve the reading list from localStorage
+        // Retrieve the reading list
         var readingList = JSON.parse(localStorage.getItem("readingList")) || [];
         // Display the reading list on the page
         var readingListContainer = document.getElementById("readingList");
@@ -164,7 +170,7 @@
         });
         // Function to clear the reading list
         function clearReadingList() {
-            // Clear the reading list in localStorage
+            // Clear the reading list
             localStorage.removeItem("readingList");
             swal('List Cleared', 'เคลียร์รายการหนังสือ', 'success');
             // Clear the displayed images on the page
@@ -172,313 +178,18 @@
         }
     </script>
 
-    <div class="row mx-auto pt-3">
+    <div class="row mx-auto pt-1 pb-5">
         <div class="col-md-4">
             <button onclick="clearReadingList()" class="btn btn-danger">Clear Reading List</button>
         </div>
     </div>
 
 
-
-    <div class="row justify-content-center mx-auto pb-4">
-        <div class="col-md-12">
-            <hr class="my-4" style="border-top: 4px solid rgb(255, 255, 255); opacity: 1;">
-        </div>
-    </div>
-
-    <div class="gallery-container">
-
-        <div class="row justify-content-center">
-
-            <!-- Image 1 -->
-            <div class="col-md-2">
-                <div class="gallery-item">
-                    <img src="Image/StarvingTest.png" alt="" class="img-fluid rounded">
-                    <div class="image-details text-center">
-                        <h4>ฟาร์มขุนฅน Re: Starving Re: velation 6</h4>
-                        โดย : YUU KURAISHI<br>สำนักพิมพ์ : Vibulkij Publishing<br> หมวดหมู่ : การ์ตูนทั่วไป
-                        <br>ราคา : 120 บาท
-                        <div style="padding-top: 10px;"></div>
-                        <% if (!loggedIn) { %>
-                            <input type="button" class="btn btn-primary" value="เพิ่มเติม"
-                                onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
-                            <% } %>
-                                <% if (loggedIn) { %>
-                                    <div class="mb-3">
-                                        <a href="/" class="btn btn-primary">เพิ่มเติม</a>
-                                    </div>
-                                    <% } %>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Image 2 -->
-            <div class="col-md-2">
-                <div class="gallery-item">
-                    <img src="Image/MegamiTest.png" alt="" class="img-fluid rounded">
-                    <div class="image-details text-center">
-                        <h4>คาเฟ่นี้มีนางฟ้ามาเสิร์ฟ 9</h4>
-                        โดย : เซโอะ โคจิ<br>สำนักพิมพ์ : PHOENIX<br> หมวดหมู่ : การ์ตูนทั่วไป
-                        <br>ราคา : 165 บาท
-                        <div style="padding-top: 10px;"></div>
-                        <% if (!loggedIn) { %>
-                            <input type="button" class="btn btn-primary" value="เพิ่มเติม"
-                                onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
-                            <% } %>
-                                <% if (loggedIn) { %>
-                                    <div class="mb-3">
-                                        <a href="/" class="btn btn-primary">เพิ่มเติม</a>
-                                    </div>
-                                    <% } %>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Image 3 -->
-            <div class="col-md-2">
-                <div class="gallery-item">
-                    <img src="Image/MahirunMGTest.png" alt="" class="img-fluid rounded">
-                    <div class="image-details text-center mx-auto">
-                        <h4>ขาดคุณนางฟ้าข้างห้องไป ผมคงมีชีวิตต่อไปไม่ได้อีกแล้ว 2 (ฉบับการ์ตูน)</h4>
-                        โดย : ซาเอกิซัง, สึซึ ยูกิ<br>สำนักพิมพ์ : ANIMAG<br> หมวดหมู่ : การ์ตูนทั่วไป
-                        <br>ราคา : 130 บาท
-                        <div style="padding-top: 10px;"></div>
-                        <% if (!loggedIn) { %>
-                            <input type="button" class="btn btn-primary" value="เพิ่มเติม"
-                                onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
-                            <% } %>
-                                <% if (loggedIn) { %>
-                                    <div class="mb-3">
-                                        <a href="/" class="btn btn-primary">เพิ่มเติม</a>
-                                    </div>
-                                    <% } %>
-                    </div>
-                </div>
-            </div>
-
-
-            <!-- Image 4 -->
-            <div class="col-md-2">
-                <div class="gallery-item">
-                    <img src="Image/99Test.png" alt="" class="img-fluid rounded">
-                    <div class="image-details text-center">
-                        <h4>ชีวิตไม่ง่ายของนางร้าย LV99 เล่ม 3 (ฉบับการ์ตูน)</h4>
-                        โดย : ซาโตริ ทานาบาตะ<br>สำนักพิมพ์ : PHOENIX<br> หมวดหมู่ : การ์ตูนทั่วไป
-                        <br>ราคา : 165 บาท
-                        <div style="padding-top: 10px;"></div>
-                        <% if (!loggedIn) { %>
-                            <input type="button" class="btn btn-primary" value="เพิ่มเติม"
-                                onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
-                            <% } %>
-                                <% if (loggedIn) { %>
-                                    <div class="mb-3">
-                                        <a href="/" class="btn btn-primary">เพิ่มเติม</a>
-                                    </div>
-                                    <% } %>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Image 5 -->
-            <div class="col-md-2">
-                <div class="gallery-item">
-                    <img src="Image/DaiTest.png" alt="" class="img-fluid rounded">
-                    <div class="image-details text-center">
-                        <h4>รักรักรักรักรักเธอหมดหัวใจจากแฟนสาว 100 คน 10</h4>
-                        โดย : Yukiko Nozawa, Rikito Nakamura<br>สำนักพิมพ์ : LUCKPIM Publishing<br> หมวดหมู่ :
-                        การ์ตูนทั่วไป
-                        <br>ราคา : 118 บาท
-                        <div style="padding-top: 10px;"></div>
-                        <% if (!loggedIn) { %>
-                            <input type="button" class="btn btn-primary" value="เพิ่มเติม"
-                                onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
-                            <% } %>
-                                <% if (loggedIn) { %>
-                                    <div class="mb-3">
-                                        <a href="/" class="btn btn-primary">เพิ่มเติม</a>
-                                    </div>
-                                    <% } %>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Image 6 -->
-            <div class="col-md-2">
-                <div class="gallery-item">
-                    <img src="Image/MaoTest.png" alt="" class="img-fluid rounded">
-                    <div class="image-details text-center mx-auto">
-                        <h4>ตำรับปริศนา หมอยาแห่งวังหลัง 8 (ฉบับการ์ตูน)</h4>
-                        โดย : นัตซึ ฮิวงะ, เนโกะคุราเงะ, อิตซึกิ นานาโอะ<br>สำนักพิมพ์ : ANIMAG<br> หมวดหมู่ :
-                        การ์ตูนทั่วไป
-                        <br>ราคา : 110 บาท
-                        <div style="padding-top: 10px;"></div>
-                        <% if (!loggedIn) { %>
-                            <input type="button" class="btn btn-primary" value="เพิ่มเติม"
-                                onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
-                            <% } %>
-                                <% if (loggedIn) { %>
-                                    <div class="mb-3">
-                                        <a href="/" class="btn btn-primary">เพิ่มเติม</a>
-                                    </div>
-                                    <% } %>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-
-    <!-- รายการที่อยากอ่าน #2 -->
-
-    <div class="gallery-container">
-
-        <div class="row justify-content-center">
-
-            <!-- Image 1 -->
-            <div class="col-md-2">
-                <div class="gallery-item">
-                    <img src="Image/StarvingTest.png" alt="" class="img-fluid rounded">
-                    <div class="image-details text-center">
-                        <h4>ฟาร์มขุนฅน Re: Starving Re: velation 6</h4>
-                        โดย : YUU KURAISHI<br>สำนักพิมพ์ : Vibulkij Publishing<br> หมวดหมู่ : การ์ตูนทั่วไป
-                        <br>ราคา : 120 บาท
-                        <div style="padding-top: 10px;"></div>
-                        <% if (!loggedIn) { %>
-                            <input type="button" class="btn btn-primary" value="เพิ่มเติม"
-                                onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
-                            <% } %>
-                                <% if (loggedIn) { %>
-                                    <div class="mb-3">
-                                        <a href="/" class="btn btn-primary">เพิ่มเติม</a>
-                                    </div>
-                                    <% } %>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Image 2 -->
-            <div class="col-md-2">
-                <div class="gallery-item">
-                    <img src="Image/MegamiTest.png" alt="" class="img-fluid rounded">
-                    <div class="image-details text-center">
-                        <h4>คาเฟ่นี้มีนางฟ้ามาเสิร์ฟ 9</h4>
-                        โดย : เซโอะ โคจิ<br>สำนักพิมพ์ : PHOENIX<br> หมวดหมู่ : การ์ตูนทั่วไป
-                        <br>ราคา : 165 บาท
-                        <div style="padding-top: 10px;"></div>
-                        <% if (!loggedIn) { %>
-                            <input type="button" class="btn btn-primary" value="เพิ่มเติม"
-                                onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
-                            <% } %>
-                                <% if (loggedIn) { %>
-                                    <div class="mb-3">
-                                        <a href="/" class="btn btn-primary">เพิ่มเติม</a>
-                                    </div>
-                                    <% } %>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Image 3 -->
-            <div class="col-md-2">
-                <div class="gallery-item">
-                    <img src="Image/MahirunMGTest.png" alt="" class="img-fluid rounded">
-                    <div class="image-details text-center mx-auto">
-                        <h4>ขาดคุณนางฟ้าข้างห้องไป ผมคงมีชีวิตต่อไปไม่ได้อีกแล้ว 2 (ฉบับการ์ตูน)</h4>
-                        โดย : ซาเอกิซัง, สึซึ ยูกิ<br>สำนักพิมพ์ : ANIMAG<br> หมวดหมู่ : การ์ตูนทั่วไป
-                        <br>ราคา : 130 บาท
-                        <div style="padding-top: 10px;"></div>
-                        <% if (!loggedIn) { %>
-                            <input type="button" class="btn btn-primary" value="เพิ่มเติม"
-                                onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
-                            <% } %>
-                                <% if (loggedIn) { %>
-                                    <div class="mb-3">
-                                        <a href="/" class="btn btn-primary">เพิ่มเติม</a>
-                                    </div>
-                                    <% } %>
-                    </div>
-                </div>
-            </div>
-
-
-            <!-- Image 4 -->
-            <div class="col-md-2">
-                <div class="gallery-item">
-                    <img src="Image/99Test.png" alt="" class="img-fluid rounded">
-                    <div class="image-details text-center">
-                        <h4>ชีวิตไม่ง่ายของนางร้าย LV99 เล่ม 3 (ฉบับการ์ตูน)</h4>
-                        โดย : ซาโตริ ทานาบาตะ<br>สำนักพิมพ์ : PHOENIX<br> หมวดหมู่ : การ์ตูนทั่วไป
-                        <br>ราคา : 165 บาท
-                        <div style="padding-top: 10px;"></div>
-                        <% if (!loggedIn) { %>
-                            <input type="button" class="btn btn-primary" value="เพิ่มเติม"
-                                onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
-                            <% } %>
-                                <% if (loggedIn) { %>
-                                    <div class="mb-3">
-                                        <a href="/" class="btn btn-primary">เพิ่มเติม</a>
-                                    </div>
-                                    <% } %>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Image 5 -->
-            <div class="col-md-2">
-                <div class="gallery-item">
-                    <img src="Image/DaiTest.png" alt="" class="img-fluid rounded">
-                    <div class="image-details text-center">
-                        <h4>รักรักรักรักรักเธอหมดหัวใจจากแฟนสาว 100 คน 10</h4>
-                        โดย : Yukiko Nozawa, Rikito Nakamura<br>สำนักพิมพ์ : LUCKPIM Publishing<br> หมวดหมู่ :
-                        การ์ตูนทั่วไป
-                        <br>ราคา : 118 บาท
-                        <div style="padding-top: 10px;"></div>
-                        <% if (!loggedIn) { %>
-                            <input type="button" class="btn btn-primary" value="เพิ่มเติม"
-                                onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
-                            <% } %>
-                                <% if (loggedIn) { %>
-                                    <div class="mb-3">
-                                        <a href="/" class="btn btn-primary">เพิ่มเติม</a>
-                                    </div>
-                                    <% } %>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Image 6 -->
-            <div class="col-md-2">
-                <div class="gallery-item">
-                    <img src="Image/MaoTest.png" alt="" class="img-fluid rounded">
-                    <div class="image-details text-center mx-auto">
-                        <h4>ตำรับปริศนา หมอยาแห่งวังหลัง 8 (ฉบับการ์ตูน)</h4>
-                        โดย : นัตซึ ฮิวงะ, เนโกะคุราเงะ, อิตซึกิ นานาโอะ<br>สำนักพิมพ์ : ANIMAG<br> หมวดหมู่ :
-                        การ์ตูนทั่วไป
-                        <br>ราคา : 110 บาท
-                        <div style="padding-top: 10px;"></div>
-                        <% if (!loggedIn) { %>
-                            <input type="button" class="btn btn-primary" value="เพิ่มเติม"
-                                onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
-                            <% } %>
-                                <% if (loggedIn) { %>
-                                    <div class="mb-3">
-                                        <a href="/" class="btn btn-primary">เพิ่มเติม</a>
-                                    </div>
-                                    <% } %>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-
-    <!-- รายการล่าสุด #1 -->
+    <!-- หนังสือที่คุณน่าจะสนใจ #1 -->
     <div class="row mx-auto pt-3">
         <div class="col-md-4">
             <div class="text-start" style="font-size: 45px; color: white;">
-                <h3 class="fw-bold ps-3">รายการล่าสุด</h3>
+                <h3 class="fw-bold ps-3">หนังสือที่คุณน่าจะสนใจ</h3>
             </div>
         </div>
     </div>
@@ -491,16 +202,17 @@
 
     <div class="gallery-container">
 
-        <div class="row justify-content-center">
+        <div class="row justify-content-center pb-5">
 
             <!-- Image 1 -->
             <div class="col-md-2">
                 <div class="gallery-item">
-                    <img src="Image/StarvingTest.png" alt="" class="img-fluid rounded">
+                    <img src="Image/FrierenTest.png" alt="">
                     <div class="image-details text-center">
-                        <h4>ฟาร์มขุนฅน Re: Starving Re: velation 6</h4>
-                        โดย : YUU KURAISHI<br>สำนักพิมพ์ : Vibulkij Publishing<br> หมวดหมู่ : การ์ตูนทั่วไป
-                        <br>ราคา : 120 บาท
+                        <h4>คำอธิษฐานในวันที่จากลา FRIEREN 1</h4>
+                        โดย : Kanehito YAMADA, Tsukasa Abe<br>สำนักพิมพ์ : Siam Inter Comics<br> หมวดหมู่ :
+                        การ์ตูนทั่วไป
+                        <br>ราคา : 76.50 บาท
                         <div style="padding-top: 10px;"></div>
                         <% if (!loggedIn) { %>
                             <input type="button" class="btn btn-primary" value="เพิ่มเติม"
@@ -518,11 +230,11 @@
             <!-- Image 2 -->
             <div class="col-md-2">
                 <div class="gallery-item">
-                    <img src="Image/MegamiTest.png" alt="" class="img-fluid rounded">
+                    <img src="Image/NoelTest.png" alt="">
                     <div class="image-details text-center">
-                        <h4>คาเฟ่นี้มีนางฟ้ามาเสิร์ฟ 9</h4>
-                        โดย : เซโอะ โคจิ<br>สำนักพิมพ์ : PHOENIX<br> หมวดหมู่ : การ์ตูนทั่วไป
-                        <br>ราคา : 165 บาท
+                        <h4>นักเจรจาสุดโฉดจะสร้างตำนานแคลนสุดแกร่ง 3</h4>
+                        โดย : จาคิ<br>สำนักพิมพ์ : ANIMAG<br> หมวดหมู่ : ไลท์โนเวล
+                        <br>ราคา : 390 บาท
                         <div style="padding-top: 10px;"></div>
                         <% if (!loggedIn) { %>
                             <input type="button" class="btn btn-primary" value="เพิ่มเติม"
@@ -585,22 +297,21 @@
             <!-- Image 5 -->
             <div class="col-md-2">
                 <div class="gallery-item">
-                    <img src="Image/DaiTest.png" alt="" class="img-fluid rounded">
+                    <img src="Image/TimeLNTest.png" alt="">
                     <div class="image-details text-center">
-                        <h4>รักรักรักรักรักเธอหมดหัวใจจากแฟนสาว 100 คน 10</h4>
-                        โดย : Yukiko Nozawa, Rikito Nakamura<br>สำนักพิมพ์ : LUCKPIM Publishing<br> หมวดหมู่ :
-                        การ์ตูนทั่วไป
-                        <br>ราคา : 118 บาท
-                        <div style="padding-top: 10px;"></div>
-                        <% if (!loggedIn) { %>
-                            <input type="button" class="btn btn-primary" value="เพิ่มเติม"
-                                onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
+                      <h4>วันวานแห่งวสันต์ที่เราเฝ้ารอ</h4>
+                      โดย : Mei HACHIMOKU, KUKKA<br>สำนักพิมพ์ : เซนชู<br> หมวดหมู่ : ไลท์โนเวล
+                      <br>ราคา : 240 บาท
+                      <div style="padding-top: 10px;"></div>
+                      <% if (!loggedIn) { %>
+                        <input type="button" class="btn btn-primary" value="เพิ่มเติม"
+                          onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
+                        <% } %>
+                          <% if (loggedIn) { %>
+                            <div class="mb-3">
+                              <a href="/" class="btn btn-primary">เพิ่มเติม</a>
+                            </div>
                             <% } %>
-                                <% if (loggedIn) { %>
-                                    <div class="mb-3">
-                                        <a href="/" class="btn btn-primary">เพิ่มเติม</a>
-                                    </div>
-                                    <% } %>
                     </div>
                 </div>
             </div>
@@ -631,448 +342,7 @@
         </div>
     </div>
 
-    <!-- รายการล่าสุด #2 -->
-    <div class="gallery-container">
 
-        <div class="row justify-content-center">
-
-            <!-- Image 1 -->
-            <div class="col-md-2">
-                <div class="gallery-item">
-                    <img src="Image/StarvingTest.png" alt="" class="img-fluid rounded">
-                    <div class="image-details text-center">
-                        <h4>ฟาร์มขุนฅน Re: Starving Re: velation 6</h4>
-                        โดย : YUU KURAISHI<br>สำนักพิมพ์ : Vibulkij Publishing<br> หมวดหมู่ : การ์ตูนทั่วไป
-                        <br>ราคา : 120 บาท
-                        <div style="padding-top: 10px;"></div>
-                        <% if (!loggedIn) { %>
-                            <input type="button" class="btn btn-primary" value="เพิ่มเติม"
-                                onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
-                            <% } %>
-                                <% if (loggedIn) { %>
-                                    <div class="mb-3">
-                                        <a href="/" class="btn btn-primary">เพิ่มเติม</a>
-                                    </div>
-                                    <% } %>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Image 2 -->
-            <div class="col-md-2">
-                <div class="gallery-item">
-                    <img src="Image/MegamiTest.png" alt="" class="img-fluid rounded">
-                    <div class="image-details text-center">
-                        <h4>คาเฟ่นี้มีนางฟ้ามาเสิร์ฟ 9</h4>
-                        โดย : เซโอะ โคจิ<br>สำนักพิมพ์ : PHOENIX<br> หมวดหมู่ : การ์ตูนทั่วไป
-                        <br>ราคา : 165 บาท
-                        <div style="padding-top: 10px;"></div>
-                        <% if (!loggedIn) { %>
-                            <input type="button" class="btn btn-primary" value="เพิ่มเติม"
-                                onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
-                            <% } %>
-                                <% if (loggedIn) { %>
-                                    <div class="mb-3">
-                                        <a href="/" class="btn btn-primary">เพิ่มเติม</a>
-                                    </div>
-                                    <% } %>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Image 3 -->
-            <div class="col-md-2">
-                <div class="gallery-item">
-                    <img src="Image/MahirunMGTest.png" alt="" class="img-fluid rounded">
-                    <div class="image-details text-center mx-auto">
-                        <h4>ขาดคุณนางฟ้าข้างห้องไป ผมคงมีชีวิตต่อไปไม่ได้อีกแล้ว 2 (ฉบับการ์ตูน)</h4>
-                        โดย : ซาเอกิซัง, สึซึ ยูกิ<br>สำนักพิมพ์ : ANIMAG<br> หมวดหมู่ : การ์ตูนทั่วไป
-                        <br>ราคา : 130 บาท
-                        <div style="padding-top: 10px;"></div>
-                        <% if (!loggedIn) { %>
-                            <input type="button" class="btn btn-primary" value="เพิ่มเติม"
-                                onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
-                            <% } %>
-                                <% if (loggedIn) { %>
-                                    <div class="mb-3">
-                                        <a href="/" class="btn btn-primary">เพิ่มเติม</a>
-                                    </div>
-                                    <% } %>
-                    </div>
-                </div>
-            </div>
-
-
-            <!-- Image 4 -->
-            <div class="col-md-2">
-                <div class="gallery-item">
-                    <img src="Image/99Test.png" alt="" class="img-fluid rounded">
-                    <div class="image-details text-center">
-                        <h4>ชีวิตไม่ง่ายของนางร้าย LV99 เล่ม 3 (ฉบับการ์ตูน)</h4>
-                        โดย : ซาโตริ ทานาบาตะ<br>สำนักพิมพ์ : PHOENIX<br> หมวดหมู่ : การ์ตูนทั่วไป
-                        <br>ราคา : 165 บาท
-                        <div style="padding-top: 10px;"></div>
-                        <% if (!loggedIn) { %>
-                            <input type="button" class="btn btn-primary" value="เพิ่มเติม"
-                                onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
-                            <% } %>
-                                <% if (loggedIn) { %>
-                                    <div class="mb-3">
-                                        <a href="/" class="btn btn-primary">เพิ่มเติม</a>
-                                    </div>
-                                    <% } %>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Image 5 -->
-            <div class="col-md-2">
-                <div class="gallery-item">
-                    <img src="Image/DaiTest.png" alt="" class="img-fluid rounded">
-                    <div class="image-details text-center">
-                        <h4>รักรักรักรักรักเธอหมดหัวใจจากแฟนสาว 100 คน 10</h4>
-                        โดย : Yukiko Nozawa, Rikito Nakamura<br>สำนักพิมพ์ : LUCKPIM Publishing<br> หมวดหมู่ :
-                        การ์ตูนทั่วไป
-                        <br>ราคา : 118 บาท
-                        <div style="padding-top: 10px;"></div>
-                        <% if (!loggedIn) { %>
-                            <input type="button" class="btn btn-primary" value="เพิ่มเติม"
-                                onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
-                            <% } %>
-                                <% if (loggedIn) { %>
-                                    <div class="mb-3">
-                                        <a href="/" class="btn btn-primary">เพิ่มเติม</a>
-                                    </div>
-                                    <% } %>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Image 6 -->
-            <div class="col-md-2">
-                <div class="gallery-item">
-                    <img src="Image/MaoTest.png" alt="" class="img-fluid rounded">
-                    <div class="image-details text-center mx-auto">
-                        <h4>ตำรับปริศนา หมอยาแห่งวังหลัง 8 (ฉบับการ์ตูน)</h4>
-                        โดย : นัตซึ ฮิวงะ, เนโกะคุราเงะ, อิตซึกิ นานาโอะ<br>สำนักพิมพ์ : ANIMAG<br> หมวดหมู่ :
-                        การ์ตูนทั่วไป
-                        <br>ราคา : 110 บาท
-                        <div style="padding-top: 10px;"></div>
-                        <% if (!loggedIn) { %>
-                            <input type="button" class="btn btn-primary" value="เพิ่มเติม"
-                                onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
-                            <% } %>
-                                <% if (loggedIn) { %>
-                                    <div class="mb-3">
-                                        <a href="/" class="btn btn-primary">เพิ่มเติม</a>
-                                    </div>
-                                    <% } %>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-    <div class="row mx-auto pt-3">
-        <div class="col-md-4">
-            <div class="text-start" style="font-size: 45px; color: white;">
-                <h3 class="fw-bold ps-3">แนวเรื่องที่ถูกใจ</h3>
-            </div>
-        </div>
-    </div>
-
-    <div class="row justify-content-center mx-auto pb-4">
-        <div class="col-md-12">
-            <hr class="my-4" style="border-top: 4px solid rgb(255, 255, 255); opacity: 1;">
-        </div>
-    </div>
-
-    <!-- แนวเรื่องที่ถูกใจ #1 -->
-    <div class="gallery-container">
-
-        <div class="row justify-content-center">
-
-            <!-- Image 1 -->
-            <div class="col-md-2">
-                <div class="gallery-item">
-                    <img src="Image/StarvingTest.png" alt="" class="img-fluid rounded">
-                    <div class="image-details text-center">
-                        <h4>ฟาร์มขุนฅน Re: Starving Re: velation 6</h4>
-                        โดย : YUU KURAISHI<br>สำนักพิมพ์ : Vibulkij Publishing<br> หมวดหมู่ : การ์ตูนทั่วไป
-                        <br>ราคา : 120 บาท
-                        <div style="padding-top: 10px;"></div>
-                        <% if (!loggedIn) { %>
-                            <input type="button" class="btn btn-primary" value="เพิ่มเติม"
-                                onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
-                            <% } %>
-                                <% if (loggedIn) { %>
-                                    <div class="mb-3">
-                                        <a href="/" class="btn btn-primary">เพิ่มเติม</a>
-                                    </div>
-                                    <% } %>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Image 2 -->
-            <div class="col-md-2">
-                <div class="gallery-item">
-                    <img src="Image/MegamiTest.png" alt="" class="img-fluid rounded">
-                    <div class="image-details text-center">
-                        <h4>คาเฟ่นี้มีนางฟ้ามาเสิร์ฟ 9</h4>
-                        โดย : เซโอะ โคจิ<br>สำนักพิมพ์ : PHOENIX<br> หมวดหมู่ : การ์ตูนทั่วไป
-                        <br>ราคา : 165 บาท
-                        <div style="padding-top: 10px;"></div>
-                        <% if (!loggedIn) { %>
-                            <input type="button" class="btn btn-primary" value="เพิ่มเติม"
-                                onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
-                            <% } %>
-                                <% if (loggedIn) { %>
-                                    <div class="mb-3">
-                                        <a href="/" class="btn btn-primary">เพิ่มเติม</a>
-                                    </div>
-                                    <% } %>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Image 3 -->
-            <div class="col-md-2">
-                <div class="gallery-item">
-                    <img src="Image/MahirunMGTest.png" alt="" class="img-fluid rounded">
-                    <div class="image-details text-center mx-auto">
-                        <h4>ขาดคุณนางฟ้าข้างห้องไป ผมคงมีชีวิตต่อไปไม่ได้อีกแล้ว 2 (ฉบับการ์ตูน)</h4>
-                        โดย : ซาเอกิซัง, สึซึ ยูกิ<br>สำนักพิมพ์ : ANIMAG<br> หมวดหมู่ : การ์ตูนทั่วไป
-                        <br>ราคา : 130 บาท
-                        <div style="padding-top: 10px;"></div>
-                        <% if (!loggedIn) { %>
-                            <input type="button" class="btn btn-primary" value="เพิ่มเติม"
-                                onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
-                            <% } %>
-                                <% if (loggedIn) { %>
-                                    <div class="mb-3">
-                                        <a href="/" class="btn btn-primary">เพิ่มเติม</a>
-                                    </div>
-                                    <% } %>
-                    </div>
-                </div>
-            </div>
-
-
-            <!-- Image 4 -->
-            <div class="col-md-2">
-                <div class="gallery-item">
-                    <img src="Image/99Test.png" alt="" class="img-fluid rounded">
-                    <div class="image-details text-center">
-                        <h4>ชีวิตไม่ง่ายของนางร้าย LV99 เล่ม 3 (ฉบับการ์ตูน)</h4>
-                        โดย : ซาโตริ ทานาบาตะ<br>สำนักพิมพ์ : PHOENIX<br> หมวดหมู่ : การ์ตูนทั่วไป
-                        <br>ราคา : 165 บาท
-                        <div style="padding-top: 10px;"></div>
-                        <% if (!loggedIn) { %>
-                            <input type="button" class="btn btn-primary" value="เพิ่มเติม"
-                                onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
-                            <% } %>
-                                <% if (loggedIn) { %>
-                                    <div class="mb-3">
-                                        <a href="/" class="btn btn-primary">เพิ่มเติม</a>
-                                    </div>
-                                    <% } %>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Image 5 -->
-            <div class="col-md-2">
-                <div class="gallery-item">
-                    <img src="Image/DaiTest.png" alt="" class="img-fluid rounded">
-                    <div class="image-details text-center">
-                        <h4>รักรักรักรักรักเธอหมดหัวใจจากแฟนสาว 100 คน 10</h4>
-                        โดย : Yukiko Nozawa, Rikito Nakamura<br>สำนักพิมพ์ : LUCKPIM Publishing<br> หมวดหมู่ :
-                        การ์ตูนทั่วไป
-                        <br>ราคา : 118 บาท
-                        <div style="padding-top: 10px;"></div>
-                        <% if (!loggedIn) { %>
-                            <input type="button" class="btn btn-primary" value="เพิ่มเติม"
-                                onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
-                            <% } %>
-                                <% if (loggedIn) { %>
-                                    <div class="mb-3">
-                                        <a href="/" class="btn btn-primary">เพิ่มเติม</a>
-                                    </div>
-                                    <% } %>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Image 6 -->
-            <div class="col-md-2">
-                <div class="gallery-item">
-                    <img src="Image/MaoTest.png" alt="" class="img-fluid rounded">
-                    <div class="image-details text-center mx-auto">
-                        <h4>ตำรับปริศนา หมอยาแห่งวังหลัง 8 (ฉบับการ์ตูน)</h4>
-                        โดย : นัตซึ ฮิวงะ, เนโกะคุราเงะ, อิตซึกิ นานาโอะ<br>สำนักพิมพ์ : ANIMAG<br> หมวดหมู่ :
-                        การ์ตูนทั่วไป
-                        <br>ราคา : 110 บาท
-                        <div style="padding-top: 10px;"></div>
-                        <% if (!loggedIn) { %>
-                            <input type="button" class="btn btn-primary" value="เพิ่มเติม"
-                                onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
-                            <% } %>
-                                <% if (loggedIn) { %>
-                                    <div class="mb-3">
-                                        <a href="/" class="btn btn-primary">เพิ่มเติม</a>
-                                    </div>
-                                    <% } %>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-    <!-- แนวเรื่องที่ถูกใจ #2 -->
-    <div class="gallery-container pb-5">
-
-        <div class="row justify-content-center">
-
-            <!-- Image 1 -->
-            <div class="col-md-2">
-                <div class="gallery-item">
-                    <img src="Image/StarvingTest.png" alt="" class="img-fluid rounded">
-                    <div class="image-details text-center">
-                        <h4>ฟาร์มขุนฅน Re: Starving Re: velation 6</h4>
-                        โดย : YUU KURAISHI<br>สำนักพิมพ์ : Vibulkij Publishing<br> หมวดหมู่ : การ์ตูนทั่วไป
-                        <br>ราคา : 120 บาท
-                        <div style="padding-top: 10px;"></div>
-                        <% if (!loggedIn) { %>
-                            <input type="button" class="btn btn-primary" value="เพิ่มเติม"
-                                onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
-                            <% } %>
-                                <% if (loggedIn) { %>
-                                    <div class="mb-3">
-                                        <a href="/" class="btn btn-primary">เพิ่มเติม</a>
-                                    </div>
-                                    <% } %>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Image 2 -->
-            <div class="col-md-2">
-                <div class="gallery-item">
-                    <img src="Image/MegamiTest.png" alt="" class="img-fluid rounded">
-                    <div class="image-details text-center">
-                        <h4>คาเฟ่นี้มีนางฟ้ามาเสิร์ฟ 9</h4>
-                        โดย : เซโอะ โคจิ<br>สำนักพิมพ์ : PHOENIX<br> หมวดหมู่ : การ์ตูนทั่วไป
-                        <br>ราคา : 165 บาท
-                        <div style="padding-top: 10px;"></div>
-                        <% if (!loggedIn) { %>
-                            <input type="button" class="btn btn-primary" value="เพิ่มเติม"
-                                onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
-                            <% } %>
-                                <% if (loggedIn) { %>
-                                    <div class="mb-3">
-                                        <a href="/" class="btn btn-primary">เพิ่มเติม</a>
-                                    </div>
-                                    <% } %>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Image 3 -->
-            <div class="col-md-2">
-                <div class="gallery-item">
-                    <img src="Image/MahirunMGTest.png" alt="" class="img-fluid rounded">
-                    <div class="image-details text-center mx-auto">
-                        <h4>ขาดคุณนางฟ้าข้างห้องไป ผมคงมีชีวิตต่อไปไม่ได้อีกแล้ว 2 (ฉบับการ์ตูน)</h4>
-                        โดย : ซาเอกิซัง, สึซึ ยูกิ<br>สำนักพิมพ์ : ANIMAG<br> หมวดหมู่ : การ์ตูนทั่วไป
-                        <br>ราคา : 130 บาท
-                        <div style="padding-top: 10px;"></div>
-                        <% if (!loggedIn) { %>
-                            <input type="button" class="btn btn-primary" value="เพิ่มเติม"
-                                onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
-                            <% } %>
-                                <% if (loggedIn) { %>
-                                    <div class="mb-3">
-                                        <a href="/" class="btn btn-primary">เพิ่มเติม</a>
-                                    </div>
-                                    <% } %>
-                    </div>
-                </div>
-            </div>
-
-
-            <!-- Image 4 -->
-            <div class="col-md-2">
-                <div class="gallery-item">
-                    <img src="Image/99Test.png" alt="" class="img-fluid rounded">
-                    <div class="image-details text-center">
-                        <h4>ชีวิตไม่ง่ายของนางร้าย LV99 เล่ม 3 (ฉบับการ์ตูน)</h4>
-                        โดย : ซาโตริ ทานาบาตะ<br>สำนักพิมพ์ : PHOENIX<br> หมวดหมู่ : การ์ตูนทั่วไป
-                        <br>ราคา : 165 บาท
-                        <div style="padding-top: 10px;"></div>
-                        <% if (!loggedIn) { %>
-                            <input type="button" class="btn btn-primary" value="เพิ่มเติม"
-                                onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
-                            <% } %>
-                                <% if (loggedIn) { %>
-                                    <div class="mb-3">
-                                        <a href="/" class="btn btn-primary">เพิ่มเติม</a>
-                                    </div>
-                                    <% } %>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Image 5 -->
-            <div class="col-md-2">
-                <div class="gallery-item">
-                    <img src="Image/DaiTest.png" alt="" class="img-fluid rounded">
-                    <div class="image-details text-center">
-                        <h4>รักรักรักรักรักเธอหมดหัวใจจากแฟนสาว 100 คน 10</h4>
-                        โดย : Yukiko Nozawa, Rikito Nakamura<br>สำนักพิมพ์ : LUCKPIM Publishing<br> หมวดหมู่ :
-                        การ์ตูนทั่วไป
-                        <br>ราคา : 118 บาท
-                        <div style="padding-top: 10px;"></div>
-                        <% if (!loggedIn) { %>
-                            <input type="button" class="btn btn-primary" value="เพิ่มเติม"
-                                onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
-                            <% } %>
-                                <% if (loggedIn) { %>
-                                    <div class="mb-3">
-                                        <a href="/" class="btn btn-primary">เพิ่มเติม</a>
-                                    </div>
-                                    <% } %>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Image 6 -->
-            <div class="col-md-2">
-                <div class="gallery-item">
-                    <img src="Image/MaoTest.png" alt="" class="img-fluid rounded">
-                    <div class="image-details text-center mx-auto">
-                        <h4>ตำรับปริศนา หมอยาแห่งวังหลัง 8 (ฉบับการ์ตูน)</h4>
-                        โดย : นัตซึ ฮิวงะ, เนโกะคุราเงะ, อิตซึกิ นานาโอะ<br>สำนักพิมพ์ : ANIMAG<br> หมวดหมู่ :
-                        การ์ตูนทั่วไป
-                        <br>ราคา : 110 บาท
-                        <div style="padding-top: 10px;"></div>
-                        <% if (!loggedIn) { %>
-                            <input type="button" class="btn btn-primary" value="เพิ่มเติม"
-                                onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
-                            <% } %>
-                                <% if (loggedIn) { %>
-                                    <div class="mb-3">
-                                        <a href="/" class="btn btn-primary">เพิ่มเติม</a>
-                                    </div>
-                                    <% } %>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
 
 
     <footer class="footer">
