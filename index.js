@@ -86,6 +86,7 @@ const BKdetail52 = require('./controllers/komarin/komarin1')
 const BKdetail53 = require('./controllers/komarin/komarin2')
 const BKdetail54 = require('./controllers/komarin/komarin3')
 const CONTACTUS = require('./controllers/ContactUS')
+const Allbook = require('./controllers/Allbook')
 const FindBookController = require('./controllers/FindbookController')
 
 
@@ -185,6 +186,7 @@ app.get('/detail/Komarin2',authMiddleware,BKdetail53)
 app.get('/detail/Komarin3',authMiddleware,BKdetail54)
 app.get('/contact',authMiddleware,CONTACTUS)
 app.get('/find',FindBookController)
+app.get('/allbook',authMiddleware,Allbook)
 app.use('/auth',redirectIfAuth,require('./auth'))
 
 
