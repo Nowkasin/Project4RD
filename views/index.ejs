@@ -53,10 +53,15 @@
             <li class="nav-item">
               <a class="nav-link" aria-current="page" href="/map">แผนที่</a>
             </li>
-            <li  class="nav-item">
+            <li class="nav-item">
               <% if (!loggedIn) { %>
-                <a class="nav-link" aria-current="page" href="/allbook" onclick="swal('ไม่สามารถเข้าถึงได้', 'อยู่ระหว่างการพัฒนา', 'error')">Allbook</a>
+                <a class="nav-link" aria-current="page"
+                  onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')"
+                  href="#">หนังสือทั้งหมด</a>
                 <% } %>
+                  <% if (loggedIn) { %>
+                    <a class="nav-link" aria-current="page" href="/allbook">หนังสือทั้งหมด</a>
+                    <% } %>
             </li>
             <li class="nav-item">
               <a class="nav-link" aria-current="page" href="#"
@@ -2999,6 +3004,8 @@
     <p>
       <a href="/">หน้าหลัก</a> |
       <a href="/map">แผนที่</a> |
+      <a href="/allbook">หนังสือทั้งหมด</a> |
+      <a href="/find">ค้นหา</a> |
       <a href="/list">สิ่งที่อยากอ่าน</a> |
       <a href="/contact">ติดต่อเรา</a> |
       <a href="/login">เข้าสู่ระบบ</a> |

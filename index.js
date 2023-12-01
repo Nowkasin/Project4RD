@@ -185,7 +185,7 @@ app.get('/detail/Komarin1',authMiddleware,BKdetail52)
 app.get('/detail/Komarin2',authMiddleware,BKdetail53)
 app.get('/detail/Komarin3',authMiddleware,BKdetail54)
 app.get('/contact',authMiddleware,CONTACTUS)
-app.get('/find',FindBookController)
+app.get('/find',authMiddleware ,FindBookController)
 app.get('/allbook',authMiddleware,Allbook)
 app.use('/auth',redirectIfAuth,require('./auth'))
 

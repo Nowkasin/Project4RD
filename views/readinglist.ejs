@@ -49,62 +49,83 @@
 
     <div class="container-justify-content-end">
         <nav class="navbar navbar-expand-lg navbar-light" id="sticky-navbar" style="background:#8DC0EB">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#"></a>
-                <a href="/"><img src="Image/YarkArnLogo.png" style="left: 10000px" width="100px" height="auto" /></a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarDropdownMenuLink" aria-controls="navbarDropdownMenuLink"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse justify-content-end" id="navbarDropdownMenuLink">
-                    <ul class="navbar-nav custom-small-text">
-                        <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="/">หน้าหลัก</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="/map">แผนที่</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="/find">ค้นหา</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="/list">สิ่งที่อยากอ่าน</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                Me (ชื่อ)
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <li>
-                                    <% if (loggedIn) { %>
-                                        <a class="dropdown-item" href="/profile">โปรไฟล์</a>
-                                        <% } %>
-
-                                </li>
-                                <li>
-                                    <% if (!loggedIn) { %>
-                                        <a class="dropdown-item " href="/login">เข้าสู่ระบบ</a>
-                                        <% } %>
-                                </li>
-                                <li>
-                                    <% if (!loggedIn) { %>
-                                        <a class="dropdown-item " href="/register">สมัครสมาชิก</a>
-                                        <% } %>
-                                </li>
-                                <li>
-                                    <% if (loggedIn) { %>
-                                        <a class="dropdown-item" href="/contact">ข้อเสนอแนะ</a>
-                                        <% } %>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
+          <div class="container-fluid">
+            <a class="navbar-brand" href="#"></a>
+            <a href="/"><img src="/Image/YarkArnLogo.png" style="left: 10000px" width="100px" height="auto" /></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarDropdownMenuLink"
+              aria-controls="navbarDropdownMenuLink" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarDropdownMenuLink">
+              <ul class="navbar-nav custom-small-text">
+                <li class="nav-item">
+                  <a class="nav-link" aria-current="page" href="/">หน้าหลัก</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" aria-current="page" href="/map">แผนที่</a>
+                </li>
+                <li class="nav-item">
+                  <% if (!loggedIn) { %>
+                    <a class="nav-link" aria-current="page"
+                      onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')"
+                      href="#">หนังสือทั้งหมด</a>
+                    <% } %>
+                      <% if (loggedIn) { %>
+                        <a class="nav-link" aria-current="page" href="/allbook">หนังสือทั้งหมด</a>
+                        <% } %>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" aria-current="page" href="#"
+                    onclick="swal('ไม่สามารถเข้าถึงได้', 'อยู่ระหว่างการพัฒนา', 'error')">ค้นหา</a>
+                </li>
+                <li class="nav-item">
+                  <!-- ดัก user เมื่อ user ยังไม่ได้ login เข้าสู่ระบบ เพื่อป้องกันไม่ให้ user เข้าถึงเนื้อหาเมื่อยังไม่ได้ login-->
+                  <% if (!loggedIn) { %>
+                    <a class="nav-link" aria-current="page"
+                      onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')"
+                      href="#">สิ่งที่อยากอ่าน</a>
+                    <% } %>
+                      <!-- ถ้า user login เข้าสู่ระบบ user จะสามารถเข้าสู่เนื้อหาได้เมื่อทำการ login แล้ว-->
+                      <% if (loggedIn) { %>
+                        <a class="nav-link" aria-current="page" href="/list">สิ่งที่อยากอ่าน</a>
+                        <% } %>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    Me (ชื่อ)
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <li>
+                      <!-- ถ้า user login เข้าสู่ระบบ user จะเห็นปุ่ม My Profile ขึ้นมา -->
+                      <% if (loggedIn) { %>
+                        <a class="dropdown-item" href="/profile">โปรไฟล์</a>
+                        <% } %>
+                    </li>
+                    <li>
+                      <!-- ถ้า user ยังไม่ login เข้าสู่ระบบ จะขึ้นปุ่มนี้ขึ้นมา -->
+                      <% if (!loggedIn) { %>
+                        <a class="dropdown-item " href="/login">เข้าสู่ระบบ</a>
+                        <% } %>
+                    </li>
+                    <li>
+                      <!-- ถ้า user ยังไม่ login เข้าสู่ระบบ จะขึ้นปุ่มนี้ขึ้นมา -->
+                      <% if (!loggedIn) { %>
+                        <a class="dropdown-item " href="/register">สมัครสมาชิก</a>
+                        <% } %>
+                    </li>
+                    <li>
+                      <% if (loggedIn) { %>
+                        <a class="dropdown-item" href="/contact">ข้อเสนอแนะ</a>
+                        <% } %>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
             </div>
+          </div>
         </nav>
-    </div>
+      </div>
 
     <div class="row justify-content-center custom-padding-1 pb-2">
         <div class="col-md-8">
