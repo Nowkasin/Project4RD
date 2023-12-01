@@ -4,9 +4,7 @@ const ejs = require('ejs')//เรียกใช้ file .ejs
 const mongoose = require('mongoose')//เรียกใช้ mongoose ใช้สำหรับทำงานกับฐานข้อมูง
 const expressSession = require('express-session')//เรียกใช้ express-session เพื่อเก็บ session ของ user
 const flash = require('connect-flash')//เรียกใช้ flash เพื่อเก็บข้อความ error เพื่อแสดงผลเมื่อ user ไม่ได้กรอกข้อมูล
-const passport = require('passport')
 
-require('./controllers/passport')(passport)
 
 
 //connection of mongoDB
@@ -94,7 +92,6 @@ const FindBookController = require('./controllers/FindbookController')
 //middelware
 const redirectIfAuth = require('./middleware/redirectIfAuth')
 const authMiddleware = require('./middleware/authMiddleware')
-const authgoogle = require('./auth')
 
 
 
@@ -113,9 +110,6 @@ app.use("*", (req, res, next) => {
     loggedIn = req.session.userId
     next()
 })
-
-app.use(passport.initialize());
-app.use(passport.session());
 
 
 app.set('view engine', 'ejs')//set ค่าให้ใช้งานนามสกุล 'ejs','php ได้
@@ -187,8 +181,6 @@ app.get('/detail/Komarin3',authMiddleware,BKdetail54)
 app.get('/contact',authMiddleware,CONTACTUS)
 app.get('/find',authMiddleware ,FindBookController)
 app.get('/allbook',authMiddleware,Allbook)
-app.use('/auth',redirectIfAuth,require('./auth'))
-
 
 
 app.listen(4100, () => {
