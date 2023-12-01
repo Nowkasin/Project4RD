@@ -4,9 +4,8 @@ const ejs = require('ejs')//เรียกใช้ file .ejs
 const mongoose = require('mongoose')//เรียกใช้ mongoose ใช้สำหรับทำงานกับฐานข้อมูง
 const expressSession = require('express-session')//เรียกใช้ express-session เพื่อเก็บ session ของ user
 const flash = require('connect-flash')//เรียกใช้ flash เพื่อเก็บข้อความ error เพื่อแสดงผลเมื่อ user ไม่ได้กรอกข้อมูล
-const passport = require('passport')
+const dotenv = require('dotenv').config
 
-require('./controllers/passport')(passport)
 
 
 //connection of mongoDB
@@ -14,6 +13,8 @@ require('./controllers/passport')(passport)
 mongoose.connect('mongodb+srv://admin:1234@cluster0.jkwkvib.mongodb.net/?retryWrites=true&w=majority',{
     useNewUrlParser: true //เป็นการ connect mongo แบบ url
 })
+
+
 
 // global เป็นตัวแปรที่ใช้เก็บตัวแปรหรือค่าที่สามารถเข้าถึงได้จากทุกที่ในแอปพลิเคชัน
 // global.loggedIn คือค่าที่บอกว่าผู้ใช้ได้ล็อกอินเข้าสู่ระบบแล้ว และ ใช้ในการตรวจสอบสิทธิ์การเข้าถึงหน้าที่ต้องการล็อกอินเพื่อเข้าถึงได้
@@ -94,7 +95,7 @@ const FindBookController = require('./controllers/FindbookController')
 //middelware
 const redirectIfAuth = require('./middleware/redirectIfAuth')
 const authMiddleware = require('./middleware/authMiddleware')
-const authgoogle = require('./auth')
+
 
 
 
@@ -114,8 +115,7 @@ app.use("*", (req, res, next) => {
     next()
 })
 
-app.use(passport.initialize());
-app.use(passport.session());
+
 
 
 app.set('view engine', 'ejs')//set ค่าให้ใช้งานนามสกุล 'ejs','php ได้
@@ -187,10 +187,11 @@ app.get('/detail/Komarin3',authMiddleware,BKdetail54)
 app.get('/contact',authMiddleware,CONTACTUS)
 app.get('/find',authMiddleware ,FindBookController)
 app.get('/allbook',authMiddleware,Allbook)
-app.use('/auth',redirectIfAuth,require('./auth'))
 
 
 
-app.listen(4100, () => {
+
+const PORT = process.env.PORT || 4100;
+app.listen(PORT, () => {
     console.log("App listening on port 4100")
 })
