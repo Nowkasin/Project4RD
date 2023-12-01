@@ -9,6 +9,9 @@
   <link rel="icon" href="/Image/favicon.ico" type="image/x-icon">
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
   <script
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA7BA_sPNzvjHmBsNB3i6CpLi4L0VAQ7I4&callback=initialize&v=weekly"
     defer></script>
@@ -39,11 +42,11 @@
 
 <body>
 
-  <div class="container-justify-content-end">
+   <div class="container-justify-content-end">
     <nav class="navbar navbar-expand-lg navbar-light" id="sticky-navbar" style="background:#8DC0EB">
       <div class="container-fluid">
         <a class="navbar-brand" href="#"></a>
-        <a href="/"><img src="Image/YarkArnLogo.png" style="left: 10000px" width="100px" height="auto" /></a>
+        <a href="/"><img src="/Image/YarkArnLogo.png" style="left: 10000px" width="100px" height="auto" /></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarDropdownMenuLink"
           aria-controls="navbarDropdownMenuLink" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -57,10 +60,20 @@
               <a class="nav-link" aria-current="page" href="/map">แผนที่</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="/find">ค้นหา</a>
+              <a class="nav-link" aria-current="page" href="#"
+                onclick="swal('ไม่สามารถเข้าถึงได้', 'อยู่ระหว่างการพัฒนา', 'error')">ค้นหา</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="/list">สิ่งที่อยากอ่าน</a>
+              <!-- ดัก user เมื่อ user ยังไม่ได้ login เข้าสู่ระบบ เพื่อป้องกันไม่ให้ user เข้าถึงเนื้อหาเมื่อยังไม่ได้ login-->
+              <% if (!loggedIn) { %>
+                <a class="nav-link" aria-current="page"
+                  onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')"
+                  href="#">สิ่งที่อยากอ่าน</a>
+                <% } %>
+                  <!-- ถ้า user login เข้าสู่ระบบ user จะสามารถเข้าสู่เนื้อหาได้เมื่อทำการ login แล้ว-->
+                  <% if (loggedIn) { %>
+                    <a class="nav-link" aria-current="page" href="/list">สิ่งที่อยากอ่าน</a>
+                    <% } %>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
@@ -69,17 +82,19 @@
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                 <li>
+                  <!-- ถ้า user login เข้าสู่ระบบ user จะเห็นปุ่ม My Profile ขึ้นมา -->
                   <% if (loggedIn) { %>
                     <a class="dropdown-item" href="/profile">โปรไฟล์</a>
                     <% } %>
-
                 </li>
                 <li>
+                  <!-- ถ้า user ยังไม่ login เข้าสู่ระบบ จะขึ้นปุ่มนี้ขึ้นมา -->
                   <% if (!loggedIn) { %>
                     <a class="dropdown-item " href="/login">เข้าสู่ระบบ</a>
                     <% } %>
                 </li>
                 <li>
+                  <!-- ถ้า user ยังไม่ login เข้าสู่ระบบ จะขึ้นปุ่มนี้ขึ้นมา -->
                   <% if (!loggedIn) { %>
                     <a class="dropdown-item " href="/register">สมัครสมาชิก</a>
                     <% } %>
