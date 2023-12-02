@@ -1,0 +1,1675 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+
+    <link rel="icon" href="/Image/favicon.ico" type="image/x-icon">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+
+</head>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+
+<link rel="stylesheet" href="/css/style.css" />
+
+
+<!-- Alert -->
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<button class="scroll-to-top" onclick="scrollToTop()">↑</button>
+
+<script>
+    //Func สำหรับกดแล้วไปบนสุด
+    function scrollToTop() {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+        });
+    }
+</script>
+
+<body>
+    <div class="container-justify-content-end">
+        <nav class="navbar navbar-expand-lg navbar-light" id="sticky-navbar" style="background:#8DC0EB">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#"></a>
+                <a href="/"><img src="/Image/YarkArnLogo.png" style="left: 10000px" width="100px" height="auto" /></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarDropdownMenuLink" aria-controls="navbarDropdownMenuLink"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarDropdownMenuLink">
+                    <ul class="navbar-nav custom-small-text">
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="/">หน้าหลัก</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="/map">แผนที่</a>
+                        </li>
+                        <li class="nav-item">
+                            <% if (!loggedIn) { %>
+                                <a class="nav-link" aria-current="page"
+                                    onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')"
+                                    href="#">หนังสือทั้งหมด</a>
+                                <% } %>
+                                    <% if (loggedIn) { %>
+                                        <a class="nav-link" aria-current="page" href="/allbook">หนังสือทั้งหมด</a>
+                                        <% } %>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="#"
+                                onclick="swal('ไม่สามารถเข้าถึงได้', 'อยู่ระหว่างการพัฒนา', 'error')">ค้นหา</a>
+                        </li>
+                        <li class="nav-item">
+                            <!-- ดัก user เมื่อ user ยังไม่ได้ login เข้าสู่ระบบ เพื่อป้องกันไม่ให้ user เข้าถึงเนื้อหาเมื่อยังไม่ได้ login-->
+                            <% if (!loggedIn) { %>
+                                <a class="nav-link" aria-current="page"
+                                    onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')"
+                                    href="#">สิ่งที่อยากอ่าน</a>
+                                <% } %>
+                                    <!-- ถ้า user login เข้าสู่ระบบ user จะสามารถเข้าสู่เนื้อหาได้เมื่อทำการ login แล้ว-->
+                                    <% if (loggedIn) { %>
+                                        <a class="nav-link" aria-current="page" href="/list">สิ่งที่อยากอ่าน</a>
+                                        <% } %>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Me (ชื่อ)
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <li>
+                                    <!-- ถ้า user login เข้าสู่ระบบ user จะเห็นปุ่ม My Profile ขึ้นมา -->
+                                    <% if (loggedIn) { %>
+                                        <a class="dropdown-item" href="/profile">โปรไฟล์</a>
+                                        <% } %>
+                                </li>
+                                <li>
+                                    <!-- ถ้า user ยังไม่ login เข้าสู่ระบบ จะขึ้นปุ่มนี้ขึ้นมา -->
+                                    <% if (!loggedIn) { %>
+                                        <a class="dropdown-item " href="/login">เข้าสู่ระบบ</a>
+                                        <% } %>
+                                </li>
+                                <li>
+                                    <!-- ถ้า user ยังไม่ login เข้าสู่ระบบ จะขึ้นปุ่มนี้ขึ้นมา -->
+                                    <% if (!loggedIn) { %>
+                                        <a class="dropdown-item " href="/register">สมัครสมาชิก</a>
+                                        <% } %>
+                                </li>
+                                <li>
+                                    <% if (loggedIn) { %>
+                                        <a class="dropdown-item" href="/contact">ข้อเสนอแนะ</a>
+                                        <% } %>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <div class="container-justify-content-end">
+        <nav class="navbar navbar-expand-lg navbar-light" id="sticky-navbar" style="background:#8DC0EB">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#"></a>
+                <a href="/"><img src="/Image/YarkArnLogo.png" style="left: 10000px" width="100px" height="auto" /></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarDropdownMenuLink" aria-controls="navbarDropdownMenuLink"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarDropdownMenuLink">
+                    <ul class="navbar-nav custom-small-text">
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="/">หน้าหลัก</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="/map">แผนที่</a>
+                        </li>
+                        <li class="nav-item">
+                            <% if (!loggedIn) { %>
+                                <a class="nav-link" aria-current="page"
+                                    onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')"
+                                    href="#">หนังสือทั้งหมด</a>
+                                <% } %>
+                                    <% if (loggedIn) { %>
+                                        <a class="nav-link" aria-current="page" href="/allbook">หนังสือทั้งหมด</a>
+                                        <% } %>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="#"
+                                onclick="swal('ไม่สามารถเข้าถึงได้', 'อยู่ระหว่างการพัฒนา', 'error')">ค้นหา</a>
+                        </li>
+                        <li class="nav-item">
+                            <!-- ดัก user เมื่อ user ยังไม่ได้ login เข้าสู่ระบบ เพื่อป้องกันไม่ให้ user เข้าถึงเนื้อหาเมื่อยังไม่ได้ login-->
+                            <% if (!loggedIn) { %>
+                                <a class="nav-link" aria-current="page"
+                                    onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')"
+                                    href="#">สิ่งที่อยากอ่าน</a>
+                                <% } %>
+                                    <!-- ถ้า user login เข้าสู่ระบบ user จะสามารถเข้าสู่เนื้อหาได้เมื่อทำการ login แล้ว-->
+                                    <% if (loggedIn) { %>
+                                        <a class="nav-link" aria-current="page" href="/list">สิ่งที่อยากอ่าน</a>
+                                        <% } %>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Me (ชื่อ)
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <li>
+                                    <!-- ถ้า user login เข้าสู่ระบบ user จะเห็นปุ่ม My Profile ขึ้นมา -->
+                                    <% if (loggedIn) { %>
+                                        <a class="dropdown-item" href="/profile">โปรไฟล์</a>
+                                        <% } %>
+                                </li>
+                                <li>
+                                    <!-- ถ้า user ยังไม่ login เข้าสู่ระบบ จะขึ้นปุ่มนี้ขึ้นมา -->
+                                    <% if (!loggedIn) { %>
+                                        <a class="dropdown-item " href="/login">เข้าสู่ระบบ</a>
+                                        <% } %>
+                                </li>
+                                <li>
+                                    <!-- ถ้า user ยังไม่ login เข้าสู่ระบบ จะขึ้นปุ่มนี้ขึ้นมา -->
+                                    <% if (!loggedIn) { %>
+                                        <a class="dropdown-item " href="/register">สมัครสมาชิก</a>
+                                        <% } %>
+                                </li>
+                                <li>
+                                    <% if (loggedIn) { %>
+                                        <a class="dropdown-item" href="/contact">ข้อเสนอแนะ</a>
+                                        <% } %>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <div class="row justify-content-center custom-padding-1 pb-2">
+        <div class="col-md-8">
+            <div class="text-center">
+                <h1>หนังสือทั้งหมด</h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="gallery-container">
+
+        <div class="row justify-content-center pb-2">
+
+            <!-- Image 1 -->
+            <div class="col-md-2">
+                <div class="gallery-item">
+                    <img src="Image/FrierenTest.png" alt="">
+                    <div class="image-details text-center">
+                        <h4>คำอธิษฐานในวันที่จากลา FRIEREN 1</h4>
+                        โดย : Kanehito YAMADA, Tsukasa Abe<br>สำนักพิมพ์ : Siam Inter Comics<br> หมวดหมู่ :
+                        การ์ตูนทั่วไป
+                        <br>ราคา : 76.50 บาท
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image 2 -->
+            <div class="col-md-2">
+                <div class="gallery-item">
+                    <img src="Image/NoelTest.png" alt="">
+                    <div class="image-details text-center">
+                        <h4>นักเจรจาสุดโฉดจะสร้างตำนานแคลนสุดแกร่ง 3</h4>
+                        โดย : จาคิ<br>สำนักพิมพ์ : ANIMAG<br> หมวดหมู่ : ไลท์โนเวล
+                        <br>ราคา : 390 บาท
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image 3 -->
+            <div class="col-md-2">
+                <div class="gallery-item">
+                    <img src="Image/MahirunMGTest.png" alt="" class="img-fluid rounded">
+                    <div class="image-details text-center mx-auto">
+                        <h4>ขาดคุณนางฟ้าข้างห้องไป ผมคงมีชีวิตต่อไปไม่ได้อีกแล้ว 2 (ฉบับการ์ตูน)</h4>
+                        โดย : ซาเอกิซัง, สึซึ ยูกิ<br>สำนักพิมพ์ : ANIMAG<br> หมวดหมู่ : การ์ตูนทั่วไป
+                        <br>ราคา : 130 บาท
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Image 4 -->
+            <div class="col-md-2">
+                <div class="gallery-item">
+                    <img src="Image/99Test.png" alt="" class="img-fluid rounded">
+                    <div class="image-details text-center">
+                        <h4>ชีวิตไม่ง่ายของนางร้าย LV99 เล่ม 3 (ฉบับการ์ตูน)</h4>
+                        โดย : ซาโตริ ทานาบาตะ<br>สำนักพิมพ์ : PHOENIX<br> หมวดหมู่ : การ์ตูนทั่วไป
+                        <br>ราคา : 165 บาท
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image 5 -->
+            <div class="col-md-2">
+                <div class="gallery-item">
+                    <img src="Image/TimeLNTest.png" alt="">
+                    <div class="image-details text-center">
+                        <h4>วันวานแห่งวสันต์ที่เราเฝ้ารอ</h4>
+                        โดย : Mei HACHIMOKU, KUKKA<br>สำนักพิมพ์ : เซนชู<br> หมวดหมู่ : ไลท์โนเวล
+                        <br>ราคา : 240 บาท
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image 6 -->
+            <div class="col-md-2">
+                <div class="gallery-item">
+                    <img src="Image/YuuyaTest.png" alt="" class="img-fluid rounded">
+                    <div class="image-details text-center mx-auto">
+                        <h4>สกิลโกงไร้เทียมทาน สร้างตำนานในสองโลก 10 </h4>
+                        โดย : มิคุ<br>สำนักพิมพ์ : PHOENIX<br> หมวดหมู่ :
+                        ไลท์โนเวล
+                        <br>ราคา : 285 บาท
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="gallery-container">
+
+        <div class="row justify-content-center pb-2">
+
+            <!-- Image 7 -->
+            <div class="col-md-2">
+                <div class="gallery-item">
+                    <img src="Image/MushokuTest.png" alt="">
+                    <div class="image-details text-center">
+                        <h4>เกิดชาตินี้พี่ต้องเทพ 18</h4>
+                        โดย : Rifujin na Magonote<br>สำนักพิมพ์ : DEXPRESS<br> หมวดหมู่ :
+                        ไลท์โนเวล
+                        <br>ราคา : 279 บาท
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image 8 -->
+            <div class="col-md-2">
+                <div class="gallery-item">
+                    <img src="Image/MegamiTest.png" alt="">
+                    <div class="image-details text-center">
+                        <h4>คาเฟ่นี้มีนางฟ้ามาเสิร์ฟ 9</h4>
+                        โดย : เซโอะ โคจิ<br>สำนักพิมพ์ : PHOENIX<br> หมวดหมู่ : การ์ตูนทั่วไป
+                        <br>ราคา : 165 บาท
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image 9 -->
+            <div class="col-md-2">
+                <div class="gallery-item">
+                    <img src="Image/HellTest.png" alt="" class="img-fluid rounded">
+                    <div class="image-details text-center mx-auto">
+                        <h4>HELL MODE อยากเล่นโหด ขอโหมดนรก 6</h4>
+                        โดย : HAMUO<br>สำนักพิมพ์ : PHOENIX<br> หมวดหมู่ : ไลท์โนเวล
+                        <br>ราคา : 375 บาท
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Image 10 -->
+            <div class="col-md-2">
+                <div class="gallery-item">
+                    <img src="Image/DaiTest.png" alt="" class="img-fluid rounded">
+                    <div class="image-details text-center">
+                        <h4>รักรักรักรักรักเธอหมดหัวใจจากแฟนสาว 100 คน 10</h4>
+                        โดย : Yukiko Nozawa, Rikito Nakamura<br>สำนักพิมพ์ : LUCKPIM Publishing<br> หมวดหมู่ :
+                        การ์ตูนทั่วไป
+                        <br>ราคา : 118 บาท
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image 11 -->
+            <div class="col-md-2">
+                <div class="gallery-item">
+                    <img src="Image/MahirunTest.png" alt="">
+                    <div class="image-details text-center">
+                        <h4>ขาดคุณนางฟ้าข้างห้องไป ผมคงมีชีวิตต่อไปไม่ได้อีกแล้ว 6</h4>
+                        โดย : ซาเอกิซัง<br>สำนักพิมพ์ : ANIMAG<br> หมวดหมู่ : ไลท์โนเวล
+                        <br>ราคา : 280 บาท
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image 12 -->
+            <div class="col-md-2">
+                <div class="gallery-item">
+                    <img src="Image/StarvingTest.png" alt="" class="img-fluid rounded">
+                    <div class="image-details text-center mx-auto">
+                        <h4>ฟาร์มขุนฅน Re: Starving Re: velation 6</h4>
+                        โดย : YUU KURAISHI<br>สำนักพิมพ์ : Vibulkij Publishing<br> หมวดหมู่ : การ์ตูนทั่วไป
+                        <br>ราคา : 120 บาท
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="gallery-container">
+
+        <div class="row justify-content-center pb-2">
+
+            <!-- Image 13 -->
+            <div class="col-md-2">
+                <div class="gallery-item">
+                    <img src="Image/Chitose/Chitose 1.png" alt="">
+                    <div class="image-details text-center">
+                        <h4>ชีวิตรสโซดาของจิโตเสะคุง 1</h4>
+                        โดย : ฮิโรมุ<br>สำนักพิมพ์ : PHOENIX<br> หมวดหมู่ :
+                        ไลท์โนเวล
+                        <br>ราคา : 315 บาท
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image 14 -->
+            <div class="col-md-2">
+                <div class="gallery-item">
+                    <img src="Image/Chitose/Chitose 2.png" alt="">
+                    <div class="image-details text-center">
+                        <h4>ชีวิตรสโซดาของจิโตเสะคุง 2</h4>
+                        โดย : ฮิโรมุ<br>สำนักพิมพ์ : PHOENIX<br> หมวดหมู่ :
+                        ไลท์โนเวล
+                        <br>ราคา : 315 บาท
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image 15 -->
+            <div class="col-md-2">
+                <div class="gallery-item">
+                    <img src="Image/Chitose/Chitose 3.png" alt="">
+                    <div class="image-details text-center">
+                        <h4>ชีวิตรสโซดาของจิโตเสะคุง 3</h4>
+                        โดย : ฮิโรมุ<br>สำนักพิมพ์ : PHOENIX<br> หมวดหมู่ :
+                        ไลท์โนเวล
+                        <br>ราคา : 355 บาท
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Image 16 -->
+            <div class="col-md-2">
+                <div class="gallery-item">
+                    <img src="Image/Kage/Kage 1.png" alt="" class="img-fluid rounded">
+                    <div class="image-details text-center">
+                        <h4>ชีวิตไม่ต้องเด่น ขอแค่เป็นเทพในเงา 1</h4>
+                        โดย : ไดสุเกะ ไอซาวะ<br>สำนักพิมพ์ : PHOENIX<br> หมวดหมู่ : ไลท์โนเวล
+                        <br>ราคา : 325 บาท
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image 17 -->
+            <div class="col-md-2">
+                <div class="gallery-item">
+                    <img src="Image/Kage/Kage 2.png" alt="" class="img-fluid rounded">
+                    <div class="image-details text-center">
+                        <h4>ชีวิตไม่ต้องเด่น ขอแค่เป็นเทพในเงา 2</h4>
+                        โดย : ไดสุเกะ ไอซาวะ<br>สำนักพิมพ์ : PHOENIX<br> หมวดหมู่ : ไลท์โนเวล
+                        <br>ราคา : 325 บาท
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image 18 -->
+            <div class="col-md-2">
+                <div class="gallery-item">
+                    <img src="Image/Kage/Kage 3.png" alt="" class="img-fluid rounded">
+                    <div class="image-details text-center">
+                        <h4>ชีวิตไม่ต้องเด่น ขอแค่เป็นเทพในเงา 3</h4>
+                        โดย : ไดสุเกะ ไอซาวะ<br>สำนักพิมพ์ : PHOENIX<br> หมวดหมู่ : ไลท์โนเวล
+                        <br>ราคา : 325 บาท
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="gallery-container">
+
+        <div class="row justify-content-center pb-2">
+
+            <!-- Image 19 -->
+            <div class="col-md-2">
+                <div class="gallery-item">
+                    <img src="Image/Kage/Kage 4.png" alt="" class="img-fluid rounded">
+                    <div class="image-details text-center">
+                        <h4>ชีวิตไม่ต้องเด่น ขอแค่เป็นเทพในเงา 4</h4>
+                        โดย : ไดสุเกะ ไอซาวะ<br>สำนักพิมพ์ : PHOENIX<br> หมวดหมู่ : ไลท์โนเวล
+                        <br>ราคา : 325 บาท
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image 20 -->
+            <div class="col-md-2">
+                <div class="gallery-item">
+                    <img src="Image/Kage/Kage 5.png" alt="" class="img-fluid rounded">
+                    <div class="image-details text-center">
+                        <h4>ชีวิตไม่ต้องเด่น ขอแค่เป็นเทพในเงา 5</h4>
+                        โดย : ไดสุเกะ ไอซาวะ<br>สำนักพิมพ์ : PHOENIX<br> หมวดหมู่ : ไลท์โนเวล
+                        <br>ราคา : 325 บาท
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image 21 -->
+            <div class="col-md-2">
+                <div class="gallery-item">
+                    <img src="Image/Komarin/Komarin 1.png" alt="" class="img-fluid rounded">
+                    <div class="image-details text-center">
+                        <h4>สารพันปัญหาวุ่นวาย ของยัยแวมไพร์ขี้จุ๊ 1</h4>
+                        โดย : โคเทย์ โคบายาชิ<br>สำนักพิมพ์ : ANIMAG<br> หมวดหมู่ :
+                        ไลท์โนเวล
+                        <br>ราคา : 320 บาท
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Image 22 -->
+            <div class="col-md-2">
+                <div class="gallery-item">
+                    <img src="Image/Komarin/Komarin 2.png" alt="" class="img-fluid rounded">
+                    <div class="image-details text-center">
+                        <h4>สารพันปัญหาวุ่นวาย ของยัยแวมไพร์ขี้จุ๊ 2</h4>
+                        โดย : โคเทย์ โคบายาชิ<br>สำนักพิมพ์ : ANIMAG<br> หมวดหมู่ :
+                        ไลท์โนเวล
+                        <br>ราคา : 320 บาท
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image 23 -->
+            <div class="col-md-2">
+                <div class="gallery-item">
+                    <img src="Image/Komarin/Komarin 3.png" alt="" class="img-fluid rounded">
+                    <div class="image-details text-center">
+                        <h4>สารพันปัญหาวุ่นวาย ของยัยแวมไพร์ขี้จุ๊ 3</h4>
+                        โดย : โคเทย์ โคบายาชิ<br>สำนักพิมพ์ : ANIMAG<br> หมวดหมู่ :
+                        ไลท์โนเวล
+                        <br>ราคา : 320 บาท
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image 24 -->
+            <div class="col-md-2">
+                <div class="gallery-item">
+                    <img src="Image/Komarin/Komarin 4.png" alt="" class="img-fluid rounded">
+                    <div class="image-details text-center">
+                        <h4>สารพันปัญหาวุ่นวาย ของยัยแวมไพร์ขี้จุ๊ 4</h4>
+                        โดย : โคเทย์ โคบายาชิ<br>สำนักพิมพ์ : ANIMAG<br> หมวดหมู่ :
+                        ไลท์โนเวล
+                        <br>ราคา : 320 บาท
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="gallery-container">
+
+        <div class="row justify-content-center pb-2">
+
+            <!-- Image 25 -->
+            <div class="col-md-2">
+                <div class="gallery-item">
+                    <img src="Image/Komarin/Komarin 5.png" alt="" class="img-fluid rounded">
+                    <div class="image-details text-center">
+                        <h4>สารพันปัญหาวุ่นวาย ของยัยแวมไพร์ขี้จุ๊ 5</h4>
+                        โดย : โคเทย์ โคบายาชิ<br>สำนักพิมพ์ : ANIMAG<br> หมวดหมู่ :
+                        ไลท์โนเวล
+                        <br>ราคา : 320 บาท
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image 26 -->
+            <div class="col-md-2">
+                <div class="gallery-item">
+                    <img src="Image/Kusuriya/Kusuriya 1.png" alt="" class="img-fluid rounded">
+                    <div class="image-details text-center">
+                        <h4>ตำรับปริศนา หมอยาแห่งวังหลัง 1 (ฉบับการ์ตูน)</h4>
+                        โดย : นัตซึ ฮิวงะ, เนโกะคุราเงะ, อิตซึกิ นานาโอะ<br>สำนักพิมพ์ : ANIMAG<br> หมวดหมู่ :
+                        การ์ตูนทั่วไป
+                        <br>ราคา : 110 บาท
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image 27 -->
+            <div class="col-md-2">
+                <div class="gallery-item">
+                    <img src="Image/Kusuriya/Kusuriya 2.png" alt="" class="img-fluid rounded">
+                    <div class="image-details text-center">
+                        <h4>ตำรับปริศนา หมอยาแห่งวังหลัง 2 (ฉบับการ์ตูน)</h4>
+                        โดย : นัตซึ ฮิวงะ, เนโกะคุราเงะ, อิตซึกิ นานาโอะ<br>สำนักพิมพ์ : ANIMAG<br> หมวดหมู่ :
+                        การ์ตูนทั่วไป
+                        <br>ราคา : 110 บาท
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Image 28 -->
+            <div class="col-md-2">
+                <div class="gallery-item">
+                    <img src="Image/Kusuriya/Kusuriya 3.png" alt="" class="img-fluid rounded">
+                    <div class="image-details text-center">
+                        <h4>ตำรับปริศนา หมอยาแห่งวังหลัง 3 (ฉบับการ์ตูน)</h4>
+                        โดย : นัตซึ ฮิวงะ, เนโกะคุราเงะ, อิตซึกิ นานาโอะ<br>สำนักพิมพ์ : ANIMAG<br> หมวดหมู่ :
+                        การ์ตูนทั่วไป
+                        <br>ราคา : 110 บาท
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image 29 -->
+            <div class="col-md-2">
+                <div class="gallery-item">
+                    <img src="Image/Kusuriya/Kusuriya 4.png" alt="" class="img-fluid rounded">
+                    <div class="image-details text-center">
+                        <h4>ตำรับปริศนา หมอยาแห่งวังหลัง 4 (ฉบับการ์ตูน)</h4>
+                        โดย : นัตซึ ฮิวงะ, เนโกะคุราเงะ, อิตซึกิ นานาโอะ<br>สำนักพิมพ์ : ANIMAG<br> หมวดหมู่ :
+                        การ์ตูนทั่วไป
+                        <br>ราคา : 110 บาท
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image 30 -->
+            <div class="col-md-2">
+                <div class="gallery-item">
+                    <img src="Image/Kusuriya/Kusuriya 5.png" alt="" class="img-fluid rounded">
+                    <div class="image-details text-center">
+                        <h4>ตำรับปริศนา หมอยาแห่งวังหลัง 5 (ฉบับการ์ตูน)</h4>
+                        โดย : นัตซึ ฮิวงะ, เนโกะคุราเงะ, อิตซึกิ นานาโอะ<br>สำนักพิมพ์ : ANIMAG<br> หมวดหมู่ :
+                        การ์ตูนทั่วไป
+                        <br>ราคา : 110 บาท
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="gallery-container">
+
+        <div class="row justify-content-center pb-2">
+
+            <!-- Image 31 -->
+            <div class="col-md-2">
+                <div class="gallery-item">
+                    <img src="Image/Kusuriya/Kusuriya 6.png" alt="" class="img-fluid rounded">
+                    <div class="image-details text-center">
+                        <h4>ตำรับปริศนา หมอยาแห่งวังหลัง 6 (ฉบับการ์ตูน)</h4>
+                        โดย : นัตซึ ฮิวงะ, เนโกะคุราเงะ, อิตซึกิ นานาโอะ<br>สำนักพิมพ์ : ANIMAG<br> หมวดหมู่ :
+                        การ์ตูนทั่วไป
+                        <br>ราคา : 110 บาท
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image 32 -->
+            <div class="col-md-2">
+                <div class="gallery-item">
+                    <img src="Image/Kusuriya/Kusuriya 7.png" alt="" class="img-fluid rounded">
+                    <div class="image-details text-center">
+                        <h4>ตำรับปริศนา หมอยาแห่งวังหลัง 7 (ฉบับการ์ตูน)</h4>
+                        โดย : นัตซึ ฮิวงะ, เนโกะคุราเงะ, อิตซึกิ นานาโอะ<br>สำนักพิมพ์ : ANIMAG<br> หมวดหมู่ :
+                        การ์ตูนทั่วไป
+                        <br>ราคา : 110 บาท
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image 33 -->
+            <div class="col-md-2">
+                <div class="gallery-item">
+                    <img src="Image/Kusuriya/Kusuriya 8.png" alt="" class="img-fluid rounded">
+                    <div class="image-details text-center">
+                        <h4>ตำรับปริศนา หมอยาแห่งวังหลัง 8 (ฉบับการ์ตูน)</h4>
+                        โดย : นัตซึ ฮิวงะ, เนโกะคุราเงะ, อิตซึกิ นานาโอะ<br>สำนักพิมพ์ : ANIMAG<br> หมวดหมู่ :
+                        การ์ตูนทั่วไป
+                        <br>ราคา : 110 บาท
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Image 34 -->
+            <div class="col-md-2">
+                <div class="gallery-item">
+                    <img src="Image/Oshi/Oshi 1.png" alt="" class="img-fluid rounded">
+                    <div class="image-details text-center">
+                        <h4>เกิดใหม่เป็นลูกโอชิ 1</h4>
+                        โดย : AKA AKASAKA<br>สำนักพิมพ์ : Luckpim<br> หมวดหมู่ :
+                        การ์ตูนทั่วไป
+                        <br>ราคา : 125 บาท
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image 35 -->
+            <div class="col-md-2">
+                <div class="gallery-item">
+                    <img src="Image/Oshi/Oshi 2.png" alt="" class="img-fluid rounded">
+                    <div class="image-details text-center">
+                        <h4>เกิดใหม่เป็นลูกโอชิ 2</h4>
+                        โดย : AKA AKASAKA<br>สำนักพิมพ์ : Luckpim<br> หมวดหมู่ :
+                        การ์ตูนทั่วไป
+                        <br>ราคา : 125 บาท
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image 36 -->
+            <div class="col-md-2">
+                <div class="gallery-item">
+                    <img src="Image/Oshi/Oshi 3.png" alt="" class="img-fluid rounded">
+                    <div class="image-details text-center">
+                        <h4>เกิดใหม่เป็นลูกโอชิ 3</h4>
+                        โดย : AKA AKASAKA<br>สำนักพิมพ์ : Luckpim<br> หมวดหมู่ :
+                        การ์ตูนทั่วไป
+                        <br>ราคา : 125 บาท
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="gallery-container">
+
+        <div class="row justify-content-center pb-2">
+
+            <!-- Image 37 -->
+            <div class="col-md-2">
+                <div class="gallery-item">
+                    <img src="Image/Oshi/Oshi 3.png" alt="" class="img-fluid rounded">
+                    <div class="image-details text-center">
+                        <h4>เกิดใหม่เป็นลูกโอชิ 3</h4>
+                        โดย : AKA AKASAKA<br>สำนักพิมพ์ : Luckpim<br> หมวดหมู่ :
+                        การ์ตูนทั่วไป
+                        <br>ราคา : 125 บาท
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image 38 -->
+            <div class="col-md-2">
+                <div class="gallery-item">
+                    <img src="Image/Oshi/Oshi 4.png" alt="" class="img-fluid rounded">
+                    <div class="image-details text-center">
+                        <h4>เกิดใหม่เป็นลูกโอชิ 4</h4>
+                        โดย : AKA AKASAKA<br>สำนักพิมพ์ : Luckpim<br> หมวดหมู่ :
+                        การ์ตูนทั่วไป
+                        <br>ราคา : 125 บาท
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image 39 -->
+            <div class="col-md-2">
+                <div class="gallery-item">
+                    <img src="Image/Oshi/Oshi 5.png" alt="" class="img-fluid rounded">
+                    <div class="image-details text-center">
+                        <h4>เกิดใหม่เป็นลูกโอชิ 5</h4>
+                        โดย : AKA AKASAKA<br>สำนักพิมพ์ : Luckpim<br> หมวดหมู่ :
+                        การ์ตูนทั่วไป
+                        <br>ราคา : 125 บาท
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Image 40 -->
+            <div class="col-md-2">
+                <div class="gallery-item">
+                    <img src="Image/Oshi/Oshi 6.png" alt="" class="img-fluid rounded">
+                    <div class="image-details text-center">
+                        <h4>เกิดใหม่เป็นลูกโอชิ 6</h4>
+                        โดย : AKA AKASAKA<br>สำนักพิมพ์ : Luckpim<br> หมวดหมู่ :
+                        การ์ตูนทั่วไป
+                        <br>ราคา : 125 บาท
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image 41 -->
+            <div class="col-md-2">
+                <div class="gallery-item">
+                    <img src="Image/Oshi/Oshi 7.png" alt="" class="img-fluid rounded">
+                    <div class="image-details text-center">
+                        <h4>เกิดใหม่เป็นลูกโอชิ 7 </h4>
+                        โดย : AKA AKASAKA<br>สำนักพิมพ์ : Luckpim<br> หมวดหมู่ :
+                        การ์ตูนทั่วไป
+                        <br>ราคา : 125 บาท
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image 42 -->
+            <div class="col-md-2">
+                <div class="gallery-item">
+                    <img src="Image/Oshi/Oshi 8.png" alt="" class="img-fluid rounded">
+                    <div class="image-details text-center">
+                        <h4>เกิดใหม่เป็นลูกโอชิ 8</h4>
+                        โดย : AKA AKASAKA<br>สำนักพิมพ์ : Luckpim<br> หมวดหมู่ :
+                        การ์ตูนทั่วไป
+                        <br>ราคา : 125 บาท
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="gallery-container">
+
+        <div class="row justify-content-center pb-2">
+
+            <!-- Image 43 -->
+            <div class="col-md-2">
+                <div class="gallery-item">
+                    <img src="Image/Oshi/Oshi 9.png" alt="" class="img-fluid rounded">
+                    <div class="image-details text-center">
+                        <h4>เกิดใหม่เป็นลูกโอชิ 9</h4>
+                        โดย : AKA AKASAKA<br>สำนักพิมพ์ : Luckpim<br> หมวดหมู่ :
+                        การ์ตูนทั่วไป
+                        <br>ราคา : 125 บาท
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image 44 -->
+            <div class="col-md-2">
+                <div class="gallery-item">
+                    <img src="Image/Oshi/Oshi 10.png" alt="" class="img-fluid rounded">
+                    <div class="image-details text-center">
+                        <h4>เกิดใหม่เป็นลูกโอชิ 10</h4>
+                        โดย : AKA AKASAKA<br>สำนักพิมพ์ : Luckpim<br> หมวดหมู่ :
+                        การ์ตูนทั่วไป
+                        <br>ราคา : 125 บาท
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image 45 -->
+            <div class="col-md-2">
+                <div class="gallery-item">
+                    <img src="Image/Oshi/Oshi 11.png" alt="" class="img-fluid rounded">
+                    <div class="image-details text-center">
+                        <h4>เกิดใหม่เป็นลูกโอชิ 11</h4>
+                        โดย : AKA AKASAKA<br>สำนักพิมพ์ : Luckpim<br> หมวดหมู่ :
+                        การ์ตูนทั่วไป
+                        <br>ราคา : 125 บาท
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Image 46 -->
+            <div class="col-md-2">
+                <div class="gallery-item">
+                    <img src="Image/Sasayaku/Sasayaku 1.png" alt="" class="img-fluid rounded">
+                    <div class="image-details text-center">
+                        <h4>กระซิบรักเป็นทำนองร้องบอกเธอ 1</h4>
+                        โดย : เอกุ ทาเคชิมะ<br>สำนักพิมพ์ : PHOENIX<br> หมวดหมู่ :
+                        การ์ตูนทั่วไป
+                        <br>ราคา : 155 บาท
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image 47 -->
+            <div class="col-md-2">
+                <div class="gallery-item">
+                    <img src="Image/Sasayaku/Sasayaku 2.png" alt="" class="img-fluid rounded">
+                    <div class="image-details text-center">
+                        <h4>กระซิบรักเป็นทำนองร้องบอกเธอ 2</h4>
+                        โดย : เอกุ ทาเคชิมะ<br>สำนักพิมพ์ : PHOENIX<br> หมวดหมู่ :
+                        การ์ตูนทั่วไป
+                        <br>ราคา : 155 บาท
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image 48 -->
+            <div class="col-md-2">
+                <div class="gallery-item">
+                    <img src="Image/Sasayaku/Sasayaku 3.png" alt="" class="img-fluid rounded">
+                    <div class="image-details text-center">
+                        <h4>กระซิบรักเป็นทำนองร้องบอกเธอ 3</h4>
+                        โดย : เอกุ ทาเคชิมะ<br>สำนักพิมพ์ : PHOENIX<br> หมวดหมู่ :
+                        การ์ตูนทั่วไป
+                        <br>ราคา : 155 บาท
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="gallery-container">
+
+        <div class="row justify-content-center pb-2">
+
+            <!-- Image 49 -->
+            <div class="col-md-2">
+                <div class="gallery-item">
+                    <img src="Image/Sasayaku/Sasayaku 4.png" alt="" class="img-fluid rounded">
+                    <div class="image-details text-center">
+                        <h4>กระซิบรักเป็นทำนองร้องบอกเธอ 2</h4>
+                        โดย : เอกุ ทาเคชิมะ<br>สำนักพิมพ์ : PHOENIX<br> หมวดหมู่ :
+                        การ์ตูนทั่วไป
+                        <br>ราคา : 155 บาท
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image 50 -->
+            <div class="col-md-2">
+                <div class="gallery-item">
+                    <img src="Image/Sasayaku/Sasayaku 5.png" alt="" class="img-fluid rounded">
+                    <div class="image-details text-center">
+                        <h4>กระซิบรักเป็นทำนองร้องบอกเธอ 5</h4>
+                        โดย : เอกุ ทาเคชิมะ<br>สำนักพิมพ์ : PHOENIX<br> หมวดหมู่ :
+                        การ์ตูนทั่วไป
+                        <br>ราคา : 175 บาท
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image 51 -->
+            <div class="col-md-2">
+                <div class="gallery-item">
+                    <img src="Image/Sasayaku/Sasayaku 6.png" alt="" class="img-fluid rounded">
+                    <div class="image-details text-center">
+                        <h4>กระซิบรักเป็นทำนองร้องบอกเธอ 6</h4>
+                        โดย : เอกุ ทาเคชิมะ<br>สำนักพิมพ์ : PHOENIX<br> หมวดหมู่ :
+                        การ์ตูนทั่วไป
+                        <br>ราคา : 175 บาท
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Image 52 -->
+            <div class="col-md-2">
+                <div class="gallery-item">
+                    <img src="Image/Sasayaku/Sasayaku 7.png" alt="" class="img-fluid rounded">
+                    <div class="image-details text-center">
+                        <h4>กระซิบรักเป็นทำนองร้องบอกเธอ 7</h4>
+                        โดย : เอกุ ทาเคชิมะ<br>สำนักพิมพ์ : PHOENIX<br> หมวดหมู่ :
+                        การ์ตูนทั่วไป
+                        <br>ราคา : 175 บาท
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image 53 -->
+            <div class="col-md-2">
+                <div class="gallery-item">
+                    <img src="Image/Satou-san/Satou 1.png" alt="" class="img-fluid rounded">
+                    <div class="image-details text-center">
+                        <h4>คุณซาโต้ยอดนักเมิน เธอหวานใส่ผมแค่คนเดียว 1</h4>
+                        โดย : TETSUYAMA KAYA<br>สำนักพิมพ์ : Siam Inter Comics<br> หมวดหมู่ :
+                        การ์ตูนทั่วไป
+                        <br>ราคา : 90 บาท
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image 54 -->
+            <div class="col-md-2">
+                <div class="gallery-item">
+                    <img src="Image/Satou-san/Satou 2.png" alt="" class="img-fluid rounded">
+                    <div class="image-details text-center">
+                        <h4>คุณซาโต้ยอดนักเมิน เธอหวานใส่ผมแค่คนเดียว 2</h4>
+                        โดย : TETSUYAMA KAYA<br>สำนักพิมพ์ : Siam Inter Comics<br> หมวดหมู่ :
+                        การ์ตูนทั่วไป
+                        <br>ราคา : 90 บาท
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="gallery-container">
+
+        <div class="row justify-content-center pb-2">
+
+            <!-- Image 55 -->
+            <div class="col-md-2">
+                <div class="gallery-item">
+                    <img src="Image/Satou-san/Satou 3.png" alt="" class="img-fluid rounded">
+                    <div class="image-details text-center">
+                        <h4>คุณซาโต้ยอดนักเมิน เธอหวานใส่ผมแค่คนเดียว 3</h4>
+                        โดย : TETSUYAMA KAYA<br>สำนักพิมพ์ : Siam Inter Comics<br> หมวดหมู่ :
+                        การ์ตูนทั่วไป
+                        <br>ราคา : 90 บาท
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image 56 -->
+            <div class="col-md-2">
+                <div class="gallery-item">
+                    <img src="Image/Shangri-la/Shangri 1.png" alt="" class="img-fluid rounded">
+                    <div class="image-details text-center">
+                        <h4>SHANGRI-LA FRONTIER เมื่อนักล่าเกมขยะท้าสู้ในเกมเทพ 1</h4>
+                        โดย : Katarina, Ryousuke Fuji<br>สำนักพิมพ์ : Luckpim<br> หมวดหมู่ :
+                        การ์ตูนทั่วไป
+                        <br>ราคา : 125 บาท
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image 57 -->
+            <div class="col-md-2">
+                <div class="gallery-item">
+                    <img src="Image/Shangri-la/Shangri 2.png" alt="" class="img-fluid rounded">
+                    <div class="image-details text-center">
+                        <h4>SHANGRI-LA FRONTIER เมื่อนักล่าเกมขยะท้าสู้ในเกมเทพ 2</h4>
+                        โดย : Katarina, Ryousuke Fuji<br>สำนักพิมพ์ : Luckpim<br> หมวดหมู่ :
+                        การ์ตูนทั่วไป
+                        <br>ราคา : 125 บาท
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Image 58 -->
+            <div class="col-md-2">
+                <div class="gallery-item">
+                    <img src="Image/Shangri-la/Shangri 3.png" alt="" class="img-fluid rounded">
+                    <div class="image-details text-center">
+                        <h4>SHANGRI-LA FRONTIER เมื่อนักล่าเกมขยะท้าสู้ในเกมเทพ 3</h4>
+                        โดย : Katarina, Ryousuke Fuji<br>สำนักพิมพ์ : Luckpim<br> หมวดหมู่ :
+                        การ์ตูนทั่วไป
+                        <br>ราคา : 125 บาท
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image 59 -->
+            <div class="col-md-2">
+                <div class="gallery-item">
+                    <img src="Image/Shangri-la/Shangri 4.png" alt="" class="img-fluid rounded">
+                    <div class="image-details text-center">
+                        <h4>SHANGRI-LA FRONTIER เมื่อนักล่าเกมขยะท้าสู้ในเกมเทพ 4</h4>
+                        โดย : Katarina, Ryousuke Fuji<br>สำนักพิมพ์ : Luckpim<br> หมวดหมู่ :
+                        การ์ตูนทั่วไป
+                        <br>ราคา : 125 บาท
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image 60 -->
+            <div class="col-md-2">
+                <div class="gallery-item">
+                    <img src="Image/Shangri-la/Shangri 5.png" alt="" class="img-fluid rounded">
+                    <div class="image-details text-center">
+                        <h4>SHANGRI-LA FRONTIER เมื่อนักล่าเกมขยะท้าสู้ในเกมเทพ 5</h4>
+                        โดย : Katarina, Ryousuke Fuji<br>สำนักพิมพ์ : Luckpim<br> หมวดหมู่ :
+                        การ์ตูนทั่วไป
+                        <br>ราคา : 125 บาท
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="gallery-container">
+
+        <div class="row justify-content-center pb-2">
+
+            <!-- Image 61 -->
+            <div class="col-md-2">
+                <div class="gallery-item">
+                    <img src="Image/Shangri-la/Shangri 6.png" alt="" class="img-fluid rounded">
+                    <div class="image-details text-center">
+                        <h4>SHANGRI-LA FRONTIER เมื่อนักล่าเกมขยะท้าสู้ในเกมเทพ 6</h4>
+                        โดย : Katarina, Ryousuke Fuji<br>สำนักพิมพ์ : Luckpim<br> หมวดหมู่ :
+                        การ์ตูนทั่วไป
+                        <br>ราคา : 125 บาท
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image 62 -->
+            <div class="col-md-2">
+                <div class="gallery-item">
+                    <img src="Image/Shangri-la/Shangri 7.png" alt="" class="img-fluid rounded">
+                    <div class="image-details text-center">
+                        <h4>SHANGRI-LA FRONTIER เมื่อนักล่าเกมขยะท้าสู้ในเกมเทพ 7</h4>
+                        โดย : Katarina, Ryousuke Fuji<br>สำนักพิมพ์ : Luckpim<br> หมวดหมู่ :
+                        การ์ตูนทั่วไป
+                        <br>ราคา : 125 บาท
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image 63 -->
+            <div class="col-md-2">
+                <div class="gallery-item">
+                    <img src="Image/Shangri-la/Shangri 8.png" alt="" class="img-fluid rounded">
+                    <div class="image-details text-center">
+                        <h4>SHANGRI-LA FRONTIER เมื่อนักล่าเกมขยะท้าสู้ในเกมเทพ 8</h4>
+                        โดย : Katarina, Ryousuke Fuji<br>สำนักพิมพ์ : Luckpim<br> หมวดหมู่ :
+                        การ์ตูนทั่วไป
+                        <br>ราคา : 125 บาท
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Image 64 -->
+            <div class="col-md-2">
+                <div class="gallery-item">
+                    <img src="Image/Skip/Skip 1.png" alt="" class="img-fluid rounded">
+                    <div class="image-details text-center">
+                        <h4>Skip and Loafer จังหวะวัยรุ่นว้าวุ่นหัวใจ 1</h4>
+                        โดย : Misaki Takamatsu<br>สำนักพิมพ์ : DEXPRESS<br> หมวดหมู่ :
+                        การ์ตูนทั่วไป
+                        <br>ราคา : 150 บาท
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image 65 -->
+            <div class="col-md-2">
+                <div class="gallery-item">
+                    <img src="Image/Skip/Skip 2.png" alt="" class="img-fluid rounded">
+                    <div class="image-details text-center">
+                        <h4>Skip and Loafer จังหวะวัยรุ่นว้าวุ่นหัวใจ 2</h4>
+                        โดย : Misaki Takamatsu<br>สำนักพิมพ์ : DEXPRESS<br> หมวดหมู่ :
+                        การ์ตูนทั่วไป
+                        <br>ราคา : 150 บาท
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image 66 -->
+            <div class="col-md-2">
+                <div class="gallery-item">
+                    <img src="Image/Youchien/Youchien 1.png" alt="" class="img-fluid rounded">
+                    <div class="image-details text-center">
+                        <h4>อนุบาล Wars 1</h4>
+                        โดย : You Chiba<br>สำนักพิมพ์ : Siam Inter Comics<br> หมวดหมู่ :
+                        การ์ตูนทั่วไป
+                        <br>ราคา : 95 บาท
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="gallery-container">
+
+        <div class="row justify-content-center pb-2">
+
+            <!-- Image 67 -->
+            <div class="col-md-2">
+                <div class="gallery-item">
+                    <img src="Image/Youchien/Youchien 2.png" alt="" class="img-fluid rounded">
+                    <div class="image-details text-center">
+                        <h4>อนุบาล Wars 2</h4>
+                        โดย : You Chiba<br>สำนักพิมพ์ : Siam Inter Comics<br> หมวดหมู่ :
+                        การ์ตูนทั่วไป
+                        <br>ราคา : 95 บาท
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image 68 -->
+            <div class="col-md-2">
+                <div class="gallery-item">
+                    <img src="Image/Youchien/Youchien 3.png" alt="" class="img-fluid rounded">
+                    <div class="image-details text-center">
+                        <h4>อนุบาล Wars 3</h4>
+                        โดย : You Chiba<br>สำนักพิมพ์ : Siam Inter Comics<br> หมวดหมู่ :
+                        การ์ตูนทั่วไป
+                        <br>ราคา : 95 บาท
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image 69 -->
+            <div class="col-md-2">
+                <div class="gallery-item">
+                    <img src="Image/ThaiTest.png" alt="" class="img-fluid rounded">
+                    <div class="image-details text-center">
+                        <h4>รักป่วนๆกับ นาย.ยัย เพื่อนสมัยเด็ก 1</h4>
+                        โดย : Neigo & Anjaku112<br>สำนักพิมพ์ : KrapirafaS : แหล่งรวมสัตว์ป่าหื่นกระหาย<br> หมวดหมู่ :
+                        การ์ตูนทั่วไป
+                        <br>ราคา : 250 บาท
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Image 70 -->
+            <div class="col-md-2">
+                <div class="gallery-item">
+                    <img src="Image/OdoribaTest.png" alt="" class="img-fluid rounded">
+                    <div class="image-details text-center">
+                        <h4>ลานเต้นรำของเหล่าเด็กสาว 1</h4>
+                        โดย : Yuu Utatane<br>สำนักพิมพ์ : Luckpim<br> หมวดหมู่ :
+                        การ์ตูนทั่วไป
+                        <br>ราคา : 145 บาท
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image 71 -->
+            <div class="col-md-2">
+                <div class="gallery-item">
+                    <img src="Image/17Test.png" alt="" class="img-fluid rounded">
+                    <div class="image-details text-center">
+                        <h4>ยัยตัวร้ายวัย 17 กับคุณทนายรูปหล่อ 1</h4>
+                        โดย : Anbi Ono<br>สำนักพิมพ์ : Bongkoch Publishing<br> หมวดหมู่ :
+                        การ์ตูนผู้หญิง
+                        <br>ราคา : 90 บาท
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image 72 -->
+            <div class="col-md-2">
+                <div class="gallery-item">
+                    <img src="Image/2.5Test.png" alt="" class="img-fluid rounded">
+                    <div class="image-details text-center">
+                        <h4>2.5มิติ ริริสะ 11</h4>
+                        โดย : Yu Hashimoto<br>สำนักพิมพ์ : Luckpim<br> หมวดหมู่ :
+                        การ์ตูนทั่วไป
+                        <br>ราคา : 125 บาท
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="gallery-container">
+
+        <div class="row justify-content-center pb-2">
+
+            <!-- Image 73 -->
+            <div class="col-md-2">
+                <div class="gallery-item">
+                    <img src="Image/Yofukashi/Yofukashi 1.png" alt="" class="img-fluid rounded">
+                    <div class="image-details text-center">
+                        <h4>เพลงรักมนุษย์ค้างคาว 1</h4>
+                        โดย : KOTOYAMA<br>สำนักพิมพ์ : Luckpim<br> หมวดหมู่ :
+                        การ์ตูนทั่วไป
+                        <br>ราคา : 90 บาท
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image 74 -->
+            <div class="col-md-2">
+                <div class="gallery-item">
+                    <img src="Image/Yofukashi/Yofukashi 2.png" alt="" class="img-fluid rounded">
+                    <div class="image-details text-center">
+                        <h4>เพลงรักมนุษย์ค้างคาว 2</h4>
+                        โดย : KOTOYAMA<br>สำนักพิมพ์ : Luckpim<br> หมวดหมู่ :
+                        การ์ตูนทั่วไป
+                        <br>ราคา : 90 บาท
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image 75 -->
+            <div class="col-md-2">
+                <div class="gallery-item">
+                    <img src="Image/Yofukashi/Yofukashi 3.png" alt="" class="img-fluid rounded">
+                    <div class="image-details text-center">
+                        <h4>เพลงรักมนุษย์ค้างคาว 3</h4>
+                        โดย : KOTOYAMA<br>สำนักพิมพ์ : Luckpim<br> หมวดหมู่ :
+                        การ์ตูนทั่วไป
+                        <br>ราคา : 90 บาท
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Image 76 -->
+            <div class="col-md-2">
+                <div class="gallery-item">
+                    <img src="Image/Yofukashi/Yofukashi 4.png" alt="" class="img-fluid rounded">
+                    <div class="image-details text-center">
+                        <h4>เพลงรักมนุษย์ค้างคาว 4</h4>
+                        โดย : KOTOYAMA<br>สำนักพิมพ์ : Luckpim<br> หมวดหมู่ :
+                        การ์ตูนทั่วไป
+                        <br>ราคา : 90 บาท
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image 77 -->
+            <div class="col-md-2">
+                <div class="gallery-item">
+                    <img src="Image/Yofukashi/Yofukashi 5.png" alt="" class="img-fluid rounded">
+                    <div class="image-details text-center">
+                        <h4>เพลงรักมนุษย์ค้างคาว 5</h4>
+                        โดย : KOTOYAMA<br>สำนักพิมพ์ : Luckpim<br> หมวดหมู่ :
+                        การ์ตูนทั่วไป
+                        <br>ราคา : 90 บาท
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image 78 -->
+            <div class="col-md-2">
+                <div class="gallery-item">
+                    <img src="Image/Netoge/Netoge 1.png" alt="" class="img-fluid rounded">
+                    <div class="image-details text-center">
+                        <h4>ไอดอลสาวสุดปังกับผมแต่งงานกันในเกมออนไลน์ 1</h4>
+                        โดย : อาโบน<br>สำนักพิมพ์ : ANIMAG<br> หมวดหมู่ :
+                        ไลท์โนเวล
+                        <br>ราคา : 300 บาท
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="gallery-container">
+
+        <div class="row justify-content-center pb-2">
+
+            <!-- Image 79 -->
+            <div class="col-md-2">
+                <div class="gallery-item">
+                    <img src="Image/Netoge/Netoge 2.png" alt="" class="img-fluid rounded">
+                    <div class="image-details text-center">
+                        <h4>ไอดอลสาวสุดปังกับผมแต่งงานกันในเกมออนไลน์ 1</h4>
+                        โดย : อาโบน<br>สำนักพิมพ์ : ANIMAG<br> หมวดหมู่ :
+                        ไลท์โนเวล
+                        <br>ราคา : 300 บาท
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image 80 -->
+            <div class="col-md-2">
+                <div class="gallery-item">
+                    <img src="Image/Netoge/Netoge 3.png" alt="" class="img-fluid rounded">
+                    <div class="image-details text-center">
+                        <h4>ไอดอลสาวสุดปังกับผมแต่งงานกันในเกมออนไลน์ 1</h4>
+                        โดย : อาโบน<br>สำนักพิมพ์ : ANIMAG<br> หมวดหมู่ :
+                        ไลท์โนเวล
+                        <br>ราคา : 300 บาท
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image 81 -->
+            <div class="col-md-2">
+                <div class="gallery-item">
+                    <img src="Image/Mama/Mama 1.png" alt="" class="img-fluid rounded">
+                    <div class="image-details text-center">
+                        <h4>เอาแล้วไง ยัยแฟนเก่าดันเป็นลูกสาวแม่ใหม่ 1</h4>
+                        โดย : เคียวสุเกะ คามิชิโระ<br>สำนักพิมพ์ : PHOENIX<br> หมวดหมู่ :
+                        ไลท์โนเวล
+                        <br>ราคา : 295 บาท
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Image 82 -->
+            <div class="col-md-2">
+                <div class="gallery-item">
+                    <img src="Image/Mama/Mama 2.png" alt="" class="img-fluid rounded">
+                    <div class="image-details text-center">
+                        <h4>เอาแล้วไง ยัยแฟนเก่าดันเป็นลูกสาวแม่ใหม่ 2</h4>
+                        โดย : เคียวสุเกะ คามิชิโระ<br>สำนักพิมพ์ : PHOENIX<br> หมวดหมู่ :
+                        ไลท์โนเวล
+                        <br>ราคา : 305 บาท
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image 83 -->
+            <div class="col-md-2">
+                <div class="gallery-item">
+                    <img src="Image/Mama/Mama 3.png" alt="" class="img-fluid rounded">
+                    <div class="image-details text-center">
+                        <h4>เอาแล้วไง ยัยแฟนเก่าดันเป็นลูกสาวแม่ใหม่ 3</h4>
+                        โดย : เคียวสุเกะ คามิชิโระ<br>สำนักพิมพ์ : PHOENIX<br> หมวดหมู่ :
+                        ไลท์โนเวล
+                        <br>ราคา : 305 บาท
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image 84 -->
+            <div class="col-md-2">
+                <div class="gallery-item">
+                    <img src="Image/Mama/Mama 4.png" alt="" class="img-fluid rounded">
+                    <div class="image-details text-center">
+                        <h4>เอาแล้วไง ยัยแฟนเก่าดันเป็นลูกสาวแม่ใหม่ 4</h4>
+                        โดย : เคียวสุเกะ คามิชิโระ<br>สำนักพิมพ์ : PHOENIX<br> หมวดหมู่ :
+                        ไลท์โนเวล
+                        <br>ราคา : 305 บาท
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="gallery-container">
+
+        <div class="row justify-content-center pb-2">
+
+            <!-- Image 85 -->
+            <div class="col-md-2">
+                <div class="gallery-item">
+                    <img src="Image/Zom100/Zom 1.png" alt="" class="img-fluid rounded">
+                    <div class="image-details text-center">
+                        <h4>ซอม 100 1</h4>
+                        โดย : Haro Aso, Kotaro Takata<br>สำนักพิมพ์ : เซนชู<br> หมวดหมู่ :
+                        การ์ตูนทั่วไป
+                        <br>ราคา : 100 บาท
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image 86 -->
+            <div class="col-md-2">
+                <div class="gallery-item">
+                    <img src="Image/Zom100/Zom 2.png" alt="" class="img-fluid rounded">
+                    <div class="image-details text-center">
+                        <h4>ซอม 100 2</h4>
+                        โดย : Haro Aso, Kotaro Takata<br>สำนักพิมพ์ : เซนชู<br> หมวดหมู่ :
+                        การ์ตูนทั่วไป
+                        <br>ราคา : 100 บาท
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image 87 -->
+            <div class="col-md-2">
+                <div class="gallery-item">
+                    <img src="Image/Zom100/Zom 3.png" alt="" class="img-fluid rounded">
+                    <div class="image-details text-center">
+                        <h4>ซอม 100 3</h4>
+                        โดย : Haro Aso, Kotaro Takata<br>สำนักพิมพ์ : เซนชู<br> หมวดหมู่ :
+                        การ์ตูนทั่วไป
+                        <br>ราคา : 100 บาท
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Image 88 -->
+            <div class="col-md-2">
+                <div class="gallery-item">
+                    <img src="Image/Zom100/Zom 4.png" alt="" class="img-fluid rounded">
+                    <div class="image-details text-center">
+                        <h4>ซอม 100 4</h4>
+                        โดย : Haro Aso, Kotaro Takata<br>สำนักพิมพ์ : เซนชู<br> หมวดหมู่ :
+                        การ์ตูนทั่วไป
+                        <br>ราคา : 100 บาท
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image 89 -->
+            <div class="col-md-2">
+                <div class="gallery-item">
+                    <img src="Image/Zom100/Zom 5.png" alt="" class="img-fluid rounded">
+                    <div class="image-details text-center">
+                        <h4>ซอม 100 5</h4>
+                        โดย : Haro Aso, Kotaro Takata<br>สำนักพิมพ์ : เซนชู<br> หมวดหมู่ :
+                        การ์ตูนทั่วไป
+                        <br>ราคา : 100 บาท
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image 90 -->
+            <div class="col-md-2">
+                <div class="gallery-item">
+                    <img src="Image/Zom100/Zom 6.png" alt="" class="img-fluid rounded">
+                    <div class="image-details text-center">
+                        <h4>ซอม 100 6</h4>
+                        โดย : Haro Aso, Kotaro Takata<br>สำนักพิมพ์ : เซนชู<br> หมวดหมู่ :
+                        การ์ตูนทั่วไป
+                        <br>ราคา : 100 บาท
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="gallery-container">
+
+        <div class="row justify-content-center pb-2">
+
+            <!-- Image 91 -->
+            <div class="col-md-2">
+                <div class="gallery-item">
+                    <img src="Image/Kaiju/Kaiju 1.png" alt="" class="img-fluid rounded">
+                    <div class="image-details text-center">
+                        <h4>KAIJYU No.8 1</h4>
+                        โดย : MATSUMOTO NAOYA<br>สำนักพิมพ์ : Siam Inter Comics<br> หมวดหมู่ :
+                        การ์ตูนทั่วไป
+                        <br>ราคา : 95 บาท
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image 92 -->
+            <div class="col-md-2">
+                <div class="gallery-item">
+                    <img src="Image/Kaiju/Kaiju 2.png" alt="" class="img-fluid rounded">
+                    <div class="image-details text-center">
+                        <h4>KAIJYU No.8 2</h4>
+                        โดย : MATSUMOTO NAOYA<br>สำนักพิมพ์ : Siam Inter Comics<br> หมวดหมู่ :
+                        การ์ตูนทั่วไป
+                        <br>ราคา : 95 บาท
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image 93 -->
+            <div class="col-md-2">
+                <div class="gallery-item">
+                    <img src="Image/Kaiju/Kaiju 3.png" alt="" class="img-fluid rounded">
+                    <div class="image-details text-center">
+                        <h4>KAIJYU No.8 3</h4>
+                        โดย : MATSUMOTO NAOYA<br>สำนักพิมพ์ : Siam Inter Comics<br> หมวดหมู่ :
+                        การ์ตูนทั่วไป
+                        <br>ราคา : 95 บาท
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Image 94 -->
+            <div class="col-md-2">
+                <div class="gallery-item">
+                    <img src="Image/Kaiju/Kaiju 4.png" alt="" class="img-fluid rounded">
+                    <div class="image-details text-center">
+                        <h4>KAIJYU No.8 4</h4>
+                        โดย : MATSUMOTO NAOYA<br>สำนักพิมพ์ : Siam Inter Comics<br> หมวดหมู่ :
+                        การ์ตูนทั่วไป
+                        <br>ราคา : 95 บาท
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image 95 -->
+            <div class="col-md-2">
+                <div class="gallery-item">
+                    <img src="Image/Kaiju/Kaiju 5.png" alt="" class="img-fluid rounded">
+                    <div class="image-details text-center">
+                        <h4>KAIJYU No.8 5</h4>
+                        โดย : MATSUMOTO NAOYA<br>สำนักพิมพ์ : Siam Inter Comics<br> หมวดหมู่ :
+                        การ์ตูนทั่วไป
+                        <br>ราคา : 95 บาท
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image 96 -->
+            <div class="col-md-2">
+                <div class="gallery-item">
+                    <img src="Image/Kaiju/Kaiju 6.png" alt="" class="img-fluid rounded">
+                    <div class="image-details text-center">
+                        <h4>KAIJYU No.8 6</h4>
+                        โดย : MATSUMOTO NAOYA<br>สำนักพิมพ์ : Siam Inter Comics<br> หมวดหมู่ :
+                        การ์ตูนทั่วไป
+                        <br>ราคา : 95 บาท
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="gallery-container">
+
+        <div class="row justify-content-center pb-2">
+
+            <!-- Image 97 -->
+            <div class="col-md-2">
+                <div class="gallery-item">
+                    <img src="Image/Kaiju/Kaiju 7.png" alt="" class="img-fluid rounded">
+                    <div class="image-details text-center">
+                        <h4>KAIJYU No.8 7</h4>
+                        โดย : MATSUMOTO NAOYA<br>สำนักพิมพ์ : Siam Inter Comics<br> หมวดหมู่ :
+                        การ์ตูนทั่วไป
+                        <br>ราคา : 95 บาท
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image 98 -->
+            <div class="col-md-2">
+                <div class="gallery-item">
+                    <img src="Image/Kaiju/Kaiju 8.png" alt="" class="img-fluid rounded">
+                    <div class="image-details text-center">
+                        <h4>KAIJYU No.8 8</h4>
+                        โดย : MATSUMOTO NAOYA<br>สำนักพิมพ์ : Siam Inter Comics<br> หมวดหมู่ :
+                        การ์ตูนทั่วไป
+                        <br>ราคา : 95 บาท
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image 99 -->
+            <div class="col-md-2">
+                <div class="gallery-item">
+                    <img src="Image/Kaiju/Kaiju 9.png" alt="" class="img-fluid rounded">
+                    <div class="image-details text-center">
+                        <h4>KAIJYU No.8 9</h4>
+                        โดย : MATSUMOTO NAOYA<br>สำนักพิมพ์ : Siam Inter Comics<br> หมวดหมู่ :
+                        การ์ตูนทั่วไป
+                        <br>ราคา : 95 บาท
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Image 100 -->
+            <div class="col-md-2">
+                <div class="gallery-item">
+                    <img src="Image/Kaiju/Kaiju 10.png" alt="" class="img-fluid rounded">
+                    <div class="image-details text-center">
+                        <h4>KAIJYU No.8 10</h4>
+                        โดย : MATSUMOTO NAOYA<br>สำนักพิมพ์ : Siam Inter Comics<br> หมวดหมู่ :
+                        การ์ตูนทั่วไป
+                        <br>ราคา : 95 บาท
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image 101 -->
+            <div class="col-md-2">
+                <div class="gallery-item">
+                    <img src="Image/Yozakura/Yozakura 1.png" alt="" class="img-fluid rounded">
+                    <div class="image-details text-center">
+                        <h4>Mission: Yozakura Family ปฏิบัติการลับ บ้านโยซากุระ 1</h4>
+                        โดย : Hitsuji Gondaira<br>สำนักพิมพ์ : NED Comics<br> หมวดหมู่ :
+                        การ์ตูนทั่วไป
+                        <br>ราคา : 95 บาท
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image 102 -->
+            <div class="col-md-2">
+                <div class="gallery-item">
+                    <img src="Image/Yozakura/Yozakura 2.png" alt="" class="img-fluid rounded">
+                    <div class="image-details text-center">
+                        <h4>Mission: Yozakura Family ปฏิบัติการลับ บ้านโยซากุระ 2</h4>
+                        โดย : Hitsuji Gondaira<br>สำนักพิมพ์ : NED Comics<br> หมวดหมู่ :
+                        การ์ตูนทั่วไป
+                        <br>ราคา : 95 บาท
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; YarkArn</p>
+        <p>
+            <a href="/">หน้าหลัก</a> |
+            <a href="/map">แผนที่</a> |
+            <a href="/allbook">หนังสือทั้งหมด</a> |
+            <a href="/find">ค้นหา</a> |
+            <a href="/list">สิ่งที่อยากอ่าน</a> |
+            <a href="/contact">ติดต่อเรา</a> |
+            <a href="/login">เข้าสู่ระบบ</a> |
+            <a href="/register">สมัครสมาชิก</a>
+        </p>
+    </footer>
+
+</body>
+
+</html>

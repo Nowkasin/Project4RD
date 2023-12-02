@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Home</title>
 
-  <link rel="icon" href="#" type="image/x-icon">
+  <link rel="icon" href="/Image/favicon.ico" type="image/x-icon">
 
   <link rel="preconnect" href="https://fonts.gstatic.com">
 
@@ -54,7 +54,18 @@
               <a class="nav-link" aria-current="page" href="/map">แผนที่</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="/find">ค้นหา</a>
+              <% if (!loggedIn) { %>
+                <a class="nav-link" aria-current="page"
+                  onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')"
+                  href="#">หนังสือทั้งหมด</a>
+                <% } %>
+                  <% if (loggedIn) { %>
+                    <a class="nav-link" aria-current="page" href="/allbook">หนังสือทั้งหมด</a>
+                    <% } %>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="#"
+                onclick="swal('ไม่สามารถเข้าถึงได้', 'อยู่ระหว่างการพัฒนา', 'error')">ค้นหา</a>
             </li>
             <li class="nav-item">
               <!-- ดัก user เมื่อ user ยังไม่ได้ login เข้าสู่ระบบ เพื่อป้องกันไม่ให้ user เข้าถึงเนื้อหาเมื่อยังไม่ได้ login-->
@@ -106,7 +117,7 @@
   </div>
 
   <div class="row">
-    <div class="col-md-12 bg-transparent">
+    <div class="col-md-12 bg-transparent pt-5">
       <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
         <ol class="carousel-indicators">
           <li data-bs-target="#carouselExampleInterval" data-bs-slide-to="0" class="active"></li>
@@ -119,19 +130,19 @@
         <div class="carousel-inner">
           <div class="carousel-item active" data-bs-interval="5000">
             <!-- 5 sec -->
-            <img src="https://via.placeholder.com/800x300" class="d-block w-100" alt="BN1" />
+            <img src="/Image/Carousel 1.png" class="d-block w-100" alt="BN1" />
           </div>
           <div class="carousel-item" data-bs-interval="5000">
-            <img src="https://via.placeholder.com/800x300" class="d-block w-100" alt="BN2" />
+            <img src="/Image/Carousel 2.png" class="d-block w-100" alt="BN2" />
           </div>
           <div class="carousel-item" data-bs-interval="5000">
-            <img src="https://via.placeholder.com/800x300" class="d-block w-100" alt="BN2" />
+            <img src="/Image/Carousel 3.png" class="d-block w-100" alt="BN2" />
           </div>
           <div class="carousel-item" data-bs-interval="5000">
-            <img src="https://via.placeholder.com/800x300" class="d-block w-100" alt="BN2" />
+            <img src="/Image/Carousel 4.png" class="d-block w-100" alt="BN2" />
           </div>
           <div class="carousel-item" data-bs-interval="5000">
-            <img src="https://via.placeholder.com/800x300" class="d-block w-100" alt="BN2" />
+            <img src="/Image/Carousel 5.png" class="d-block w-100" alt="BN2" />
           </div>
         </div>
       </div>
@@ -196,7 +207,7 @@
                         onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
                       <% } %>
                         <% if (loggedIn) { %>
-                          <a href="/detail" class="btn btn-primary">เพิ่มเติม</a>
+                          <a href="/detail/Oshi1" class="btn btn-primary">เพิ่มเติม</a>
                           <% } %>
                   </div>
                 </div>
@@ -240,7 +251,7 @@
                         onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
                       <% } %>
                         <% if (loggedIn) { %>
-                          <a href="/detail2" class="btn btn-primary">เพิ่มเติม</a>
+                          <a href="/detail/Oshi2" class="btn btn-primary">เพิ่มเติม</a>
                           <% } %>
                   </div>
                 </div>
@@ -284,7 +295,7 @@
                         onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
                       <% } %>
                         <% if (loggedIn) { %>
-                          <a href="/detail3" class="btn btn-primary">เพิ่มเติม</a>
+                          <a href="/detail/Oshi3" class="btn btn-primary">เพิ่มเติม</a>
                           <% } %>
                   </div>
                 </div>
@@ -332,7 +343,7 @@
                         onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
                       <% } %>
                         <% if (loggedIn) { %>
-                          <a href="/detail4" class="btn btn-primary">เพิ่มเติม</a>
+                          <a href="/detail/Oshi4" class="btn btn-primary">เพิ่มเติม</a>
                           <% } %>
                   </div>
                 </div>
@@ -376,7 +387,7 @@
                         onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
                       <% } %>
                         <% if (loggedIn) { %>
-                          <a href="/detail5" class="btn btn-primary">เพิ่มเติม</a>
+                          <a href="/detail/Oshi5" class="btn btn-primary">เพิ่มเติม</a>
                           <% } %>
                   </div>
                 </div>
@@ -420,7 +431,7 @@
                         onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
                       <% } %>
                         <% if (loggedIn) { %>
-                          <a href="/detail6" class="btn btn-primary">เพิ่มเติม</a>
+                          <a href="/detail/Oshi6" class="btn btn-primary">เพิ่มเติม</a>
                           <% } %>
                   </div>
                 </div>
@@ -468,7 +479,7 @@
                         onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
                       <% } %>
                         <% if (loggedIn) { %>
-                          <a href="/detail7" class="btn btn-primary">เพิ่มเติม</a>
+                          <a href="/detail/Oshi7" class="btn btn-primary">เพิ่มเติม</a>
                           <% } %>
                   </div>
                 </div>
@@ -512,7 +523,7 @@
                         onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
                       <% } %>
                         <% if (loggedIn) { %>
-                          <a href="/detail8" class="btn btn-primary">เพิ่มเติม</a>
+                          <a href="/detail/Oshi8" class="btn btn-primary">เพิ่มเติม</a>
                           <% } %>
                   </div>
                 </div>
@@ -558,7 +569,7 @@
                         onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
                       <% } %>
                         <% if (loggedIn) { %>
-                          <a href="/detail9" class="btn btn-primary">เพิ่มเติม</a>
+                          <a href="/detail/Oshi9" class="btn btn-primary">เพิ่มเติม</a>
                           <% } %>
                   </div>
                 </div>
@@ -588,13 +599,13 @@
 
                   <!-- #10 Book Button -->
                   <button type="button" class="btn px-0 py-0" data-bs-toggle="modal" data-bs-target="#book1-10">
-                    <img src="" class="img-fluid rounded" alt="">
+                    <img src="/Image/Oshi/Oshi 10.png" class="img-fluid rounded" alt="">
                   </button>
 
                 </div>
                 <div class="col-md-7">
                   <div class="card-body">
-                    <h5 class="card-title">เกิดใหม่เป็นลูกโอชิ 1</h5>
+                    <h5 class="card-title">เกิดใหม่เป็นลูกโอชิ 10</h5>
                     <p class="card-text">โดย : AKA AKASAKA<br>สำนักพิมพ์ : Luckpim <br> หมวดหมู่ : การ์ตูนทั่วไป</p>
                     <hr>
                     <% if (!loggedIn) { %>
@@ -602,7 +613,7 @@
                         onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
                       <% } %>
                         <% if (loggedIn) { %>
-                          <a href="/detail" class="btn btn-primary">เพิ่มเติม</a>
+                          <a href="/detail/Oshi10" class="btn btn-primary">เพิ่มเติม</a>
                           <% } %>
                   </div>
                 </div>
@@ -618,7 +629,7 @@
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body text-center">
-                  <img src="" class="img-fluid" alt="">
+                  <img src="/Image/Oshi/Oshi 10.png" class="img-fluid" alt="">
                 </div>
               </div>
             </div>
@@ -632,13 +643,13 @@
 
                   <!-- #11 Book Button -->
                   <button type="button" class="btn px-0 py-0" data-bs-toggle="modal" data-bs-target="#book1-11">
-                    <img src="" class="img-fluid rounded" alt="">
+                    <img src="/Image/Oshi/Oshi 11.png" class="img-fluid rounded" alt="">
                   </button>
 
                 </div>
                 <div class="col-md-7">
                   <div class="card-body">
-                    <h5 class="card-title">เกิดใหม่เป็นลูกโอชิ 1</h5>
+                    <h5 class="card-title">เกิดใหม่เป็นลูกโอชิ 11</h5>
                     <p class="card-text">โดย : AKA AKASAKA<br>สำนักพิมพ์ : Luckpim <br> หมวดหมู่ : การ์ตูนทั่วไป</p>
                     <hr>
                     <% if (!loggedIn) { %>
@@ -646,7 +657,7 @@
                         onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
                       <% } %>
                         <% if (loggedIn) { %>
-                          <a href="/detail" class="btn btn-primary">เพิ่มเติม</a>
+                          <a href="/detail/Oshi11" class="btn btn-primary">เพิ่มเติม</a>
                           <% } %>
                   </div>
                 </div>
@@ -662,7 +673,7 @@
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body text-center">
-                  <img src="" class="img-fluid" alt="">
+                  <img src="/Image/Oshi/Oshi 11.png" class="img-fluid" alt="">
                 </div>
               </div>
             </div>
@@ -676,21 +687,21 @@
 
                   <!-- #12 Book Button -->
                   <button type="button" class="btn px-0 py-0" data-bs-toggle="modal" data-bs-target="#book1-12">
-                    <img src="" class="img-fluid rounded" alt="">
+                    <img src="/Image/Sasayaku/Sasayaku 1.png" class="img-fluid rounded" alt="">
                   </button>
 
                 </div>
                 <div class="col-md-7">
                   <div class="card-body">
-                    <h5 class="card-title">เกิดใหม่เป็นลูกโอชิ 1</h5>
-                    <p class="card-text">โดย : AKA AKASAKA<br>สำนักพิมพ์ : Luckpim <br> หมวดหมู่ : การ์ตูนทั่วไป</p>
+                    <h5 class="card-title">กระซิบรักเป็นทำนอง ร้องบอกเธอ 1</h5>
+                    <p class="card-text">โดย : เอกุ ทาเคชิมะ<br>สำนักพิมพ์ : PHOENIX <br> หมวดหมู่ : การ์ตูนวาย</p>
                     <hr>
                     <% if (!loggedIn) { %>
                       <input type="button" class="btn btn-primary" value="เพิ่มเติม"
                         onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
                       <% } %>
                         <% if (loggedIn) { %>
-                          <a href="/detail" class="btn btn-primary">เพิ่มเติม</a>
+                          <a href="/detail/Sasayaku1" class="btn btn-primary">เพิ่มเติม</a>
                           <% } %>
                   </div>
                 </div>
@@ -706,7 +717,7 @@
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body text-center">
-                  <img src="" class="img-fluid" alt="">
+                  <img src="/Image/Sasayaku/Sasayaku 1.png" class="img-fluid" alt="">
                 </div>
               </div>
             </div>
@@ -720,21 +731,21 @@
 
                   <!-- #13 Book Button -->
                   <button type="button" class="btn px-0 py-0" data-bs-toggle="modal" data-bs-target="#book1-13">
-                    <img src="" class="img-fluid rounded" alt="">
+                    <img src="/Image/Sasayaku/Sasayaku 2.png" class="img-fluid rounded" alt="">
                   </button>
 
                 </div>
                 <div class="col-md-7">
                   <div class="card-body">
-                    <h5 class="card-title">เกิดใหม่เป็นลูกโอชิ 1</h5>
-                    <p class="card-text">โดย : AKA AKASAKA<br>สำนักพิมพ์ : Luckpim <br> หมวดหมู่ : การ์ตูนทั่วไป</p>
+                    <h5 class="card-title">กระซิบรักเป็นทำนอง ร้องบอกเธอ 2</h5>
+                    <p class="card-text">โดย : เอกุ ทาเคชิมะ<br>สำนักพิมพ์ : PHOENIX <br> หมวดหมู่ : การ์ตูนวาย</p>
                     <hr>
                     <% if (!loggedIn) { %>
                       <input type="button" class="btn btn-primary" value="เพิ่มเติม"
                         onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
                       <% } %>
                         <% if (loggedIn) { %>
-                          <a href="/detail" class="btn btn-primary">เพิ่มเติม</a>
+                          <a href="/detail/Sasayaku2" class="btn btn-primary">เพิ่มเติม</a>
                           <% } %>
                   </div>
                 </div>
@@ -750,7 +761,7 @@
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body text-center">
-                  <img src="" class="img-fluid" alt="">
+                  <img src="/Image/Sasayaku/Sasayaku 2.png" class="img-fluid" alt="">
                 </div>
               </div>
             </div>
@@ -764,21 +775,21 @@
 
                   <!-- #14 Book Button -->
                   <button type="button" class="btn px-0 py-0" data-bs-toggle="modal" data-bs-target="#book1-14">
-                    <img src="" class="img-fluid rounded" alt="">
+                    <img src="/Image/Sasayaku/Sasayaku 3.png" class="img-fluid rounded" alt="">
                   </button>
 
                 </div>
                 <div class="col-md-7">
                   <div class="card-body">
-                    <h5 class="card-title">เกิดใหม่เป็นลูกโอชิ 1</h5>
-                    <p class="card-text">โดย : AKA AKASAKA<br>สำนักพิมพ์ : Luckpim <br> หมวดหมู่ : การ์ตูนทั่วไป</p>
+                    <h5 class="card-title">กระซิบรักเป็นทำนอง ร้องบอกเธอ 3</h5>
+                    <p class="card-text">โดย : เอกุ ทาเคชิมะ<br>สำนักพิมพ์ : PHOENIX <br> หมวดหมู่ : การ์ตูนวาย</p>
                     <hr>
                     <% if (!loggedIn) { %>
                       <input type="button" class="btn btn-primary" value="เพิ่มเติม"
                         onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
                       <% } %>
                         <% if (loggedIn) { %>
-                          <a href="/detail" class="btn btn-primary">เพิ่มเติม</a>
+                          <a href="/detail/Sasayaku3" class="btn btn-primary">เพิ่มเติม</a>
                           <% } %>
                   </div>
                 </div>
@@ -794,7 +805,7 @@
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body text-center">
-                  <img src="" class="img-fluid" alt="">
+                  <img src="/Image/Sasayaku/Sasayaku 3.png" class="img-fluid" alt="">
                 </div>
               </div>
             </div>
@@ -808,21 +819,21 @@
 
                   <!-- #15 Book Button -->
                   <button type="button" class="btn px-0 py-0" data-bs-toggle="modal" data-bs-target="#book1-15">
-                    <img src="" class="img-fluid rounded" alt="">
+                    <img src="/Image/Sasayaku/Sasayaku 4.png" class="img-fluid rounded" alt="">
                   </button>
 
                 </div>
                 <div class="col-md-7">
                   <div class="card-body">
-                    <h5 class="card-title">เกิดใหม่เป็นลูกโอชิ 1</h5>
-                    <p class="card-text">โดย : AKA AKASAKA<br>สำนักพิมพ์ : Luckpim <br> หมวดหมู่ : การ์ตูนทั่วไป</p>
+                    <h5 class="card-title">กระซิบรักเป็นทำนอง ร้องบอกเธอ 4</h5>
+                    <p class="card-text">โดย : เอกุ ทาเคชิมะ<br>สำนักพิมพ์ : PHOENIX <br> หมวดหมู่ : การ์ตูนวาย</p>
                     <hr>
                     <% if (!loggedIn) { %>
                       <input type="button" class="btn btn-primary" value="เพิ่มเติม"
                         onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
                       <% } %>
                         <% if (loggedIn) { %>
-                          <a href="/detail" class="btn btn-primary">เพิ่มเติม</a>
+                          <a href="/detail/Sasayaku4" class="btn btn-primary">เพิ่มเติม</a>
                           <% } %>
                   </div>
                 </div>
@@ -838,7 +849,7 @@
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body text-center">
-                  <img src="" class="img-fluid" alt="">
+                  <img src="/Image/Sasayaku/Sasayaku 4.png" class="img-fluid" alt="">
                 </div>
               </div>
             </div>
@@ -852,21 +863,21 @@
 
                   <!-- #16 Book Button -->
                   <button type="button" class="btn px-0 py-0" data-bs-toggle="modal" data-bs-target="#book1-16">
-                    <img src="" class="img-fluid rounded" alt="">
+                    <img src="/Image/Sasayaku/Sasayaku 5.png" class="img-fluid rounded" alt="">
                   </button>
 
                 </div>
                 <div class="col-md-7">
                   <div class="card-body">
-                    <h5 class="card-title">เกิดใหม่เป็นลูกโอชิ 1</h5>
-                    <p class="card-text">โดย : AKA AKASAKA<br>สำนักพิมพ์ : Luckpim <br> หมวดหมู่ : การ์ตูนทั่วไป</p>
+                    <h5 class="card-title">กระซิบรักเป็นทำนอง ร้องบอกเธอ 5</h5>
+                    <p class="card-text">โดย : เอกุ ทาเคชิมะ<br>สำนักพิมพ์ : PHOENIX <br> หมวดหมู่ : การ์ตูนวาย</p>
                     <hr>
                     <% if (!loggedIn) { %>
                       <input type="button" class="btn btn-primary" value="เพิ่มเติม"
                         onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
                       <% } %>
                         <% if (loggedIn) { %>
-                          <a href="/detail" class="btn btn-primary">เพิ่มเติม</a>
+                          <a href="/detail/Sasayaku5" class="btn btn-primary">เพิ่มเติม</a>
                           <% } %>
                   </div>
                 </div>
@@ -882,7 +893,7 @@
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body text-center">
-                  <img src="" class="img-fluid" alt="">
+                  <img src="/Image/Sasayaku/Sasayaku 5.png" class="img-fluid" alt="">
                 </div>
               </div>
             </div>
@@ -896,21 +907,21 @@
 
                   <!-- #17 Book Button -->
                   <button type="button" class="btn px-0 py-0" data-bs-toggle="modal" data-bs-target="#book1-17">
-                    <img src="" class="img-fluid rounded" alt="">
+                    <img src="/Image/Sasayaku/Sasayaku 6.png" class="img-fluid rounded" alt="">
                   </button>
 
                 </div>
                 <div class="col-md-7">
                   <div class="card-body">
-                    <h5 class="card-title">เกิดใหม่เป็นลูกโอชิ 1</h5>
-                    <p class="card-text">โดย : AKA AKASAKA<br>สำนักพิมพ์ : Luckpim <br> หมวดหมู่ : การ์ตูนทั่วไป</p>
+                    <h5 class="card-title">กระซิบรักเป็นทำนอง ร้องบอกเธอ 6</h5>
+                    <p class="card-text">โดย : เอกุ ทาเคชิมะ<br>สำนักพิมพ์ : PHOENIX <br> หมวดหมู่ : การ์ตูนวาย</p>
                     <hr>
                     <% if (!loggedIn) { %>
                       <input type="button" class="btn btn-primary" value="เพิ่มเติม"
                         onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
                       <% } %>
                         <% if (loggedIn) { %>
-                          <a href="/detail" class="btn btn-primary">เพิ่มเติม</a>
+                          <a href="/detail/Sasayaku6" class="btn btn-primary">เพิ่มเติม</a>
                           <% } %>
                   </div>
                 </div>
@@ -926,7 +937,7 @@
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body text-center">
-                  <img src="" class="img-fluid" alt="">
+                  <img src="/Image/Sasayaku/Sasayaku 6.png" class="img-fluid" alt="">
                 </div>
               </div>
             </div>
@@ -940,21 +951,21 @@
 
                   <!-- #18 Book Button -->
                   <button type="button" class="btn px-0 py-0" data-bs-toggle="modal" data-bs-target="#book1-18">
-                    <img src="" class="img-fluid rounded" alt="">
+                    <img src="/Image/Sasayaku/Sasayaku 7.png" class="img-fluid rounded" alt="">
                   </button>
 
                 </div>
                 <div class="col-md-7">
                   <div class="card-body">
-                    <h5 class="card-title">เกิดใหม่เป็นลูกโอชิ 1</h5>
-                    <p class="card-text">โดย : AKA AKASAKA<br>สำนักพิมพ์ : Luckpim <br> หมวดหมู่ : การ์ตูนทั่วไป</p>
+                    <h5 class="card-title">กระซิบรักเป็นทำนอง ร้องบอกเธอ 7</h5>
+                    <p class="card-text">โดย : เอกุ ทาเคชิมะ<br>สำนักพิมพ์ : PHOENIX <br> หมวดหมู่ : การ์ตูนวาย</p>
                     <hr>
                     <% if (!loggedIn) { %>
                       <input type="button" class="btn btn-primary" value="เพิ่มเติม"
                         onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
                       <% } %>
                         <% if (loggedIn) { %>
-                          <a href="/detail" class="btn btn-primary">เพิ่มเติม</a>
+                          <a href="/detail/Sasayaku7" class="btn btn-primary">เพิ่มเติม</a>
                           <% } %>
                   </div>
                 </div>
@@ -970,7 +981,7 @@
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body text-center">
-                  <img src="" class="img-fluid" alt="">
+                  <img src="/Image/Sasayaku/Sasayaku 7.png" class="img-fluid" alt="">
                 </div>
               </div>
             </div>
@@ -992,21 +1003,22 @@
 
                   <!-- #1 Book Button -->
                   <button type="button" class="btn px-0 py-0" data-bs-toggle="modal" data-bs-target="#book2-1">
-                    <img src="/Image/Oshi/Oshi 10.png" class="img-fluid rounded" alt="">
+                    <img src="/Image/Skip/Skip 1.png" class="img-fluid rounded" alt="">
                   </button>
 
                 </div>
                 <div class="col-md-7">
                   <div class="card-body">
-                    <h5 class="card-title">เกิดใหม่เป็นลูกโอชิ 10</h5>
-                    <p class="card-text">โดย : AKA AKASAKA<br>สำนักพิมพ์ : Luckpim <br> หมวดหมู่ : การ์ตูนทั่วไป</p>
+                    <h5 class="card-title">จังหวะวัยรุ่นว้าวุ่นหัวใจ 1</h5>
+                    <p class="card-text">โดย : Misaki Takamatsu<br>สำนักพิมพ์ : DEXPRESS <br> หมวดหมู่ : การ์ตูนทั่วไป
+                    </p>
                     <hr>
                     <% if (!loggedIn) { %>
                       <input type="button" class="btn btn-primary" value="เพิ่มเติม"
                         onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
                       <% } %>
                         <% if (loggedIn) { %>
-                          <a href="/detail10" class="btn btn-primary">เพิ่มเติม</a>
+                          <a href="/detail/Skip1" class="btn btn-primary">เพิ่มเติม</a>
                           <% } %>
                   </div>
                 </div>
@@ -1022,7 +1034,7 @@
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body text-center">
-                  <img src="/Image/Oshi/Oshi 10.png" class="img-fluid" alt="">
+                  <img src="/Image/Skip/Skip 1.png" class="img-fluid" alt="">
                 </div>
               </div>
             </div>
@@ -1036,21 +1048,22 @@
 
                   <!-- #2 Book Button -->
                   <button type="button" class="btn px-0 py-0" data-bs-toggle="modal" data-bs-target="#book2-2">
-                    <img src="/Image/Oshi/Oshi 11.png" class="img-fluid rounded" alt="">
+                    <img src="/Image/Skip/Skip 2.png" class="img-fluid rounded" alt="">
                   </button>
 
                 </div>
                 <div class="col-md-7">
                   <div class="card-body">
-                    <h5 class="card-title">เกิดใหม่เป็นลูกโอชิ 11</h5>
-                    <p class="card-text">โดย : AKA AKASAKA<br>สำนักพิมพ์ : Luckpim <br> หมวดหมู่ : การ์ตูนทั่วไป</p>
+                    <h5 class="card-title">จังหวะวัยรุ่นว้าวุ่นหัวใจ 2</h5>
+                    <p class="card-text">โดย : Misaki Takamatsu<br>สำนักพิมพ์ : DEXPRESS <br> หมวดหมู่ : การ์ตูนทั่วไป
+                    </p>
                     <hr>
                     <% if (!loggedIn) { %>
                       <input type="button" class="btn btn-primary" value="เพิ่มเติม"
                         onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
                       <% } %>
                         <% if (loggedIn) { %>
-                          <a href="/detail11" class="btn btn-primary">เพิ่มเติม</a>
+                          <a href="/detail/Skip2" class="btn btn-primary">เพิ่มเติม</a>
                           <% } %>
                   </div>
                 </div>
@@ -1066,7 +1079,7 @@
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body text-center">
-                  <img src="/Image/Oshi/Oshi 11.png" class="img-fluid" alt="">
+                  <img src="/Image/Skip/Skip 2.png" class="img-fluid" alt="">
                 </div>
               </div>
             </div>
@@ -1094,7 +1107,7 @@
                         onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
                       <% } %>
                         <% if (loggedIn) { %>
-                          <a href="/detail12" class="btn btn-primary">เพิ่มเติม</a>
+                          <a href="/detail/Kusuriya1" class="btn btn-primary">เพิ่มเติม</a>
                           <% } %>
                   </div>
                 </div>
@@ -1142,7 +1155,7 @@
                         onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
                       <% } %>
                         <% if (loggedIn) { %>
-                          <a href="/detail13" class="btn btn-primary">เพิ่มเติม</a>
+                          <a href="/detail/Kusuriya2" class="btn btn-primary">เพิ่มเติม</a>
                           <% } %>
                   </div>
                 </div>
@@ -1186,7 +1199,7 @@
                         onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
                       <% } %>
                         <% if (loggedIn) { %>
-                          <a href="/detail14" class="btn btn-primary">เพิ่มเติม</a>
+                          <a href="/detail/Kusuriya3" class="btn btn-primary">เพิ่มเติม</a>
                           <% } %>
                   </div>
                 </div>
@@ -1230,7 +1243,7 @@
                         onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
                       <% } %>
                         <% if (loggedIn) { %>
-                          <a href="/detail15" class="btn btn-primary">เพิ่มเติม</a>
+                          <a href="/detail/Kusuriya4" class="btn btn-primary">เพิ่มเติม</a>
                           <% } %>
                   </div>
                 </div>
@@ -1278,7 +1291,7 @@
                         onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
                       <% } %>
                         <% if (loggedIn) { %>
-                          <a href="/detail16" class="btn btn-primary">เพิ่มเติม</a>
+                          <a href="/detail/Kusuriya5" class="btn btn-primary">เพิ่มเติม</a>
                           <% } %>
                   </div>
                 </div>
@@ -1322,7 +1335,7 @@
                         onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
                       <% } %>
                         <% if (loggedIn) { %>
-                          <a href="/detail17" class="btn btn-primary">เพิ่มเติม</a>
+                          <a href="/detail/Kusuriya6" class="btn btn-primary">เพิ่มเติม</a>
                           <% } %>
                   </div>
                 </div>
@@ -1366,7 +1379,7 @@
                         onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
                       <% } %>
                         <% if (loggedIn) { %>
-                          <a href="/detail18" class="btn btn-primary">เพิ่มเติม</a>
+                          <a href="/detail/Kusuriya7" class="btn btn-primary">เพิ่มเติม</a>
                           <% } %>
                   </div>
                 </div>
@@ -1398,21 +1411,21 @@
 
                   <!-- #10 Book Button -->
                   <button type="button" class="btn px-0 py-0" data-bs-toggle="modal" data-bs-target="#book2-10">
-                    <img src="" class="img-fluid rounded" alt="">
+                    <img src="/Image/Kusuriya/Kusuriya 8.png" class="img-fluid rounded" alt="">
                   </button>
 
                 </div>
                 <div class="col-md-7">
                   <div class="card-body">
-                    <h5 class="card-title">เกิดใหม่เป็นลูกโอชิ 10</h5>
-                    <p class="card-text">โดย : AKA AKASAKA<br>สำนักพิมพ์ : Luckpim <br> หมวดหมู่ : การ์ตูนทั่วไป</p>
+                    <h5 class="card-title">ตำรับปริศนา หมอยาแห่งวังหลัง 8</h5>
+                    <p class="card-text">โดย : นัตซึ ฮิวงะ<br>สำนักพิมพ์ : ANIMAG <br> หมวดหมู่ : การ์ตูนทั่วไป</p>
                     <hr>
                     <% if (!loggedIn) { %>
                       <input type="button" class="btn btn-primary" value="เพิ่มเติม"
                         onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
                       <% } %>
                         <% if (loggedIn) { %>
-                          <a href="/detail10" class="btn btn-primary">เพิ่มเติม</a>
+                          <a href="/detail/Kusuriya8" class="btn btn-primary">เพิ่มเติม</a>
                           <% } %>
                   </div>
                 </div>
@@ -1428,7 +1441,7 @@
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body text-center">
-                  <img src="" class="img-fluid" alt="">
+                  <img src="/Image/Kusuriya/Kusuriya 8.png" class="img-fluid" alt="">
                 </div>
               </div>
             </div>
@@ -1442,21 +1455,21 @@
 
                   <!-- #11 Book Button -->
                   <button type="button" class="btn px-0 py-0" data-bs-toggle="modal" data-bs-target="#book2-11">
-                    <img src="" class="img-fluid rounded" alt="">
+                    <img src="/Image/Chitose/Chitose 1.png" class="img-fluid rounded" alt="">
                   </button>
 
                 </div>
                 <div class="col-md-7">
                   <div class="card-body">
-                    <h5 class="card-title">เกิดใหม่เป็นลูกโอชิ 10</h5>
-                    <p class="card-text">โดย : AKA AKASAKA<br>สำนักพิมพ์ : Luckpim <br> หมวดหมู่ : การ์ตูนทั่วไป</p>
+                    <h5 class="card-title">ชีวิตรสโซดาของจิโตะเสะคุง 1 (LN)</h5>
+                    <p class="card-text">โดย : ฮิโรมุ<br>สำนักพิมพ์ : PHOENIX <br> หมวดหมู่ : Light Novel</p>
                     <hr>
                     <% if (!loggedIn) { %>
                       <input type="button" class="btn btn-primary" value="เพิ่มเติม"
                         onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
                       <% } %>
                         <% if (loggedIn) { %>
-                          <a href="/detail10" class="btn btn-primary">เพิ่มเติม</a>
+                          <a href="/detail/Chitose1" class="btn btn-primary">เพิ่มเติม</a>
                           <% } %>
                   </div>
                 </div>
@@ -1472,7 +1485,7 @@
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body text-center">
-                  <img src="" class="img-fluid" alt="">
+                  <img src="/Image/Chitose/Chitose 1.png" class="img-fluid rounded" alt="">
                 </div>
               </div>
             </div>
@@ -1486,21 +1499,21 @@
 
                   <!-- #12 Book Button -->
                   <button type="button" class="btn px-0 py-0" data-bs-toggle="modal" data-bs-target="#book2-12">
-                    <img src="" class="img-fluid rounded" alt="">
+                    <img src="/Image/Chitose/Chitose 2.png" class="img-fluid rounded" alt="">
                   </button>
 
                 </div>
                 <div class="col-md-7">
                   <div class="card-body">
-                    <h5 class="card-title">เกิดใหม่เป็นลูกโอชิ 10</h5>
-                    <p class="card-text">โดย : AKA AKASAKA<br>สำนักพิมพ์ : Luckpim <br> หมวดหมู่ : การ์ตูนทั่วไป</p>
+                    <h5 class="card-title">ชีวิตรสโซดาของจิโตะเสะคุง 2 (LN)</h5>
+                    <p class="card-text">โดย : ฮิโรมุ<br>สำนักพิมพ์ : PHOENIX <br> หมวดหมู่ : Light Novel</p>
                     <hr>
                     <% if (!loggedIn) { %>
                       <input type="button" class="btn btn-primary" value="เพิ่มเติม"
                         onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
                       <% } %>
                         <% if (loggedIn) { %>
-                          <a href="/detail10" class="btn btn-primary">เพิ่มเติม</a>
+                          <a href="/detail/Chitose2" class="btn btn-primary">เพิ่มเติม</a>
                           <% } %>
                   </div>
                 </div>
@@ -1516,7 +1529,7 @@
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body text-center">
-                  <img src="" class="img-fluid" alt="">
+                  <img src="/Image/Chitose/Chitose 2.png" class="img-fluid" alt="">
                 </div>
               </div>
             </div>
@@ -1530,21 +1543,21 @@
 
                   <!-- #13 Book Button -->
                   <button type="button" class="btn px-0 py-0" data-bs-toggle="modal" data-bs-target="#book2-13">
-                    <img src="" class="img-fluid rounded" alt="">
+                    <img src="/Image/Chitose/Chitose 3.png" class="img-fluid rounded" alt="">
                   </button>
 
                 </div>
                 <div class="col-md-7">
                   <div class="card-body">
-                    <h5 class="card-title">เกิดใหม่เป็นลูกโอชิ 10</h5>
-                    <p class="card-text">โดย : AKA AKASAKA<br>สำนักพิมพ์ : Luckpim <br> หมวดหมู่ : การ์ตูนทั่วไป</p>
+                    <h5 class="card-title">ชีวิตรสโซดาของจิโตะเสะคุง 3 (LN)</h5>
+                    <p class="card-text">โดย : ฮิโรมุ<br>สำนักพิมพ์ : PHOENIX <br> หมวดหมู่ : Light Novel</p>
                     <hr>
                     <% if (!loggedIn) { %>
                       <input type="button" class="btn btn-primary" value="เพิ่มเติม"
                         onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
                       <% } %>
                         <% if (loggedIn) { %>
-                          <a href="/detail10" class="btn btn-primary">เพิ่มเติม</a>
+                          <a href="/detail/Chitose3" class="btn btn-primary">เพิ่มเติม</a>
                           <% } %>
                   </div>
                 </div>
@@ -1560,7 +1573,7 @@
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body text-center">
-                  <img src="" class="img-fluid" alt="">
+                  <img src="/Image/Chitose/Chitose 3.png" class="img-fluid" alt="">
                 </div>
               </div>
             </div>
@@ -1574,21 +1587,22 @@
 
                   <!-- #14 Book Button -->
                   <button type="button" class="btn px-0 py-0" data-bs-toggle="modal" data-bs-target="#book2-14">
-                    <img src="" class="img-fluid rounded" alt="">
+                    <img src="/Image/Youchien/Youchien 1.png" class="img-fluid rounded" alt="">
                   </button>
 
                 </div>
                 <div class="col-md-7">
                   <div class="card-body">
-                    <h5 class="card-title">เกิดใหม่เป็นลูกโอชิ 10</h5>
-                    <p class="card-text">โดย : AKA AKASAKA<br>สำนักพิมพ์ : Luckpim <br> หมวดหมู่ : การ์ตูนทั่วไป</p>
+                    <h5 class="card-title">อนุบาล WARS 1</h5>
+                    <p class="card-text">โดย : CHIBA YUU<br>สำนักพิมพ์ : Siam InterComics <br> หมวดหมู่ : การ์ตูนทั่วไป
+                    </p>
                     <hr>
                     <% if (!loggedIn) { %>
                       <input type="button" class="btn btn-primary" value="เพิ่มเติม"
                         onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
                       <% } %>
                         <% if (loggedIn) { %>
-                          <a href="/detail10" class="btn btn-primary">เพิ่มเติม</a>
+                          <a href="/detail/Youchien1" class="btn btn-primary">เพิ่มเติม</a>
                           <% } %>
                   </div>
                 </div>
@@ -1604,7 +1618,7 @@
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body text-center">
-                  <img src="" class="img-fluid" alt="">
+                  <img src="/Image/Youchien/Youchien 1.png" class="img-fluid" alt="">
                 </div>
               </div>
             </div>
@@ -1618,21 +1632,22 @@
 
                   <!-- #15 Book Button -->
                   <button type="button" class="btn px-0 py-0" data-bs-toggle="modal" data-bs-target="#book2-15">
-                    <img src="" class="img-fluid rounded" alt="">
+                    <img src="/Image/Youchien/Youchien 2.png" class="img-fluid rounded" alt="">
                   </button>
 
                 </div>
                 <div class="col-md-7">
                   <div class="card-body">
-                    <h5 class="card-title">เกิดใหม่เป็นลูกโอชิ 10</h5>
-                    <p class="card-text">โดย : AKA AKASAKA<br>สำนักพิมพ์ : Luckpim <br> หมวดหมู่ : การ์ตูนทั่วไป</p>
+                    <h5 class="card-title">อนุบาล WARS 2</h5>
+                    <p class="card-text">โดย : CHIBA YUU<br>สำนักพิมพ์ : Siam InterComics <br> หมวดหมู่ : การ์ตูนทั่วไป
+                    </p>
                     <hr>
                     <% if (!loggedIn) { %>
                       <input type="button" class="btn btn-primary" value="เพิ่มเติม"
                         onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
                       <% } %>
                         <% if (loggedIn) { %>
-                          <a href="/detail10" class="btn btn-primary">เพิ่มเติม</a>
+                          <a href="/detail/Youchien2" class="btn btn-primary">เพิ่มเติม</a>
                           <% } %>
                   </div>
                 </div>
@@ -1648,7 +1663,7 @@
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body text-center">
-                  <img src="" class="img-fluid" alt="">
+                  <img src="/Image/Youchien/Youchien 2.png" class="img-fluid" alt="">
                 </div>
               </div>
             </div>
@@ -1662,21 +1677,22 @@
 
                   <!-- #16 Book Button -->
                   <button type="button" class="btn px-0 py-0" data-bs-toggle="modal" data-bs-target="#book2-16">
-                    <img src="" class="img-fluid rounded" alt="">
+                    <img src="/Image/Youchien/Youchien 3.png" class="img-fluid rounded" alt="">
                   </button>
 
                 </div>
                 <div class="col-md-7">
                   <div class="card-body">
-                    <h5 class="card-title">เกิดใหม่เป็นลูกโอชิ 10</h5>
-                    <p class="card-text">โดย : AKA AKASAKA<br>สำนักพิมพ์ : Luckpim <br> หมวดหมู่ : การ์ตูนทั่วไป</p>
+                    <h5 class="card-title">อนุบาล WARS 3</h5>
+                    <p class="card-text">โดย : CHIBA YUU<br>สำนักพิมพ์ : Siam InterComics <br> หมวดหมู่ : การ์ตูนทั่วไป
+                    </p>
                     <hr>
                     <% if (!loggedIn) { %>
                       <input type="button" class="btn btn-primary" value="เพิ่มเติม"
                         onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
                       <% } %>
                         <% if (loggedIn) { %>
-                          <a href="/detail10" class="btn btn-primary">เพิ่มเติม</a>
+                          <a href="/detail/Youchien3" class="btn btn-primary">เพิ่มเติม</a>
                           <% } %>
                   </div>
                 </div>
@@ -1692,7 +1708,7 @@
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body text-center">
-                  <img src="" class="img-fluid" alt="">
+                  <img src="/Image/Youchien/Youchien 3.png" class="img-fluid" alt="">
                 </div>
               </div>
             </div>
@@ -1706,21 +1722,22 @@
 
                   <!-- #17 Book Button -->
                   <button type="button" class="btn px-0 py-0" data-bs-toggle="modal" data-bs-target="#book2-17">
-                    <img src="" class="img-fluid rounded" alt="">
+                    <img src="/Image/Satou-san/Satou 1.png" class="img-fluid rounded" alt="">
                   </button>
 
                 </div>
                 <div class="col-md-7">
                   <div class="card-body">
-                    <h5 class="card-title">เกิดใหม่เป็นลูกโอชิ 10</h5>
-                    <p class="card-text">โดย : AKA AKASAKA<br>สำนักพิมพ์ : Luckpim <br> หมวดหมู่ : การ์ตูนทั่วไป</p>
+                    <h5 class="card-title">คุณซาโต้ยอดนักเมิน เธอหวานใส่ผมแค่คนเดียว 1</h5>
+                    <p class="card-text">โดย : TETSUYAMA KAYA<br>สำนักพิมพ์ : Siam InterComics <br> หมวดหมู่ :
+                      การ์ตูนทั่วไป</p>
                     <hr>
                     <% if (!loggedIn) { %>
                       <input type="button" class="btn btn-primary" value="เพิ่มเติม"
                         onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
                       <% } %>
                         <% if (loggedIn) { %>
-                          <a href="/detail10" class="btn btn-primary">เพิ่มเติม</a>
+                          <a href="/detail/Satou-san1" class="btn btn-primary">เพิ่มเติม</a>
                           <% } %>
                   </div>
                 </div>
@@ -1736,7 +1753,7 @@
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body text-center">
-                  <img src="" class="img-fluid" alt="">
+                  <img src="/Image/Satou-san/Satou 1.png" class="img-fluid" alt="">
                 </div>
               </div>
             </div>
@@ -1750,21 +1767,22 @@
 
                   <!-- #18 Book Button -->
                   <button type="button" class="btn px-0 py-0" data-bs-toggle="modal" data-bs-target="#book2-18">
-                    <img src="" class="img-fluid rounded" alt="">
+                    <img src="/Image/Satou-san/Satou 2.png" class="img-fluid rounded" alt="">
                   </button>
 
                 </div>
                 <div class="col-md-7">
                   <div class="card-body">
-                    <h5 class="card-title">เกิดใหม่เป็นลูกโอชิ 10</h5>
-                    <p class="card-text">โดย : AKA AKASAKA<br>สำนักพิมพ์ : Luckpim <br> หมวดหมู่ : การ์ตูนทั่วไป</p>
+                    <h5 class="card-title">คุณซาโต้ยอดนักเมิน เธอหวานใส่ผมแค่คนเดียว 2</h5>
+                    <p class="card-text">โดย : TETSUYAMA KAYA<br>สำนักพิมพ์ : Siam InterComics <br> หมวดหมู่ :
+                      การ์ตูนทั่วไป</p>
                     <hr>
                     <% if (!loggedIn) { %>
                       <input type="button" class="btn btn-primary" value="เพิ่มเติม"
                         onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
                       <% } %>
                         <% if (loggedIn) { %>
-                          <a href="/detail10" class="btn btn-primary">เพิ่มเติม</a>
+                          <a href="/detail/Satou-san2" class="btn btn-primary">เพิ่มเติม</a>
                           <% } %>
                   </div>
                 </div>
@@ -1780,7 +1798,7 @@
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body text-center">
-                  <img src="" class="img-fluid" alt="">
+                  <img src="/Image/Satou-san/Satou 2.png" class="img-fluid" alt="">
                 </div>
               </div>
             </div>
@@ -1802,21 +1820,22 @@
 
                   <!-- #1 Book Button -->
                   <button type="button" class="btn px-0 py-0" data-bs-toggle="modal" data-bs-target="#book3-1">
-                    <img src="/Image/Kusuriya/Kusuriya 8.png" class="img-fluid rounded" alt="">
+                    <img src="/Image/Satou-san/Satou 3.png" class="img-fluid rounded" alt="">
                   </button>
 
                 </div>
                 <div class="col-md-7">
                   <div class="card-body">
-                    <h5 class="card-title">ตำรับปริศนา หมอยาแห่งวังหลัง 8</h5>
-                    <p class="card-text">โดย : นัตซึ ฮิวงะ<br>สำนักพิมพ์ : ANIMAG <br> หมวดหมู่ : การ์ตูนทั่วไป</p>
+                    <h5 class="card-title">คุณซาโต้ยอดนักเมิน เธอหวานใส่ผมแค่คนเดียว 3</h5>
+                    <p class="card-text">โดย : TETSUYAMA KAYA<br>สำนักพิมพ์ : Siam InterComics <br> หมวดหมู่ :
+                      การ์ตูนทั่วไป</p>
                     <hr>
                     <% if (!loggedIn) { %>
                       <input type="button" class="btn btn-primary" value="เพิ่มเติม"
                         onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
                       <% } %>
                         <% if (loggedIn) { %>
-                          <a href="/detail19" class="btn btn-primary">เพิ่มเติม</a>
+                          <a href="/detail/Satou-san3" class="btn btn-primary">เพิ่มเติม</a>
                           <% } %>
                   </div>
                 </div>
@@ -1832,7 +1851,7 @@
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body text-center">
-                  <img src="/Image/Kusuriya/Kusuriya 8.png" class="img-fluid" alt="">
+                  <img src="/Image/Satou-san/Satou 3.png" class="img-fluid" alt="">
                 </div>
               </div>
             </div>
@@ -1861,7 +1880,7 @@
                         onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
                       <% } %>
                         <% if (loggedIn) { %>
-                          <a href="/detail20" class="btn btn-primary">เพิ่มเติม</a>
+                          <a href="/detail/shangri1" class="btn btn-primary">เพิ่มเติม</a>
                           <% } %>
                   </div>
                 </div>
@@ -1906,7 +1925,7 @@
                         onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
                       <% } %>
                         <% if (loggedIn) { %>
-                          <a href="/detail21" class="btn btn-primary">เพิ่มเติม</a>
+                          <a href="/detail/shangri2" class="btn btn-primary">เพิ่มเติม</a>
                           <% } %>
                   </div>
                 </div>
@@ -1955,7 +1974,7 @@
                         onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
                       <% } %>
                         <% if (loggedIn) { %>
-                          <a href="/detail22" class="btn btn-primary">เพิ่มเติม</a>
+                          <a href="/detail/shangri3" class="btn btn-primary">เพิ่มเติม</a>
                           <% } %>
                   </div>
                 </div>
@@ -2000,7 +2019,7 @@
                         onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
                       <% } %>
                         <% if (loggedIn) { %>
-                          <a href="/detail23" class="btn btn-primary">เพิ่มเติม</a>
+                          <a href="/detail/shangri4" class="btn btn-primary">เพิ่มเติม</a>
                           <% } %>
                   </div>
                 </div>
@@ -2045,7 +2064,7 @@
                         onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
                       <% } %>
                         <% if (loggedIn) { %>
-                          <a href="/detail24" class="btn btn-primary">เพิ่มเติม</a>
+                          <a href="/detail/shangri5" class="btn btn-primary">เพิ่มเติม</a>
                           <% } %>
                   </div>
                 </div>
@@ -2094,7 +2113,7 @@
                         onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
                       <% } %>
                         <% if (loggedIn) { %>
-                          <a href="/detail25" class="btn btn-primary">เพิ่มเติม</a>
+                          <a href="/detail/shangri6" class="btn btn-primary">เพิ่มเติม</a>
                           <% } %>
                   </div>
                 </div>
@@ -2139,7 +2158,7 @@
                         onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
                       <% } %>
                         <% if (loggedIn) { %>
-                          <a href="/detail26" class="btn btn-primary">เพิ่มเติม</a>
+                          <a href="/detail/shangri7" class="btn btn-primary">เพิ่มเติม</a>
                           <% } %>
                   </div>
                 </div>
@@ -2186,7 +2205,7 @@
                         onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
                       <% } %>
                         <% if (loggedIn) { %>
-                          <a href="/detail27" class="btn btn-primary">เพิ่มเติม</a>
+                          <a href="/detail/shangri8" class="btn btn-primary">เพิ่มเติม</a>
                           <% } %>
                   </div>
                 </div>
@@ -2216,21 +2235,22 @@
 
                   <!-- #10 Book Button -->
                   <button type="button" class="btn px-0 py-0" data-bs-toggle="modal" data-bs-target="#book3-10">
-                    <img src="" class="img-fluid rounded" alt="">
+                    <img src="/Image/Shangri-la/Shangri 9.png" class="img-fluid rounded" alt="">
                   </button>
 
                 </div>
                 <div class="col-md-7">
                   <div class="card-body">
-                    <h5 class="card-title">ตำรับปริศนา หมอยาแห่งวังหลัง 8</h5>
-                    <p class="card-text">โดย : นัตซึ ฮิวงะ<br>สำนักพิมพ์ : ANIMAG <br> หมวดหมู่ : การ์ตูนทั่วไป</p>
+                    <h5 class="card-title">SHANGRI-LA FRONTIER เล่ม 9</h5>
+                    <p class="card-text">โดย : Katarina / Ryousuke Fuji<br>สำนักพิมพ์ : Luckpim <br> หมวดหมู่ :
+                      การ์ตูนทั่วไป</p>
                     <hr>
                     <% if (!loggedIn) { %>
                       <input type="button" class="btn btn-primary" value="เพิ่มเติม"
                         onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
                       <% } %>
                         <% if (loggedIn) { %>
-                          <a href="/detail19" class="btn btn-primary">เพิ่มเติม</a>
+                          <a href="/detail/shangri9" class="btn btn-primary">เพิ่มเติม</a>
                           <% } %>
                   </div>
                 </div>
@@ -2246,7 +2266,7 @@
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body text-center">
-                  <img src="" class="img-fluid" alt="">
+                  <img src="public/Image/Shangri-la/Shangri 9.png" class="img-fluid" alt="">
                 </div>
               </div>
             </div>
@@ -2260,21 +2280,21 @@
 
                   <!-- #11 Book Button -->
                   <button type="button" class="btn px-0 py-0" data-bs-toggle="modal" data-bs-target="#book3-11">
-                    <img src="" class="img-fluid rounded" alt="">
+                    <img src="/Image/Kage/Kage 1.png" class="img-fluid rounded" alt="">
                   </button>
 
                 </div>
                 <div class="col-md-7">
                   <div class="card-body">
-                    <h5 class="card-title">ตำรับปริศนา หมอยาแห่งวังหลัง 8</h5>
-                    <p class="card-text">โดย : นัตซึ ฮิวงะ<br>สำนักพิมพ์ : ANIMAG <br> หมวดหมู่ : การ์ตูนทั่วไป</p>
+                    <h5 class="card-title">ชีวิตไม่ต้องเด่น ขอแค่เป็นเทพในเงา เล่ม 1 (LN)</h5>
+                    <p class="card-text">โดย : ไดสุเกะ ไอซาวะ<br>สำนักพิมพ์ : PHOENIX <br> หมวดหมู่ : Light Novel</p>
                     <hr>
                     <% if (!loggedIn) { %>
                       <input type="button" class="btn btn-primary" value="เพิ่มเติม"
                         onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
                       <% } %>
                         <% if (loggedIn) { %>
-                          <a href="/detail19" class="btn btn-primary">เพิ่มเติม</a>
+                          <a href="/detail/Kang1" class="btn btn-primary">เพิ่มเติม</a>
                           <% } %>
                   </div>
                 </div>
@@ -2290,7 +2310,7 @@
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body text-center">
-                  <img src="" class="img-fluid" alt="">
+                  <img src="/Image/Kage/Kage 1.png" class="img-fluid" alt="">
                 </div>
               </div>
             </div>
@@ -2304,21 +2324,21 @@
 
                   <!-- #12 Book Button -->
                   <button type="button" class="btn px-0 py-0" data-bs-toggle="modal" data-bs-target="#book3-12">
-                    <img src="" class="img-fluid rounded" alt="">
+                    <img src="/Image/Kage/Kage 2.png" class="img-fluid rounded" alt="">
                   </button>
 
                 </div>
                 <div class="col-md-7">
                   <div class="card-body">
-                    <h5 class="card-title">ตำรับปริศนา หมอยาแห่งวังหลัง 8</h5>
-                    <p class="card-text">โดย : นัตซึ ฮิวงะ<br>สำนักพิมพ์ : ANIMAG <br> หมวดหมู่ : การ์ตูนทั่วไป</p>
+                    <h5 class="card-title">ชีวิตไม่ต้องเด่น ขอแค่เป็นเทพในเงา เล่ม 2 (LN)</h5>
+                    <p class="card-text">โดย : ไดสุเกะ ไอซาวะ<br>สำนักพิมพ์ : PHOENIX <br> หมวดหมู่ : Light Novel</p>
                     <hr>
                     <% if (!loggedIn) { %>
                       <input type="button" class="btn btn-primary" value="เพิ่มเติม"
                         onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
                       <% } %>
                         <% if (loggedIn) { %>
-                          <a href="/detail19" class="btn btn-primary">เพิ่มเติม</a>
+                          <a href="/detail/Kang2" class="btn btn-primary">เพิ่มเติม</a>
                           <% } %>
                   </div>
                 </div>
@@ -2334,7 +2354,7 @@
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body text-center">
-                  <img src="" class="img-fluid" alt="">
+                  <img src="/Image/Kage/Kage 2.png" class="img-fluid" alt="">
                 </div>
               </div>
             </div>
@@ -2348,21 +2368,21 @@
 
                   <!-- #13 Book Button -->
                   <button type="button" class="btn px-0 py-0" data-bs-toggle="modal" data-bs-target="#book3-13">
-                    <img src="" class="img-fluid rounded" alt="">
+                    <img src="/Image/Kage/Kage 3.png" class="img-fluid rounded" alt="">
                   </button>
 
                 </div>
                 <div class="col-md-7">
                   <div class="card-body">
-                    <h5 class="card-title">ตำรับปริศนา หมอยาแห่งวังหลัง 8</h5>
-                    <p class="card-text">โดย : นัตซึ ฮิวงะ<br>สำนักพิมพ์ : ANIMAG <br> หมวดหมู่ : การ์ตูนทั่วไป</p>
+                    <h5 class="card-title">ชีวิตไม่ต้องเด่น ขอแค่เป็นเทพในเงา เล่ม 3 (LN)</h5>
+                    <p class="card-text">โดย : ไดสุเกะ ไอซาวะ<br>สำนักพิมพ์ : PHOENIX <br> หมวดหมู่ : Light Novel</p>
                     <hr>
                     <% if (!loggedIn) { %>
                       <input type="button" class="btn btn-primary" value="เพิ่มเติม"
                         onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
                       <% } %>
                         <% if (loggedIn) { %>
-                          <a href="/detail19" class="btn btn-primary">เพิ่มเติม</a>
+                          <a href="/detail/Kang3" class="btn btn-primary">เพิ่มเติม</a>
                           <% } %>
                   </div>
                 </div>
@@ -2378,7 +2398,7 @@
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body text-center">
-                  <img src="" class="img-fluid" alt="">
+                  <img src="/Image/Kage/Kage 3.png" class="img-fluid" alt="">
                 </div>
               </div>
             </div>
@@ -2392,21 +2412,21 @@
 
                   <!-- #14 Book Button -->
                   <button type="button" class="btn px-0 py-0" data-bs-toggle="modal" data-bs-target="#book3-14">
-                    <img src="" class="img-fluid rounded" alt="">
+                    <img src="/Image/Kage/Kage 4.png" class="img-fluid rounded" alt="">
                   </button>
 
                 </div>
                 <div class="col-md-7">
                   <div class="card-body">
-                    <h5 class="card-title">ตำรับปริศนา หมอยาแห่งวังหลัง 8</h5>
-                    <p class="card-text">โดย : นัตซึ ฮิวงะ<br>สำนักพิมพ์ : ANIMAG <br> หมวดหมู่ : การ์ตูนทั่วไป</p>
+                    <h5 class="card-title">ชีวิตไม่ต้องเด่น ขอแค่เป็นเทพในเงา เล่ม 4 (LN)</h5>
+                    <p class="card-text">โดย : ไดสุเกะ ไอซาวะ<br>สำนักพิมพ์ : PHOENIX <br> หมวดหมู่ : Light Novel</p>
                     <hr>
                     <% if (!loggedIn) { %>
                       <input type="button" class="btn btn-primary" value="เพิ่มเติม"
                         onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
                       <% } %>
                         <% if (loggedIn) { %>
-                          <a href="/detail19" class="btn btn-primary">เพิ่มเติม</a>
+                          <a href="/detail/Kang4" class="btn btn-primary">เพิ่มเติม</a>
                           <% } %>
                   </div>
                 </div>
@@ -2422,7 +2442,7 @@
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body text-center">
-                  <img src="" class="img-fluid" alt="">
+                  <img src="/Image/Kage/Kage 4.png" class="img-fluid" alt="">
                 </div>
               </div>
             </div>
@@ -2436,21 +2456,21 @@
 
                   <!-- #15 Book Button -->
                   <button type="button" class="btn px-0 py-0" data-bs-toggle="modal" data-bs-target="#book3-15">
-                    <img src="" class="img-fluid rounded" alt="">
+                    <img src="/Image/Kage/Kage 5.png" class="img-fluid rounded" alt="">
                   </button>
 
                 </div>
                 <div class="col-md-7">
                   <div class="card-body">
-                    <h5 class="card-title">ตำรับปริศนา หมอยาแห่งวังหลัง 8</h5>
-                    <p class="card-text">โดย : นัตซึ ฮิวงะ<br>สำนักพิมพ์ : ANIMAG <br> หมวดหมู่ : การ์ตูนทั่วไป</p>
+                    <h5 class="card-title">ชีวิตไม่ต้องเด่น ขอแค่เป็นเทพในเงา เล่ม 5 (LN)</h5>
+                    <p class="card-text">โดย : ไดสุเกะ ไอซาวะ<br>สำนักพิมพ์ : PHOENIX <br> หมวดหมู่ : Light Novel</p>
                     <hr>
                     <% if (!loggedIn) { %>
                       <input type="button" class="btn btn-primary" value="เพิ่มเติม"
                         onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
                       <% } %>
                         <% if (loggedIn) { %>
-                          <a href="/detail19" class="btn btn-primary">เพิ่มเติม</a>
+                          <a href="/detail/Kang5" class="btn btn-primary">เพิ่มเติม</a>
                           <% } %>
                   </div>
                 </div>
@@ -2466,7 +2486,7 @@
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body text-center">
-                  <img src="" class="img-fluid" alt="">
+                  <img src="/Image/Kage/Kage 5.png" class="img-fluid" alt="">
                 </div>
               </div>
             </div>
@@ -2480,21 +2500,21 @@
 
                   <!-- #16 Book Button -->
                   <button type="button" class="btn px-0 py-0" data-bs-toggle="modal" data-bs-target="#book3-16">
-                    <img src="" class="img-fluid rounded" alt="">
+                    <img src="/Image/Komarin/Komarin 1.png" class="img-fluid rounded" alt="">
                   </button>
 
                 </div>
                 <div class="col-md-7">
                   <div class="card-body">
-                    <h5 class="card-title">ตำรับปริศนา หมอยาแห่งวังหลัง 8</h5>
-                    <p class="card-text">โดย : นัตซึ ฮิวงะ<br>สำนักพิมพ์ : ANIMAG <br> หมวดหมู่ : การ์ตูนทั่วไป</p>
+                    <h5 class="card-title">สารพันปัญหาวุ่นวายของยัยแวมไพร์ขี้จุ๊ 1</h5>
+                    <p class="card-text">โดย : โคเทย์ โคบายาชิ<br>สำนักพิมพ์ : ANIMAG <br> หมวดหมู่ : Light Novel</p>
                     <hr>
                     <% if (!loggedIn) { %>
                       <input type="button" class="btn btn-primary" value="เพิ่มเติม"
                         onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
                       <% } %>
                         <% if (loggedIn) { %>
-                          <a href="/detail19" class="btn btn-primary">เพิ่มเติม</a>
+                          <a href="/detail/Komarin1" class="btn btn-primary">เพิ่มเติม</a>
                           <% } %>
                   </div>
                 </div>
@@ -2510,7 +2530,7 @@
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body text-center">
-                  <img src="" class="img-fluid" alt="">
+                  <img src="/Image/Komarin/Komarin 1.png" class="img-fluid" alt="">
                 </div>
               </div>
             </div>
@@ -2524,21 +2544,21 @@
 
                   <!-- #17 Book Button -->
                   <button type="button" class="btn px-0 py-0" data-bs-toggle="modal" data-bs-target="#book3-17">
-                    <img src="" class="img-fluid rounded" alt="">
+                    <img src="/Image/Komarin/Komarin 2.png" class="img-fluid rounded" alt="">
                   </button>
 
                 </div>
                 <div class="col-md-7">
                   <div class="card-body">
-                    <h5 class="card-title">ตำรับปริศนา หมอยาแห่งวังหลัง 8</h5>
-                    <p class="card-text">โดย : นัตซึ ฮิวงะ<br>สำนักพิมพ์ : ANIMAG <br> หมวดหมู่ : การ์ตูนทั่วไป</p>
+                    <h5 class="card-title">สารพันปัญหาวุ่นวายของยัยแวมไพร์ขี้จุ๊ 2</h5>
+                    <p class="card-text">โดย : โคเทย์ โคบายาชิ<br>สำนักพิมพ์ : ANIMAG <br> หมวดหมู่ : Light Novel</p>
                     <hr>
                     <% if (!loggedIn) { %>
                       <input type="button" class="btn btn-primary" value="เพิ่มเติม"
                         onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
                       <% } %>
                         <% if (loggedIn) { %>
-                          <a href="/detail19" class="btn btn-primary">เพิ่มเติม</a>
+                          <a href="/detail/Komarin2" class="btn btn-primary">เพิ่มเติม</a>
                           <% } %>
                   </div>
                 </div>
@@ -2554,7 +2574,7 @@
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body text-center">
-                  <img src="" class="img-fluid" alt="">
+                  <img src="/Image/Komarin/Komarin 2.png" class="img-fluid" alt="">
                 </div>
               </div>
             </div>
@@ -2568,21 +2588,21 @@
 
                   <!-- #18 Book Button -->
                   <button type="button" class="btn px-0 py-0" data-bs-toggle="modal" data-bs-target="#book3-18">
-                    <img src="" class="img-fluid rounded" alt="">
+                    <img src="/Image/Komarin/Komarin 3.png" class="img-fluid rounded" alt="">
                   </button>
 
                 </div>
                 <div class="col-md-7">
                   <div class="card-body">
-                    <h5 class="card-title">ตำรับปริศนา หมอยาแห่งวังหลัง 8</h5>
-                    <p class="card-text">โดย : นัตซึ ฮิวงะ<br>สำนักพิมพ์ : ANIMAG <br> หมวดหมู่ : การ์ตูนทั่วไป</p>
+                    <h5 class="card-title">สารพันปัญหาวุ่นวายของยัยแวมไพร์ขี้จุ๊ 3</h5>
+                    <p class="card-text">โดย : โคเทย์ โคบายาชิ<br>สำนักพิมพ์ : ANIMAG <br> หมวดหมู่ : Light Novel</p>
                     <hr>
                     <% if (!loggedIn) { %>
                       <input type="button" class="btn btn-primary" value="เพิ่มเติม"
                         onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
                       <% } %>
                         <% if (loggedIn) { %>
-                          <a href="/detail19" class="btn btn-primary">เพิ่มเติม</a>
+                          <a href="/detail/Komarin3" class="btn btn-primary">เพิ่มเติม</a>
                           <% } %>
                   </div>
                 </div>
@@ -2598,7 +2618,7 @@
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body text-center">
-                  <img src="" class="img-fluid" alt="">
+                  <img src="/Image/Komarin/Komarin 3.png" class="img-fluid" alt="">
                 </div>
               </div>
             </div>
@@ -2628,10 +2648,43 @@
         <!-- Second set of images -->
         <img src="Image/MegamiTest.png" alt="Image 1" />
         <img src="Image/StarvingTest.png" alt="Image 2" />
-        <img src="Image/DaiTest.png" alt="Image 3" />
-        <img src="Image/MaoTest.png" alt="Image 4" />
-        <img src="Image/MahirunTest.png" alt="Image 5" />
-        <img src="Image/FrierenTest.png" alt="Image 6" />
+        <img src="Image/Kage/Kage 5.png" alt="Image 3" />
+        <img src="Image/Chitose/Chitose 3.png" alt="Image 4" />
+        <img src="Image/Sasayaku/Sasayaku 1.png" alt="Image 5" />
+        <img src="Image/Youchien/Youchien 1.png" alt="Image 6" />
+
+        <!-- Third set of images -->
+        <img src="Image/Skip/Skip 1.png" alt="Image 1" />
+        <img src="Image/Komarin/Komarin 5.png" alt="Image 2" />
+        <img src="Image/Shangri-la/Shangri 2.png" alt="Image 3" />
+        <img src="Image/Satou-san/Satou 7.png" alt="Image 4" />
+        <img src="Image/Kage/Kage 2.png" alt="Image 5" />
+        <img src="Image/Skip/Skip 2.png" alt="Image 6" />
+
+        <!-- Fourth set of images -->
+        <img src="Image/Oshi/Oshi 11.png" alt="Image 1" />
+        <img src="Image/MaoTest.png" alt="Image 2" />
+        <img src="Image/MahirunTest.png" alt="Image 3" />
+        <img src="Image/FrierenTest.png" alt="Image 4" />
+        <img src="Image/MahirunMGTest.png" alt="Image 5" />
+        <img src="Image/99Test.png" alt="Image 6" />
+
+        <!-- Fifth set of images -->
+        <img src="Image/MegamiTest.png" alt="Image 1" />
+        <img src="Image/StarvingTest.png" alt="Image 2" />
+        <img src="Image/Kage/Kage 5.png" alt="Image 3" />
+        <img src="Image/Chitose/Chitose 3.png" alt="Image 4" />
+        <img src="Image/Sasayaku/Sasayaku 1.png" alt="Image 5" />
+        <img src="Image/Youchien/Youchien 1.png" alt="Image 6" />
+
+        <!-- Sixth set of images -->
+        <img src="Image/Skip/Skip 1.png" alt="Image 1" />
+        <img src="Image/Komarin/Komarin 5.png" alt="Image 2" />
+        <img src="Image/Shangri-la/Shangri 2.png" alt="Image 3" />
+        <img src="Image/Satou-san/Satou 7.png" alt="Image 4" />
+        <img src="Image/Kage/Kage 2.png" alt="Image 5" />
+        <img src="Image/Skip/Skip 2.png" alt="Image 6" />
+
       </div>
     </div>
   </div>
@@ -2656,16 +2709,6 @@
               <h4>คำอธิษฐานในวันที่จากลา FRIEREN 1</h4>
               โดย : Kanehito YAMADA, Tsukasa Abe<br>สำนักพิมพ์ : Siam Inter Comics<br> หมวดหมู่ : การ์ตูนทั่วไป
               <br>ราคา : 76.50 บาท
-              <div style="padding-top: 10px;"></div>
-              <% if (!loggedIn) { %>
-                <input type="button" class="btn btn-primary" value="เพิ่มเติม"
-                  onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
-                <% } %>
-                  <% if (loggedIn) { %>
-                    <div class="mb-3">
-                      <a href="/" class="btn btn-primary">เพิ่มเติม</a>
-                    </div>
-                    <% } %>
             </div>
           </div>
         </div>
@@ -2678,16 +2721,6 @@
               <h4>รักรักรักรักรักเธอหมดหัวใจจากแฟนสาว 100 คน 10</h4>
               โดย : Yukiko Nozawa, Rikito Nakamura<br>สำนักพิมพ์ : LUCKPIM Publishing<br> หมวดหมู่ : การ์ตูนทั่วไป
               <br>ราคา : 118 บาท
-              <div style="padding-top: 10px;"></div>
-              <% if (!loggedIn) { %>
-                <input type="button" class="btn btn-primary" value="เพิ่มเติม"
-                  onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
-                <% } %>
-                  <% if (loggedIn) { %>
-                    <div class="mb-3">
-                      <a href="/" class="btn btn-primary">เพิ่มเติม</a>
-                    </div>
-                    <% } %>
             </div>
           </div>
         </div>
@@ -2700,16 +2733,6 @@
               <h4>ตำรับปริศนา หมอยาแห่งวังหลัง 8 (ฉบับการ์ตูน)</h4>
               โดย : นัตซึ ฮิวงะ, เนโกะคุราเงะ, อิตซึกิ นานาโอะ<br>สำนักพิมพ์ : ANIMAG<br> หมวดหมู่ : การ์ตูนทั่วไป
               <br>ราคา : 110 บาท
-              <div style="padding-top: 10px;"></div>
-              <% if (!loggedIn) { %>
-                <input type="button" class="btn btn-primary" value="เพิ่มเติม"
-                  onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
-                <% } %>
-                  <% if (loggedIn) { %>
-                    <div class="mb-3">
-                      <a href="/" class="btn btn-primary">เพิ่มเติม</a>
-                    </div>
-                    <% } %>
             </div>
           </div>
         </div>
@@ -2723,16 +2746,6 @@
               <h4>ขาดคุณนางฟ้าข้างห้องไป ผมคงมีชีวิตต่อไปไม่ได้อีกแล้ว 6</h4>
               โดย : ซาเอกิซัง<br>สำนักพิมพ์ : ANIMAG<br> หมวดหมู่ : ไลท์โนเวล
               <br>ราคา : 280 บาท
-              <div style="padding-top: 10px;"></div>
-              <% if (!loggedIn) { %>
-                <input type="button" class="btn btn-primary" value="เพิ่มเติม"
-                  onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
-                <% } %>
-                  <% if (loggedIn) { %>
-                    <div class="mb-3">
-                      <a href="/" class="btn btn-primary">เพิ่มเติม</a>
-                    </div>
-                    <% } %>
             </div>
           </div>
         </div>
@@ -2761,16 +2774,6 @@
               <h4>ฟาร์มขุนฅน Re: Starving Re: velation 6</h4>
               โดย : YUU KURAISHI<br>สำนักพิมพ์ : Vibulkij Publishing<br> หมวดหมู่ : การ์ตูนทั่วไป
               <br>ราคา : 120 บาท
-              <div style="padding-top: 10px;"></div>
-              <% if (!loggedIn) { %>
-                <input type="button" class="btn btn-primary" value="เพิ่มเติม"
-                  onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
-                <% } %>
-                  <% if (loggedIn) { %>
-                    <div class="mb-3">
-                      <a href="/" class="btn btn-primary">เพิ่มเติม</a>
-                    </div>
-                    <% } %>
             </div>
           </div>
         </div>
@@ -2783,16 +2786,6 @@
               <h4>คาเฟ่นี้มีนางฟ้ามาเสิร์ฟ 9</h4>
               โดย : เซโอะ โคจิ<br>สำนักพิมพ์ : PHOENIX<br> หมวดหมู่ : การ์ตูนทั่วไป
               <br>ราคา : 165 บาท
-              <div style="padding-top: 10px;"></div>
-              <% if (!loggedIn) { %>
-                <input type="button" class="btn btn-primary" value="เพิ่มเติม"
-                  onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
-                <% } %>
-                  <% if (loggedIn) { %>
-                    <div class="mb-3">
-                      <a href="/" class="btn btn-primary">เพิ่มเติม</a>
-                    </div>
-                    <% } %>
             </div>
           </div>
         </div>
@@ -2805,16 +2798,6 @@
               <h4>ขาดคุณนางฟ้าข้างห้องไป ผมคงมีชีวิตต่อไปไม่ได้อีกแล้ว 2 (ฉบับการ์ตูน)</h4>
               โดย : ซาเอกิซัง, สึซึ ยูกิ<br>สำนักพิมพ์ : ANIMAG<br> หมวดหมู่ : การ์ตูนทั่วไป
               <br>ราคา : 130 บาท
-              <div style="padding-top: 10px;"></div>
-              <% if (!loggedIn) { %>
-                <input type="button" class="btn btn-primary" value="เพิ่มเติม"
-                  onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
-                <% } %>
-                  <% if (loggedIn) { %>
-                    <div class="mb-3">
-                      <a href="/" class="btn btn-primary">เพิ่มเติม</a>
-                    </div>
-                    <% } %>
             </div>
           </div>
         </div>
@@ -2828,16 +2811,6 @@
               <h4>ชีวิตไม่ง่ายของนางร้าย LV99 เล่ม 3 (ฉบับการ์ตูน)</h4>
               โดย : ซาโตริ ทานาบาตะ<br>สำนักพิมพ์ : PHOENIX<br> หมวดหมู่ : การ์ตูนทั่วไป
               <br>ราคา : 165 บาท
-              <div style="padding-top: 10px;"></div>
-              <% if (!loggedIn) { %>
-                <input type="button" class="btn btn-primary" value="เพิ่มเติม"
-                  onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
-                <% } %>
-                  <% if (loggedIn) { %>
-                    <div class="mb-3">
-                      <a href="/" class="btn btn-primary">เพิ่มเติม</a>
-                    </div>
-                    <% } %>
             </div>
           </div>
         </div>
@@ -2866,16 +2839,6 @@
               <h4>วันวานแห่งวสันต์ที่เราเฝ้ารอ</h4>
               โดย : Mei HACHIMOKU, KUKKA<br>สำนักพิมพ์ : เซนชู<br> หมวดหมู่ : ไลท์โนเวล
               <br>ราคา : 240 บาท
-              <div style="padding-top: 10px;"></div>
-              <% if (!loggedIn) { %>
-                <input type="button" class="btn btn-primary" value="เพิ่มเติม"
-                  onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
-                <% } %>
-                  <% if (loggedIn) { %>
-                    <div class="mb-3">
-                      <a href="/" class="btn btn-primary">เพิ่มเติม</a>
-                    </div>
-                    <% } %>
             </div>
           </div>
         </div>
@@ -2888,16 +2851,6 @@
               <h4>HELL MODE อยากเล่นโหด ขอโหมดนรก 6</h4>
               โดย : HAMUO<br>สำนักพิมพ์ : PHOENIX<br> หมวดหมู่ : ไลท์โนเวล
               <br>ราคา : 375 บาท
-              <div style="padding-top: 10px;"></div>
-              <% if (!loggedIn) { %>
-                <input type="button" class="btn btn-primary" value="เพิ่มเติม"
-                  onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
-                <% } %>
-                  <% if (loggedIn) { %>
-                    <div class="mb-3">
-                      <a href="/" class="btn btn-primary">เพิ่มเติม</a>
-                    </div>
-                    <% } %>
             </div>
           </div>
         </div>
@@ -2910,16 +2863,6 @@
               <h4>เกิดชาตินี้พี่ต้องเทพ 18</h4>
               โดย : Rifujin na Magonote<br>สำนักพิมพ์ : DEXPRESS<br> หมวดหมู่ : ไลท์โนเวล
               <br>ราคา : 279 บาท
-              <div style="padding-top: 10px;"></div>
-              <% if (!loggedIn) { %>
-                <input type="button" class="btn btn-primary" value="เพิ่มเติม"
-                  onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
-                <% } %>
-                  <% if (loggedIn) { %>
-                    <div class="mb-3">
-                      <a href="/" class="btn btn-primary">เพิ่มเติม</a>
-                    </div>
-                    <% } %>
             </div>
           </div>
         </div>
@@ -2933,16 +2876,6 @@
               <h4>นักเจรจาสุดโฉดจะสร้างตำนานแคลนสุดแกร่ง 3</h4>
               โดย : จาคิ<br>สำนักพิมพ์ : ANIMAG<br> หมวดหมู่ : ไลท์โนเวล
               <br>ราคา : 390 บาท
-              <div style="padding-top: 10px;"></div>
-              <% if (!loggedIn) { %>
-                <input type="button" class="btn btn-primary" value="เพิ่มเติม"
-                  onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')">
-                <% } %>
-                  <% if (loggedIn) { %>
-                    <div class="mb-3">
-                      <a href="/" class="btn btn-primary">เพิ่มเติม</a>
-                    </div>
-                    <% } %>
             </div>
           </div>
         </div>
@@ -3071,6 +3004,7 @@
     <p>
       <a href="/">หน้าหลัก</a> |
       <a href="/map">แผนที่</a> |
+      <a href="/allbook">หนังสือทั้งหมด</a> |
       <a href="/find">ค้นหา</a> |
       <a href="/list">สิ่งที่อยากอ่าน</a> |
       <a href="/contact">ติดต่อเรา</a> |

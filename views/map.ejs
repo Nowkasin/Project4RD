@@ -6,9 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>แผนที่</title>
 
+  <link rel="icon" href="/Image/favicon.ico" type="image/x-icon">
+
   <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
   <script
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZwhLNcwIwxV6ifzxtVmiEZgikZXH_moA&callback=initialize&v=weekly"
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA7BA_sPNzvjHmBsNB3i6CpLi4L0VAQ7I4&callback=initialize&v=weekly"
     defer></script>
   <link rel="icon" href="#" type="image/x-icon">
   <script src="/js/map.js"></script>
@@ -41,7 +46,7 @@
     <nav class="navbar navbar-expand-lg navbar-light" id="sticky-navbar" style="background:#8DC0EB">
       <div class="container-fluid">
         <a class="navbar-brand" href="#"></a>
-        <a href="/"><img src="Image/YarkArnLogo.png" style="left: 10000px" width="100px" height="auto" /></a>
+        <a href="/"><img src="/Image/YarkArnLogo.png" style="left: 10000px" width="100px" height="auto" /></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarDropdownMenuLink"
           aria-controls="navbarDropdownMenuLink" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -55,10 +60,30 @@
               <a class="nav-link" aria-current="page" href="/map">แผนที่</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="/find">ค้นหา</a>
+              <% if (!loggedIn) { %>
+                <a class="nav-link" aria-current="page"
+                  onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')"
+                  href="#">หนังสือทั้งหมด</a>
+                <% } %>
+                  <% if (loggedIn) { %>
+                    <a class="nav-link" aria-current="page" href="/allbook">หนังสือทั้งหมด</a>
+                    <% } %>
             </li>
             <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="/list">สิ่งที่อยากอ่าน</a>
+              <a class="nav-link" aria-current="page" href="#"
+                onclick="swal('ไม่สามารถเข้าถึงได้', 'อยู่ระหว่างการพัฒนา', 'error')">ค้นหา</a>
+            </li>
+            <li class="nav-item">
+              <!-- ดัก user เมื่อ user ยังไม่ได้ login เข้าสู่ระบบ เพื่อป้องกันไม่ให้ user เข้าถึงเนื้อหาเมื่อยังไม่ได้ login-->
+              <% if (!loggedIn) { %>
+                <a class="nav-link" aria-current="page"
+                  onclick="swal('ไม่สามารถเข้าถึงได้', 'ต้องเข้าสู่ระบบ หรือ สมัครสมาชิกก่อนใช้งาน', 'error')"
+                  href="#">สิ่งที่อยากอ่าน</a>
+                <% } %>
+                  <!-- ถ้า user login เข้าสู่ระบบ user จะสามารถเข้าสู่เนื้อหาได้เมื่อทำการ login แล้ว-->
+                  <% if (loggedIn) { %>
+                    <a class="nav-link" aria-current="page" href="/list">สิ่งที่อยากอ่าน</a>
+                    <% } %>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
@@ -67,17 +92,19 @@
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                 <li>
+                  <!-- ถ้า user login เข้าสู่ระบบ user จะเห็นปุ่ม My Profile ขึ้นมา -->
                   <% if (loggedIn) { %>
                     <a class="dropdown-item" href="/profile">โปรไฟล์</a>
                     <% } %>
-
                 </li>
                 <li>
+                  <!-- ถ้า user ยังไม่ login เข้าสู่ระบบ จะขึ้นปุ่มนี้ขึ้นมา -->
                   <% if (!loggedIn) { %>
                     <a class="dropdown-item " href="/login">เข้าสู่ระบบ</a>
                     <% } %>
                 </li>
                 <li>
+                  <!-- ถ้า user ยังไม่ login เข้าสู่ระบบ จะขึ้นปุ่มนี้ขึ้นมา -->
                   <% if (!loggedIn) { %>
                     <a class="dropdown-item " href="/register">สมัครสมาชิก</a>
                     <% } %>
@@ -106,7 +133,7 @@
   <div class="container custom-padding-bot">
     <div class="row">
       <div class="col-md-12">
-        
+
 
         <!-- Nav tabs -->
         <ul class="nav nav-pills justify-content-center text-center" id="locationButtons" role="tablist">
@@ -135,15 +162,16 @@
             <button class="nav-link custom-nav-link" data-location-id="image8">ModelxCartoon</button>
           </li>
           <li class="nav-item" role="presentation">
-            <button class="nav-link custom-nav-link" data-location-id="image9">Animate Bangkok (Future Park Rangsit)</button>
+            <button class="nav-link custom-nav-link" data-location-id="image9">Animate Bangkok (Future Park
+              Rangsit)</button>
           </li>
           <li class="nav-item" role="presentation">
             <button class="nav-link custom-nav-link" data-location-id="image10">นายอินทร์ (Naiin)</button>
-            
+
           </li>
           <li class="nav-item" role="presentation">
             <button class="nav-link custom-nav-link" data-location-id="image11">B2S</button>
-            
+
           </li>
           <li class="nav-item" role="presentation">
             <button class="nav-link custom-nav-link" data-location-id="image12">SE-ED</button>
@@ -152,10 +180,10 @@
 
         <div id="map-container">
           <div id="map"></div>
-        
         </div>
       </div>
     </div>
+  </div>
   </div>
 
   <footer class="footer">
@@ -163,11 +191,12 @@
     <p>
       <a href="/">หน้าหลัก</a> |
       <a href="/map">แผนที่</a> |
+      <a href="/allbook">หนังสือทั้งหมด</a> |
       <a href="/find">ค้นหา</a> |
       <a href="/list">สิ่งที่อยากอ่าน</a> |
       <a href="/contact">ติดต่อเรา</a> |
       <a href="/login">เข้าสู่ระบบ</a> |
-      <a href ="/register">สมัครสมาชิก</a>
+      <a href="/register">สมัครสมาชิก</a>
     </p>
   </footer>
 
