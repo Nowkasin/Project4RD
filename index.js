@@ -9,7 +9,7 @@ const flash = require('connect-flash')//เรียกใช้ flash เพื
 
 //connection of mongoDB
 //mongodb+srv://admin:1234@cluster0.jkwkvib.mongodb.net/?retryWrites=true&w=majority connect string จากเว็บ mongoDB
-mongoose.connect('mongodb+srv://admin:1234@cluster0.jkwkvib.mongodb.net/?retryWrites=true&w=majority',{
+mongoose.connect('mongodb+srv://admin:01234@cluster0.upgltfk.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0',{
     useNewUrlParser: true //เป็นการ connect mongo แบบ url
 })
 
