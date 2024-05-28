@@ -4,7 +4,7 @@ const ejs = require('ejs')//เรียกใช้ file .ejs
 const mongoose = require('mongoose')//เรียกใช้ mongoose ใช้สำหรับทำงานกับฐานข้อมูง
 const expressSession = require('express-session')//เรียกใช้ express-session เพื่อเก็บ session ของ user
 const flash = require('connect-flash')//เรียกใช้ flash เพื่อเก็บข้อความ error เพื่อแสดงผลเมื่อ user ไม่ได้กรอกข้อมูล
-
+const bcrypt = require('bcryptjs');
 
 
 //connection of mongoDB
